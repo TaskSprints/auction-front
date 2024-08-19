@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import MenuComponent from "./common/MenuComponent";
+import MenuComponent from "./common/MenuComponent/MenuComponent";
 import Footer from "./common/Footer";
 
 const App: React.FC = () => {
