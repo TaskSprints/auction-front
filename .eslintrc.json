@@ -1,14 +1,23 @@
 {
-    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "react"],
-    "rules": {
-        "react/react-in-jsx-scope": "off",
-        "prettier/prettier": "error"
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  }
 }
