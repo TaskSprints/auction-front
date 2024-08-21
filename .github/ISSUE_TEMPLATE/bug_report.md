@@ -3,8 +3,7 @@ name: 버그 리포트
 about: 버그 리포트 목적
 title: "[버그] "
 labels: bug
-assignees: ''
-
+assignees: ""
 ---
 
 ## 🐛 버그 리포트
