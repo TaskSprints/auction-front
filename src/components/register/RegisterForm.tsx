@@ -9,6 +9,7 @@ import {
   FaUser,
   FaPhone,
 } from "react-icons/fa";
+import TermsAgreementForm from "./TermsAgreementForm";
 const RegisterForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const RegisterForm: React.FC = () => {
   const [checkedPassword, setCheckedPassword] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [termRequiredCheck, setTermRequiredCheck] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -144,10 +145,14 @@ const RegisterForm: React.FC = () => {
             placeholder="휴대폰 번호"
           />
         </div>
-        <div className="border-t border-gray-300 my-4"></div>
+        <div className="border-t border-gray-300 mt-8"></div>
+        <TermsAgreementForm
+          termRequiredCheck={termRequiredCheck}
+          setTermRequiredCheck={setTermRequiredCheck}
+        />
         <motion.button
           type="submit"
-          className="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition"
+          className="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition mt-5"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

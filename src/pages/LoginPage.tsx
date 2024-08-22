@@ -1,5 +1,5 @@
 import React from "react";
-import LoginMethodMenu from "../component/LoginMethodMenu";
+import LoginMethodMenu from "../components/login/LoginMethodMenu";
 
 const LoginPage: React.FC = () => {
   return (
