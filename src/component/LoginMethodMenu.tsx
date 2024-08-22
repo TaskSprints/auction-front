@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EmailLoginForm from "./EmailLoginForm";
+import PhoneLoginForm from "./PhoneLoginForm";
 
 const LoginMethodMenu: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState("email");
@@ -8,8 +9,8 @@ const LoginMethodMenu: React.FC = () => {
     switch (selectedMenu) {
       case "email":
         return <EmailLoginForm />;
-      case "qr":
-        return <div>QR코드 로그인 컴포넌트</div>;
+      case "phone":
+        return <PhoneLoginForm />;
       default:
         return null;
     }
@@ -31,13 +32,13 @@ const LoginMethodMenu: React.FC = () => {
           </button>
           <button
             className={`${
-              selectedMenu === "qr"
+              selectedMenu === "phone"
                 ? "text-red-600 border-b-2 border-red-600"
                 : "text-gray-600"
             } pb-2`}
-            onClick={() => setSelectedMenu("qr")}
+            onClick={() => setSelectedMenu("phone")}
           >
-            QR코드 로그인
+            휴대폰 번호 로그인
           </button>
         </div>
       </div>
