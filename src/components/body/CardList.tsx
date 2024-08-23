@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import "./CardList.css";
-import Card from "../Card/Card";
+import Card from "../common/Card/Card";
 
 const CardList: React.FC = () => {
   interface NextArrowProps {
