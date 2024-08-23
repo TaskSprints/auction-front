@@ -14,7 +14,7 @@ const Header: React.FC = () => {
         </ul>
         <ul className="right-nav flex space-x-4">
           <li className="cursor-pointer hover:underline">
-            <a href="">🔒 로그인</a>
+            <a href="/login">🔒 로그인</a>
           </li>
           <li className="cursor-pointer hover:underline ">
             <a href="">🛒 장바구니</a>
