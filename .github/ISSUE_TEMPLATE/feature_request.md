@@ -3,8 +3,7 @@ name: 기능 요청
 about: 기능 요청 목적
 title: "[기능] "
 labels: enhancement
-assignees: ''
-
+assignees: ""
 ---
 
 ## 🚀 기능 요청

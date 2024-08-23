@@ -1,14 +1,9 @@
 import React from "react";
 import "./App.css";
-import MenuComponent from "./common/MenuComponent/MenuComponent";
-import Footer from "./common/Footer";
+import RegisterPage from "./pages/RegisterPage";
+// import LoginPage from "./page/LoginPage";
 
 const App: React.FC = () => {
-  return (
-    <>
-      <MenuComponent></MenuComponent>
-      <Footer></Footer>
-    </>
-  );
+  return <RegisterPage />;
 };
 export default App;

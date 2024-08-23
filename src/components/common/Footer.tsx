@@ -1,13 +1,13 @@
 import React from "react";
-import { FaEnvelope, FaArrowUp } from "react-icons/fa"; // Importing icons
+import { FaEnvelope, FaArrowUp } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-    <div className="bg-zinc-800 text-gray-400 text-xs p-6">
-      <div className="border-b border-gray-700 pb-6">
+    <div className="bg-zinc-800 text-gray-400 text-xs p-4 md:p-6">
+      <div className="border-b border-gray-700 pb-4 md:pb-6">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-between items-center">
-            <ul className="flex space-x-4">
+            <ul className="flex flex-wrap space-x-2 md:space-x-4 text-[10px] md:text-xs">
               <li>
                 <a
                   href="html_file.php?file=user_company.html"
@@ -74,17 +74,17 @@ const Footer: React.FC = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex space-x-2 mt-4 md:mt-0">
+            <div className="flex space-x-1 md:space-x-2 mt-4 md:mt-0 text-[10px] md:text-xs">
               <a
                 href="happy_inquiry.php"
-                className="flex items-center bg-zinc-700 border border-gray-600 text-gray-400 py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200"
+                className="flex items-center bg-zinc-700 border border-gray-600 text-gray-400 py-1 md:py-2 px-3 md:px-4 rounded-md hover:bg-gray-700 transition duration-200"
               >
                 <FaEnvelope className="mr-1" />
                 문의하기
               </a>
               <a
                 href="#top"
-                className="flex items-center bg-zinc-700 border border-gray-600 text-gray-400 py-2 px-3 rounded-md hover:bg-gray-700 transition duration-200"
+                className="flex items-center bg-zinc-700 border border-gray-600 text-gray-400 py-1 md:py-2 px-2 md:px-3 rounded-md hover:bg-gray-700 transition duration-200"
               >
                 <FaArrowUp className="mr-1" /> 맨 위로
               </a>
@@ -92,9 +92,9 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-700 pt-6">
+      <div className="border-t border-gray-700 pt-4 md:pt-6">
         <div className="container mx-auto">
-          <p className="text-gray-500 leading-6">
+          <p className="text-[10px] md:text-xs leading-5 md:leading-6">
             상호명 : HAPPYAUCTION | 대표자 : 홍길동 | 이메일주소 :
             gon@happcgi.com | 사업자등록번호: 000-00-00000
             <br />
