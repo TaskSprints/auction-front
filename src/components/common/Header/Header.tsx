@@ -2,9 +2,9 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <div className="w-full bg-gray-50 h-[2.5rem] flex justify-center items-center ">
-      <div className="nav w-[1200px] flex justify-between text-sm ">
-        <ul className="left-nav flex space-x-4 ">
+    <div className="w-full bg-gray-50 h-[2.5rem] flex justify-center items-center">
+      <div className="nav w-full max-w-[1200px] px-4 flex justify-between text-xs sm:text-sm">
+        <ul className="left-nav flex space-x-2 sm:space-x-4">
           <li className="cursor-pointer hover:underline">
             <a href="">❤️ 즐겨찾기</a>
           </li>
@@ -12,13 +12,13 @@ const Header: React.FC = () => {
             <a href="">🏠 시작페이지로</a>
           </li>
         </ul>
-        <ul className="right-nav flex space-x-4">
+        <ul className="right-nav flex space-x-2 sm:space-x-4">
           <li className="cursor-pointer hover:underline">
             <a href="/login">🔒 로그인</a>
           </li>
-          <li className="cursor-pointer hover:underline ">
+          <li className="cursor-pointer hover:underline relative">
             <a href="">🛒 장바구니</a>
-            <span className=" bg-red-600 w-[0.9rem] rounded-md m-1 px-1 text-white">
+            <span className="absolute top-[-0.5rem] right-[-0.75rem] bg-red-600 w-[1rem] h-[1rem] flex justify-center items-center rounded-full text-white text-[0.75rem]">
               0
             </span>
           </li>
@@ -36,4 +36,5 @@ const Header: React.FC = () => {
     </div>
   );
 };
+
 export default Header;

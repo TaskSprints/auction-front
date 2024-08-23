@@ -55,6 +55,7 @@ const PhoneLoginForm: React.FC = () => {
         <div className="border-t border-gray-300 my-4"></div>
 
         <motion.button
+          onClick={() => (window.location.href = "/register")}
           type="button"
           className="w-full bg-white text-red-600 border border-red-600 py-2 rounded-md hover:bg-red-600 hover:text-white transition"
           whileHover={{ scale: 1.05 }}
