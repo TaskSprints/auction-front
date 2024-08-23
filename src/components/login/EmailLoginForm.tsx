@@ -112,6 +112,7 @@ const EmailLoginForm: React.FC = () => {
           className="w-full bg-white text-red-600 border border-red-600 py-2 rounded-md hover:bg-red-600 hover:text-white transition"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => (window.location.href = "/register")}
         >
           회원가입
         </motion.button>
