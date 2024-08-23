@@ -1,0 +1,20 @@
+.slick-next::before{
+  font-size: 50px;
+  color:rgb(168, 165, 165);
+}
+
+.slick-prev::before{
+  font-size: 50px;
+  color:rgb(168, 165, 165);
+}
+.slick-slide .slick-cloned{
+  opacity: 1;
+}
+.slick-slide{
+  width:300px;
+}
+.slick-slider{
+  width:1200px;
+}
+
+
