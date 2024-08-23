@@ -2,7 +2,7 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <div className="w-full bg-gray-50 h-[2.5rem]  flex justify-center items-center ">
+    <div className="w-full bg-gray-50 h-[2.5rem] flex justify-center items-center ">
       <div className="nav w-[1200px] flex justify-between text-sm ">
         <ul className="left-nav flex space-x-4 ">
           <li className="cursor-pointer hover:underline">

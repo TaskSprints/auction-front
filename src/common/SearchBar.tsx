@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar: React.FC = () => {
   return (
-    <div className="w-full bg-white   p-9">
+    <div className="w-full bg-white fixed top-10 p-9">
       <div className="inner w-[1200px] mx-auto ">
         <div className="flex items-center">
           <div className="cursor-pointer hover:underline">
