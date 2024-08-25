@@ -12,6 +12,31 @@ const AuctionInfoList = () => {
     slidesToScroll: 3,
     prevArrow: <CustomArrow direction="left" />,
     nextArrow: <CustomArrow direction="right" />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "10px",
+        },
+      },
+    ],
   };
   return (
     <div className="container m-auto p-12">
