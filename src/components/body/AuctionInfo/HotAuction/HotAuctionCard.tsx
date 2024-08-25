@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card, List } from "antd";
+import CustomArrow from "./CustomArrow";
 
 interface TmpCardProps {
   data: {
@@ -7,23 +8,28 @@ interface TmpCardProps {
     leftTime: string;
     Image: string;
     poroductKey: string;
+    price: number;
   };
 }
+
 const HotAuctionCard: React.FC<TmpCardProps> = ({ data }) => {
-  const [time, setTime] = useState("2일 10분");
+  const formatKRW = Intl.NumberFormat("ko-kr", {
+    style: "decimal",
+  }).format(data.price);
   return (
-    <div className="w-[14rem]  overflow-hidden mx-auto mt-5 flex justify-center shadow-lg">
-      <Card
-        hoverable
-        title={<span className="text">{data.leftTime}</span>}
-        bordered={true}
-        style={{ width: 300 }}
-        extra={<span className="text-red-500"></span>}
-        cover={<img alt="" src={data.Image} className="w-[3rem] bg-black" />}
-        className=" bg-gray-100 hover:scale-105 hover:underline hover:shadow-2xl"
-      >
-        <span className="text-xl bold">{data.title}</span>
-      </Card>
+    <div className="card w-max-[180px] h-auto min-h-[230px] max-h-[300px] mx-2 hover:cursor-pointer hover:underline">
+      <div className="image w-auto aspect-square">
+        <img src={data.Image} alt="" className="aspect-square" />
+      </div>
+      <div className="my-1 time text-xs text-red-500">
+        <span>⏰ {data.leftTime}</span>
+      </div>
+      <div className="title my-1">
+        <span>{data.title}</span>
+      </div>
+      <div className="price mb-1 text-xl">
+        <span>{formatKRW}원</span>
+      </div>
     </div>
   );
 };
