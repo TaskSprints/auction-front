@@ -4,6 +4,7 @@ import CardList from "../components/common/Card/CardList";
 import Header from "../components/common/Header/Header";
 import Footer from "../components/common/Footer/Footer";
 import MenuComponent from "../components/common/MenuComponent/MenuComponent";
+import AuctionInfo from "../components/body/AuctionInfo";
 
 const MainPage: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const MainPage: React.FC = () => {
       </div>
       <MenuComponent />
       <CardList />
+      <AuctionInfo />
       <Footer />
     </div>
   );

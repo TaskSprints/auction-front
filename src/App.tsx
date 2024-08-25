@@ -3,6 +3,7 @@ import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import React from "react";
+import "antd/dist/reset.css";
 
 const router = createBrowserRouter([
   {
