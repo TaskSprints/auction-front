@@ -59,7 +59,7 @@ const AuctionInfoList = () => {
     ],
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-[3rem]">
       <div className="title flex justify-start">
         <h1 className="text-3xl ml-0 hidden md:block">
           실시간<span> </span>
@@ -78,7 +78,7 @@ const AuctionInfoList = () => {
       <div className="card_section max-w-[85rem] h-auto m-auto border border-1 border-gray ">
         <div className=" w-auto h-auto">
           {isMdSize ? (
-            <Slider {...settings} className="md:flex justify-center h-auto ">
+            <Slider {...settings} className="flex justify-center h-auto ">
               {datas.map((data) => (
                 <HotAuctionCard key={data.poroductKey} data={data} />
               ))}
