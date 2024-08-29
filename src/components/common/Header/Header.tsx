@@ -2,9 +2,9 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <div className="w-full bg-gray-50 h-[2.5rem] flex justify-center items-center">
+    <div className="w-full bg-gray-50 h-[2.5rem] pt-3 flex justify-center items-center">
       <div className="nav w-full max-w-[1200px] px-4 flex justify-between text-xs sm:text-sm">
-        <ul className="left-nav flex space-x-2 sm:space-x-4">
+        <ul className="left-nav flex space-x-2 sm:space-x-4 items-center">
           <li className="cursor-pointer hover:underline">
             <a href="">❤️ 즐겨찾기</a>
           </li>
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
             <a href="">🏠 시작페이지로</a>
           </li>
         </ul>
-        <ul className="right-nav flex space-x-2 sm:space-x-4">
+        <ul className="right-nav flex space-x-2 sm:space-x-4 items-center">
           <li className="cursor-pointer hover:underline">
             <a href="/login">🔒 로그인</a>
           </li>
