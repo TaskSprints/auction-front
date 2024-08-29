@@ -17,7 +17,7 @@ const HotAuctionCard: React.FC<TmpCardProps> = ({ data }) => {
     style: "decimal",
   }).format(data.price);
   return (
-    <div className="card max-w-[300px] min-w-[150px]  h-auto min-h-[230px] max-h-[500px]  mx-1 mb-3 hover:cursor-pointer hover:underline ">
+    <div className="card max-w-[300px] min-w-[130px]  h-auto min-h-[230px] max-h-[500px]  mx-1 mb-3 hover:cursor-pointer hover:underline ">
       <div className="image w-auto h-auto aspect-square flex justify-center items-center overflow-hidden">
         <img src={data.Image} alt="" className="aspect-square " />
       </div>
