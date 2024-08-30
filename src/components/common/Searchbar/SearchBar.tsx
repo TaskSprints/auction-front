@@ -1,4 +1,5 @@
 import React from "react";
+import SimpleHeader from "../Header/SimpleHeader";
 
 const SearchBar: React.FC = () => {
   return (
@@ -6,9 +7,7 @@ const SearchBar: React.FC = () => {
       <div className="inner w-[1200px] mx-auto ">
         <div className="flex items-center">
           <div className="cursor-pointer hover:underline">
-            <a href="">
-              <img src="./info_logo.gif" />
-            </a>
+            <SimpleHeader />
           </div>
           <div className="Search_form mx-auto">
             <ul className="flex text-[0.9rem] justify-start pb-1 divide-x divide-gray-300 text-gray-400">

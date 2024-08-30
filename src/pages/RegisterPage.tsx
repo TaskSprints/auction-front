@@ -4,7 +4,9 @@ import SimpleHeader from "../components/common/Header/SimpleHeader";
 const RegisterPage: React.FC = () => {
   return (
     <div>
-      <SimpleHeader />
+      <div className="mb-10 my-10">
+        <SimpleHeader />
+      </div>
       <RegisterForm />
     </div>
   );

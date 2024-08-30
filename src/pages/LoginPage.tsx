@@ -5,7 +5,9 @@ import SimpleHeader from "../components/common/Header/SimpleHeader";
 const LoginPage: React.FC = () => {
   return (
     <div>
-      <SimpleHeader />
+      <div className="mb-10 my-10">
+        <SimpleHeader />
+      </div>
       <LoginMethodMenu />
     </div>
   );
