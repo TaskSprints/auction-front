@@ -55,6 +55,7 @@ const MenuComponent: React.FC = () => {
         </div>
 
         {/* 데스크탑 메뉴 버튼 */}
+        {/* TODO */}
         {!isMobile && (
           <div className="hidden md:flex space-x-4">
             {menus.map((menu, idx) => (
