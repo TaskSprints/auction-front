@@ -1,5 +1,5 @@
 import React from "react";
-import SimpleHeader from "../../../widgets/Header/SimpleHeader";
+import SimpleHeader from "../Header/SimpleHeader";
 
 const SearchBar: React.FC = () => {
   return (

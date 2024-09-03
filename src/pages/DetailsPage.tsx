@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/common/Searchbar/SearchBar";
+import SearchBar from "../widgets/Searchbar/SearchBar";
 import Header from "../widgets/Header/Header";
 import Footer from "../widgets/Footer/Footer";
 import MenuComponent from "../widgets/MenuComponent/MenuComponent";
