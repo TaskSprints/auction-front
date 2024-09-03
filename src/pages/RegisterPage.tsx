@@ -1,6 +1,6 @@
 import React from "react";
-import RegisterForm from "../components/register/RegisterForm";
-import SimpleHeader from "../components/common/Header/SimpleHeader";
+import RegisterForm from "../features/register/RegisterForm";
+import SimpleHeader from "../widgets/Header/SimpleHeader";
 const RegisterPage: React.FC = () => {
   return (
     <div>

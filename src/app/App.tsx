@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import DetailsPage from "./pages/DetailsPage";
+import MainPage from "../pages/MainPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+import DetailsPage from "../pages/DetailsPage";
 import React from "react";
 import "antd/dist/reset.css";
-import CategoryPage from "./pages/CategoryPage";
+import CategoryPage from "../pages/CategoryPage";
 const router = createBrowserRouter([
   {
     path: "/",

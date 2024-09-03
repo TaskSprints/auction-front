@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/common/Searchbar/SearchBar";
-import CardList from "../components/common/Card/CardList";
-import Header from "../components/common/Header/Header";
-import Footer from "../components/common/Footer/Footer";
-import MenuComponent from "../components/common/MenuComponent/MenuComponent";
-import AuctionInfo from "../components/body/AuctionInfo";
+import SearchBar from "../widgets/Searchbar/SearchBar";
+import CardList from "../widgets/Card/CardList";
+import Header from "../widgets/Header/Header";
+import Footer from "../widgets/Footer/Footer";
+import MenuComponent from "../widgets/MenuComponent/MenuComponent";
+import AuctionInfo from "../features/AuctionInfo";
 
 const MainPage: React.FC = () => {
   return (
