@@ -5,7 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import DetailsPage from "./pages/DetailsPage";
 import React from "react";
 import "antd/dist/reset.css";
-
+import CategoryPage from "./pages/CategoryPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/details",
     element: <DetailsPage />,
+  },
+  {
+    path: "/category",
+    element: <CategoryPage />,
   },
 ]);
 
