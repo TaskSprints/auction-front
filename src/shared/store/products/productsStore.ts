@@ -6,7 +6,7 @@ interface Iproducts {
   setProducts: (data: ImainCategoryProducts[]) => void;
 }
 
-const productsStore = create<Iproducts>((set) => ({
+export const productsStore = create<Iproducts>((set) => ({
   products: [],
   setProducts: (data) => set(() => ({ products: data })),
 }));

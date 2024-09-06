@@ -1,8 +1,5 @@
-import React, { useMemo, useEffect } from "react";
 import AuctionInfoList from "../HotAuction/AuctionInfoList";
 import CategoryAuction from "../CategoryAuction/CategoryAuction";
-import productsStore from "../../../../shared/store/products/productsStore";
-import mainCategoryAuctionData from "../../api/mainCategoryAuctionData";
 
 const AuctionInfo = () => {
   return (

@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import HotAuctionCard from "./HotAuctionCard";
-import mainCategoryAuctionData from "../../api/mainCategoryAuctionData";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
-import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
-import fetchMainCategoryPro from "../../../../shared/api/products/fetchMainCategoryPro";
-import productsStore from "../../../../shared/store/products/productsStore";
+import { productsStore, fetchMainCategoryPro } from "../../../../shared";
+
 const AuctionInfoList = () => {
   const [isMdSize, setisMdSize] = useState(false);
   const { products, setProducts } = productsStore((state) => ({
@@ -15,7 +13,7 @@ const AuctionInfoList = () => {
   const loadData = useMemo(
     () => async () => {
       if (products.length === 0) {
-        const datas = await mainCategoryAuctionData();
+        const datas = await fetchMainCategoryPro();
         setProducts(datas);
       }
     },

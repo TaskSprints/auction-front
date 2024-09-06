@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-interface data {
-  title: string;
-  image: string;
-  price: number;
-  key: string;
-  leftTime: string;
-  content: string;
-}
+import ICategoryPageBoard from "../../../../shared/types/ICategoryPageBoard";
+
 interface propsData {
-  data: data;
+  data: ICategoryPageBoard;
   isMdSize: boolean;
   key: string;
 }

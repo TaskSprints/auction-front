@@ -7,12 +7,12 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import CategoryAuctionCard from "./CategoryAuctionCard";
 import CustomArrow from "./CustomArrow";
-import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
-import mainCategoryAuctionData from "../../api/mainCategoryAuctionData";
-import productsStore from "../../../../shared/store/products/productsStore";
-import IMainCategoryImage from "../../../../shared/types/IMainCategoryImage";
-import fetchMainCategoryLongImage from "../../../../shared/api/products/fetchMainCategoryLongImage";
-
+import {
+  fetchMainCategoryPro,
+  fetchMainCategoryLongImage,
+  IMainCategoryImage,
+  productsStore,
+} from "../../../../shared";
 const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
@@ -33,7 +33,7 @@ const CategoryAuction: React.FC = () => {
 
   const loadProductData = useMemo(
     () => async () => {
-      const datas = await mainCategoryAuctionData();
+      const datas = await fetchMainCategoryPro();
       if (datas && products.length === 0) {
         setProducts(datas);
       }
