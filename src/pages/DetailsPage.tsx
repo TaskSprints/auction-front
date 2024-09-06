@@ -3,7 +3,7 @@ import SearchBar from "../widgets/Searchbar/SearchBar";
 import Header from "../widgets/Header/Header";
 import Footer from "../widgets/Footer/Footer";
 import MenuComponent from "../widgets/MenuComponent/MenuComponent";
-import AuctionInfo from "../features/AuctionInfo";
+import AuctionInfo from "../features/products/ui/AuctionInfo";
 import DetailSearch from "../widgets/DetailSearch/DetailSearch";
 
 const DetailsPage: React.FC = () => {

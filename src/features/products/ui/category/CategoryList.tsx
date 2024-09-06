@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
 import CategoryBoardList from "./CategoryBoardList";
-import datas from "./CategoryBoard.json";
+import fetchCategoryBoard from "../../../../shared/api/products/fetchCategoryBoard";
+import ICategoryPageBoard from "../../../../shared/types/ICategoryPageBoard";
+
 const CategoryList = () => {
   const [selected, setSelected] = useState(0);
   const [isMdSize, setisMdSize] = useState(false);
+  const [datas, setDatas] = useState<ICategoryPageBoard[]>([]);
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const data = await fetchCategoryBoard();
+        setDatas(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchdata();
+  }, []);
+
   useEffect(() => {
     const isMdSizehandler = () => {
       if (window.innerWidth > 768) {

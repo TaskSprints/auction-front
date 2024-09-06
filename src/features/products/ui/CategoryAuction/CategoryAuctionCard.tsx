@@ -1,13 +1,8 @@
 import React from "react";
-interface data {
-  title: string;
-  image: string;
-  price: number;
-  key: string;
-  leftTime: string;
-}
+import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
+
 interface CategoryAuctionCardProps {
-  data: data;
+  data: ImainCategoryProducts;
   key: string;
 }
 const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({ data }) => {

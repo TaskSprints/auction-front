@@ -1,11 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import HotAuctionCard from "./HotAuctionCard";
-import datas from "./Carddata.json";
+import mainCategoryAuctionData from "../../api/mainCategoryAuctionData";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
+import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
+import fetchMainCategoryPro from "../../../../shared/api/products/fetchMainCategoryPro";
+import productsStore from "../../../../shared/store/products/productsStore";
 const AuctionInfoList = () => {
   const [isMdSize, setisMdSize] = useState(false);
+  const { products, setProducts } = productsStore((state) => ({
+    products: state.products,
+    setProducts: state.setProducts,
+  }));
+  const loadData = useMemo(
+    () => async () => {
+      if (products.length === 0) {
+        const datas = await mainCategoryAuctionData();
+        setProducts(datas);
+      }
+    },
+    [],
+  );
+
   useEffect(() => {
+    loadData();
+  }, [setProducts]);
+
+  useEffect(() => {
+    //브라우저 대응 하기 위한 useEffect
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setisMdSize(true);
@@ -15,8 +37,9 @@ const AuctionInfoList = () => {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
+
     return () => window.removeEventListener("resize", handleResize);
-  });
+  }, []);
 
   const settings = {
     dots: false,
@@ -79,14 +102,14 @@ const AuctionInfoList = () => {
         <div className=" w-auto h-auto">
           {isMdSize ? (
             <Slider {...settings} className="flex justify-center h-auto ">
-              {datas.map((data) => (
-                <HotAuctionCard key={data.poroductKey} data={data} />
+              {products.map((data) => (
+                <HotAuctionCard key={data.key} data={data} />
               ))}
             </Slider>
           ) : (
             <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-              {datas.map((data) => (
-                <HotAuctionCard key={data.poroductKey} data={data} />
+              {products.map((data) => (
+                <HotAuctionCard key={data.key} data={data} />
               ))}
             </div>
           )}
