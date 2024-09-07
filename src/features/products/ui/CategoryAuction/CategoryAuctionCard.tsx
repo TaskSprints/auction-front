@@ -1,5 +1,5 @@
 import React from "react";
-import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
+import { ImainCategoryProducts } from "../../../../shared";
 
 interface CategoryAuctionCardProps {
   data: ImainCategoryProducts;

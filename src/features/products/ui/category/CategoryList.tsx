@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CategoryBoardList from "./CategoryBoardList";
-import fetchCategoryBoard from "../../../../shared/api/products/fetchCategoryBoard";
+import { fetchCategoryBoard } from "../../../../shared";
 import ICategoryPageBoard from "../../../../shared/types/ICategoryPageBoard";
 
 const CategoryList = () => {

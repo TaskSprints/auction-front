@@ -1,7 +1,7 @@
-export * from "./api/products/fetchCategoryBoard";
-export * from "./api/products/fetchMainCategoryLongImage";
-export * from "./api/products/fetchMainCategoryPro";
-export * from "./api/apisInstance";
+export * from "./requests/products/fetchCategoryBoard";
+export * from "./requests/products/fetchMainCategoryLongImage";
+export * from "./requests/products/fetchMainCategoryPro";
+export * from "./requests/apisInstance";
 
 export * from "./store/products/productsStore";
 
