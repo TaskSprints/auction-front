@@ -1,6 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
-import bigImagedatas from "./CategoryAuction.json";
-import productData from "./CategoryCard.json";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -9,16 +7,45 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import CategoryAuctionCard from "./CategoryAuctionCard";
 import CustomArrow from "./CustomArrow";
-
-interface proArr {
-  title: string;
-  image: string;
-  price: number;
-  key: string;
-  leftTime: string;
-}
+import {
+  fetchMainCategoryPro,
+  fetchMainCategoryLongImage,
+  IMainCategoryImage,
+  productsStore,
+} from "../../../../shared";
 const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
+  const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
+  const { products, setProducts } = productsStore((state) => ({
+    products: state.products,
+    setProducts: state.setProducts,
+  }));
+
+  const loadBgImages = async () => {
+    try {
+      const data = await fetchMainCategoryLongImage();
+      setBgImage(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadProductData = useMemo(
+    () => async () => {
+      const datas = await fetchMainCategoryPro();
+      if (datas && products.length === 0) {
+        setProducts(datas);
+      }
+    },
+    [],
+  );
+
+  useEffect(() => {
+    loadProductData();
+    loadBgImages();
+  }, []);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -31,18 +58,17 @@ const CategoryAuction: React.FC = () => {
     handleResize();
     return window.removeEventListener("resize", handleResize);
   }, []);
-  const swiperRef = useRef();
+
   const categoryArray = <T,>(array: T[], size: number): T[][] => {
     const arr: T[][] = [];
     for (let i = 0; i < array.length; i += size) {
       arr.push(array.slice(i, i + size));
     }
-    console.log(arr);
     return arr;
   };
 
-  const formatCategory = categoryArray(productData, 8);
-  const mobileCategory = categoryArray(productData, 2);
+  const formatCategory = categoryArray(products, 8);
+  const mobileCategory = categoryArray(products, 2);
 
   return (
     <div className="container mx-auto mt-9">
@@ -69,7 +95,7 @@ const CategoryAuction: React.FC = () => {
               navigation={true}
               autoplay={{ delay: 3000 }}
             >
-              {bigImagedatas.map((data) => (
+              {bgImage.map((data) => (
                 <SwiperSlide key={data.key}>
                   <img src={data.image} alt={data.title} />
                 </SwiperSlide>

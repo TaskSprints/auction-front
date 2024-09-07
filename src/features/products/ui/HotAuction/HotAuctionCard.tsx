@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import { Card, List } from "antd";
-import CustomArrow from "./CustomArrow";
+import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
 
-interface TmpCardProps {
-  data: {
-    title: string;
-    leftTime: string;
-    Image: string;
-    poroductKey: string;
-    price: number;
-  };
+interface HotAuctionprops {
+  data: ImainCategoryProducts;
+  key: string;
 }
 
-const HotAuctionCard: React.FC<TmpCardProps> = ({ data }) => {
+const HotAuctionCard: React.FC<HotAuctionprops> = ({ data }) => {
   const formatKRW = Intl.NumberFormat("ko-kr", {
     style: "decimal",
   }).format(data.price);
   return (
     <div className="card max-w-[300px] min-w-[130px]  h-auto min-h-[230px] max-h-[500px]  mx-1 mb-3 hover:cursor-pointer hover:underline ">
       <div className="image w-auto h-auto aspect-square flex justify-center items-center overflow-hidden">
-        <img src={data.Image} alt="" className="aspect-square " />
+        <img src={data.image} alt="" className="aspect-square " />
       </div>
       <div className="my-1 time text-xs text-red-500">
         <span>⏰ {data.leftTime}</span>

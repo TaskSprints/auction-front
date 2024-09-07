@@ -4,7 +4,7 @@ import CardList from "../widgets/Card/CardList";
 import Header from "../widgets/Header/Header";
 import Footer from "../widgets/Footer/Footer";
 import MenuComponent from "../widgets/MenuComponent/MenuComponent";
-import AuctionInfo from "../features/AuctionInfo";
+import AuctionInfo from "../features/products/ui/AuctionInfo";
 
 const MainPage: React.FC = () => {
   return (
