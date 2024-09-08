@@ -18,10 +18,10 @@ const CategoryAuction: React.FC = () => {
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
   const ProductsApi = new ProductsApiClient();
 
-  const { products, setProducts, loadProductsData } = productsStore(
+  const { products, setProducts, loading, loadProductsData } = productsStore(
     (state) => ({
       products: state.products,
-
+      loading: state.loading,
       setProducts: state.setProducts,
       loadProductsData: state.loadProductsData,
     }),
@@ -38,7 +38,7 @@ const CategoryAuction: React.FC = () => {
 
   const loadProductData = useMemo(
     () => async () => {
-      if (products.length === 0) {
+      if (!loading) {
         const datas = await loadProductsData();
       }
     },

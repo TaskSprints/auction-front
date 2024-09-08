@@ -1,4 +1,4 @@
-import ApiClient from "../apiInstance";
+import ApiClient from "../api-instance-client";
 
 import {
   ICategoryPageBoard,

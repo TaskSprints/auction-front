@@ -1,6 +1,6 @@
-export * from "./requests/products/productsAPI";
-export * from "./requests/apiInstance";
+export * from "./requests/products/products-api-client";
+export * from "./requests/api-instance-client";
 
-export * from "./store/products/productsStore";
+export * from "./store/products/products-store";
 
 export * from "./types/products";

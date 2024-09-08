@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-class ApiClient {
+class apiInstanceClient {
   private instance: AxiosInstance;
 
   constructor(baseURL: string, timeout: number = 1000) {
@@ -32,4 +32,4 @@ class ApiClient {
   }
 }
 
-export default ApiClient;
+export default apiInstanceClient;
