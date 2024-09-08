@@ -5,14 +5,11 @@ import CustomArrow from "./CustomArrow";
 import { productsStore } from "../../../../shared";
 const AuctionInfoList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { products, flag, setProducts, loadProducts } = productsStore(
-    (state) => ({
-      products: state.products,
-      flag: state.flag,
-      setProducts: state.setProducts,
-      loadProducts: state.loadProductsData,
-    }),
-  );
+  const { products, setProducts, loadProducts } = productsStore((state) => ({
+    products: state.products,
+    setProducts: state.setProducts,
+    loadProducts: state.loadProductsData,
+  }));
 
   useEffect(() => {
     const loadData = async () => {
