@@ -2,27 +2,26 @@ import React, { useEffect, useState, useMemo } from "react";
 import HotAuctionCard from "./HotAuctionCard";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
-import { productsStore, fetchMainCategoryPro } from "../../../../shared";
-
-const AuctionInfoList = () => {
+import { productsStore } from "../../../../shared";
+const AuctionInfoList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { products, setProducts } = productsStore((state) => ({
-    products: state.products,
-    setProducts: state.setProducts,
-  }));
-  const loadData = useMemo(
-    () => async () => {
-      if (products.length === 0) {
-        const datas = await fetchMainCategoryPro();
-        setProducts(datas);
-      }
-    },
-    [],
+  const { products, flag, setProducts, loadProducts } = productsStore(
+    (state) => ({
+      products: state.products,
+      flag: state.flag,
+      setProducts: state.setProducts,
+      loadProducts: state.loadProductsData,
+    }),
   );
 
   useEffect(() => {
+    const loadData = async () => {
+      if (products.length === 0) {
+        await loadProducts();
+      }
+    };
     loadData();
-  }, [setProducts]);
+  }, []);
 
   useEffect(() => {
     //브라우저 대응 하기 위한 useEffect

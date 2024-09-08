@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ICategoryPageBoard from "../../../../shared/types/ICategoryPageBoard";
+import { ICategoryPageBoard } from "../../../../shared/";
 
 interface propsData {
   data: ICategoryPageBoard;

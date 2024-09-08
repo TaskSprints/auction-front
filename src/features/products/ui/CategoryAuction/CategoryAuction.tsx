@@ -8,24 +8,29 @@ import "swiper/css/scrollbar";
 import CategoryAuctionCard from "./CategoryAuctionCard";
 import CustomArrow from "./CustomArrow";
 import {
-  fetchMainCategoryPro,
-  fetchMainCategoryLongImage,
   IMainCategoryImage,
   productsStore,
+  ProductsApiClient,
 } from "../../../../shared";
+
 const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
-  const { products, setProducts } = productsStore((state) => ({
-    products: state.products,
-    setProducts: state.setProducts,
-  }));
+  const ProductsApi = new ProductsApiClient();
+
+  const { products, setProducts, loadProductsData } = productsStore(
+    (state) => ({
+      products: state.products,
+
+      setProducts: state.setProducts,
+      loadProductsData: state.loadProductsData,
+    }),
+  );
 
   const loadBgImages = async () => {
     try {
-      const data = await fetchMainCategoryLongImage();
+      const data = await ProductsApi.fetchMainCategoryLongImage();
       setBgImage(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -33,9 +38,8 @@ const CategoryAuction: React.FC = () => {
 
   const loadProductData = useMemo(
     () => async () => {
-      const datas = await fetchMainCategoryPro();
-      if (datas && products.length === 0) {
-        setProducts(datas);
+      if (products.length === 0) {
+        const datas = await loadProductsData();
       }
     },
     [],
