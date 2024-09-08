@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import CategoryBoardList from "./CategoryBoardList";
-import { fetchCategoryBoard } from "../../../../shared";
-import ICategoryPageBoard from "../../../../shared/types/ICategoryPageBoard";
+import { ProductsApiClient, ICategoryPageBoard } from "../../../../shared";
 
 const CategoryList = () => {
   const [selected, setSelected] = useState(0);
   const [isMdSize, setisMdSize] = useState(false);
   const [datas, setDatas] = useState<ICategoryPageBoard[]>([]);
+
+  const ProductsApi = new ProductsApiClient();
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const data = await fetchCategoryBoard();
+        const data = await ProductsApi.fetchCategoryBoard();
         setDatas(data);
       } catch (error) {
         console.log(error);

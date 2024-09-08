@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ImainCategoryProducts from "../../../../shared/types/ImainCategoryProducts";
+import { IMainCategoryProducts } from "../../../../shared";
 
 interface HotAuctionprops {
-  data: ImainCategoryProducts;
+  data: IMainCategoryProducts;
   key: string;
 }
 

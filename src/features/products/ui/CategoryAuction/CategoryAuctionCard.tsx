@@ -1,8 +1,8 @@
 import React from "react";
-import { ImainCategoryProducts } from "../../../../shared";
+import { IMainCategoryProducts } from "../../../../shared";
 
 interface CategoryAuctionCardProps {
-  data: ImainCategoryProducts;
+  data: IMainCategoryProducts;
   key: string;
 }
 const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({ data }) => {
