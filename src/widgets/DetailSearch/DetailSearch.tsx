@@ -57,7 +57,7 @@ const DetailSearch: React.FC = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md max-w-[70%] mx-auto">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-[80%] mx-auto my-9">
       <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
         <h2 className="text-lg font-semibold">
           상세검색
