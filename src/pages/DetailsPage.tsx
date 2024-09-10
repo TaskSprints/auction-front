@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../widgets/Searchbar/SearchBar";
 import Header from "../widgets/Header/Header";
 import Footer from "../widgets/Footer/Footer";
+import CardList from "../widgets/Card/CardList";
 import MenuComponent from "../widgets/MenuComponent/MenuComponent";
 import AuctionInfo from "../features/products/ui/AuctionInfo";
 import DetailSearch from "../widgets/DetailSearch/DetailSearch";
@@ -15,6 +16,7 @@ const DetailsPage: React.FC = () => {
       </div>
       <MenuComponent />
       <div className="p-4">
+        <CardList />
         <DetailSearch />
         <AuctionInfo />
       </div>
