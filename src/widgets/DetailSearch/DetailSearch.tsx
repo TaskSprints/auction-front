@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Slider } from "antd";
 
 const DetailSearch: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,7 +9,10 @@ const DetailSearch: React.FC = () => {
   const [brand, setBrand] = useState("all");
   const [region, setRegion] = useState("all");
   const [category, setCategory] = useState("all");
-  const [priceRange, setPriceRange] = useState([10000, 1000000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([
+    10000, 1000000,
+  ]);
+  const [activeSlider, setActiveSlider] = useState<null | number>(null);
   const [checkboxOptions, setCheckboxOptions] = useState({
     b2bMember: false,
     newProduct: false,
@@ -19,13 +23,15 @@ const DetailSearch: React.FC = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const handleSliderChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number,
-  ) => {
-    const newPriceRange = [...priceRange];
-    newPriceRange[index] = Number(e.target.value);
-    setPriceRange(newPriceRange);
+  const handleSliderChange = (value: number[]) => {
+    // setPriceRange(value as [number, number]);
+    if (value.length === 2) {
+      setPriceRange([value[0], value[1]]);
+    } else {
+      console.error(
+        "Invalid slider value. Expected an array with exactly two numbers.",
+      );
+    }
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -234,39 +240,14 @@ const DetailSearch: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative">
-                <input
-                  type="range"
-                  min="10000"
-                  max="1000000"
-                  step="500"
-                  value={priceRange[0]}
-                  onChange={(e) => handleSliderChange(e, 0)}
-                  className="absolute top-0 left-0 w-full h-2 appearance-none bg-transparent pointer-events-none z-10"
-                  style={{ zIndex: 2 }}
-                />
-                <input
-                  type="range"
-                  min="10000"
-                  max="1000000"
-                  step="500"
-                  value={priceRange[1]}
-                  onChange={(e) => handleSliderChange(e, 1)}
-                  className="absolute top-0 left-0 w-full h-2 appearance-none bg-transparent pointer-events-none z-10"
-                  style={{ zIndex: 2 }}
-                />
-
-                {/* Background track */}
-                <div className="h-2 bg-gray-300 rounded-full absolute top-0 left-0 right-0 z-0"></div>
-                {/* Selected range track */}
-                <div
-                  className="h-2 bg-orange-400 rounded-full absolute top-0 z-1"
-                  style={{
-                    left: `${((priceRange[0] - 10000) / 990000) * 100}%`,
-                    right: `${((1000000 - priceRange[1]) / 990000) * 100}%`,
-                  }}
-                ></div>
-              </div>
+              <Slider
+                range
+                min={10000}
+                max={1000000}
+                step={500}
+                value={priceRange}
+                onChange={handleSliderChange}
+              />
             </div>
           </div>
           <button
