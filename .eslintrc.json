@@ -1,26 +1,23 @@
 {
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "react"
-  ],
-  "rules": {
-    "react/react-in-jsx-scope": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "plugin:storybook/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "react"],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
-  }
 }

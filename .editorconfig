@@ -2,7 +2,7 @@ root = true
 
 [*]
 indent_style = space          # 공백으로 들여쓰기
-indent_size = 2               # 2칸 들여쓰기
+indent_size = 4          # 2칸 들여쓰기
 end_of_line = LF              # 줄 끝은 LF(Line Feed)로 설정
 charset = utf-8               # 문자 인코딩은 UTF-8
 trim_trailing_whitespace = true  # 불필요한 공백 제거
