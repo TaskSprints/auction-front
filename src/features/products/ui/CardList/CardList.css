@@ -1,9 +1,9 @@
-.slick-next::before{
-  font-size: 50px;
-  color:#d1d1d1;
+.slick-next::before {
+    font-size: 50px;
+    color: #d1d1d1;
 }
 
-.slick-prev::before{
-  font-size: 50px;
-  color:#d1d1d1;
+.slick-prev::before {
+    font-size: 50px;
+    color: #d1d1d1;
 }
