@@ -8,7 +8,7 @@ export const useProductQuery = () => {
   useEffect(() => {
     const fetchData = () => {
       api
-        .get("/api/v1/product")
+        .get("/api/v1/product1")
         .then((data) => {
           setProducts(data.data);
         })
