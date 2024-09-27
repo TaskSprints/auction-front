@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ICategoryPageBoard } from "../../../../shared/";
+import { ICategoryPageBoard, formatKRW } from "../../../../shared/";
 
 interface propsData {
   data: ICategoryPageBoard;
