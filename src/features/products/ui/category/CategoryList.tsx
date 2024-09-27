@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import CategoryBoardList from "./CategoryBoardList";
-import { ProductsApiClient, ICategoryPageBoard } from "../../../../shared";
+//TODO
+// import { ProductsApiClient, ICategoryPageBoard } from "../../../../shared";
 
 const CategoryList = () => {
   const [selected, setSelected] = useState(0);
   const [isMdSize, setisMdSize] = useState(false);
-  const [datas, setDatas] = useState<ICategoryPageBoard[]>([]);
+  //TODO
+  // const [datas, setDatas] = useState<ICategoryPageBoard[]>([]);
 
-  const ProductsApi = new ProductsApiClient();
+  //TODO
+  // const ProductsApi = new ProductsApiClient();
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const data = await ProductsApi.fetchCategoryBoard();
-        setDatas(data);
+        //TODO
+        // const data = await ProductsApi.fetchCategoryBoard();
+        // setDatas(data);
       } catch (error) {
         console.log(error);
       }
@@ -60,14 +64,15 @@ const CategoryList = () => {
             </ul>
           </div>
         </div>
+        {/* TODO */}
         <div className="board_list  border-t-2 w-screen md:w-[70rem] h-[30rem] ">
-          {datas.map((data) => (
+          {/* {datas.map((data) => (
             <CategoryBoardList key={data.key} data={data} isMdSize={isMdSize} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
   );
 };
 
-export default CategoryList;
+// export default CategoryList;

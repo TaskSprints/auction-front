@@ -9,46 +9,52 @@ import CategoryAuctionCard from "./CategoryAuctionCard";
 import CustomArrow from "./CustomArrow";
 import {
   IMainCategoryImage,
-  productsStore,
-  ProductsApiClient,
+  //TODO
+  // productsStore,
+  // ProductsApiClient,
 } from "../../../../shared";
 
 const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
-  const ProductsApi = new ProductsApiClient();
+  //TODO
+  // const ProductsApi = new ProductsApiClient();
 
-  const { products, setProducts, loading, loadProductsData } = productsStore(
-    (state) => ({
-      products: state.products,
-      loading: state.loading,
-      setProducts: state.setProducts,
-      loadProductsData: state.loadProductsData,
-    }),
-  );
+  //TODO
+  // const { products, setProducts, loading, loadProductsData } = productsStore(
+  //   (state) => ({
+  //     products: state.products,
+  //     loading: state.loading,
+  //     setProducts: state.setProducts,
+  //     loadProductsData: state.loadProductsData,
+  //   }),
+  // );
 
-  const loadBgImages = async () => {
-    try {
-      const data = await ProductsApi.fetchMainCategoryLongImage();
-      setBgImage(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //TODO
+  // const loadBgImages = async () => {
+  //   try {
+  //     const data = await ProductsApi.fetchMainCategoryLongImage();
+  //     setBgImage(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const loadProductData = useMemo(
-    () => async () => {
-      if (!loading) {
-        const datas = await loadProductsData();
-      }
-    },
-    [],
-  );
+  //TODO
+  // const loadProductData = useMemo(
+  //   () => async () => {
+  //     if (!loading) {
+  //       const datas = await loadProductsData();
+  //     }
+  //   },
+  //   [],
+  // );
 
-  useEffect(() => {
-    loadProductData();
-    loadBgImages();
-  }, []);
+  //TODO
+  // useEffect(() => {
+  //   loadProductData();
+  //   loadBgImages();
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,8 +77,9 @@ const CategoryAuction: React.FC = () => {
     return arr;
   };
 
-  const formatCategory = categoryArray(products, 8);
-  const mobileCategory = categoryArray(products, 2);
+  //TODO
+  // const formatCategory = categoryArray(products, 8);
+  // const mobileCategory = categoryArray(products, 2);
 
   return (
     <div className="container mx-auto mt-9">
@@ -128,7 +135,8 @@ const CategoryAuction: React.FC = () => {
               <div className="swiper-button-next-custom opacity-0 group-hover:opacity-100">
                 <CustomArrow direction="right" />
               </div>
-              {formatCategory.map((data, index) => (
+              {/* TODO */}
+              {/* {formatCategory.map((data, index) => (
                 <SwiperSlide className="" key={index}>
                   <div className="mx-auto w-[800px] h-[450px] md:h-[600px] flex flex-wrap">
                     {data.map((item) => (
@@ -136,19 +144,20 @@ const CategoryAuction: React.FC = () => {
                     ))}
                   </div>
                 </SwiperSlide>
-              ))}
+              ))} */}
             </Swiper>
           </div>
         ) : (
           <div className="  w-[600px]">
             <div className="  my-auto overflow-x-auto   h-[470px] flex flex-col flex-wrap ">
-              {mobileCategory.map((data, index) => (
+              {/* TODO */}
+              {/* {mobileCategory.map((data, index) => (
                 <div key={index} className="">
                   {data.map((item) => (
                     <CategoryAuctionCard data={item} key={item.key} />
                   ))}
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         )}

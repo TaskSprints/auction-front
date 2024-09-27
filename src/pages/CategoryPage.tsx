@@ -1,8 +1,8 @@
 import React from "react";
-import CategoryList from "../features/products/ui/category/CategoryList";
+// import CategoryList from "../features/products/ui/category/CategoryList";
 
 const CategoryPage: React.FC = () => {
-    return <CategoryList />;
+    return <></>;
 };
 
 export default CategoryPage;
