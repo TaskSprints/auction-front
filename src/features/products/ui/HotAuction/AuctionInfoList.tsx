@@ -2,20 +2,23 @@ import React, { useEffect, useState, useMemo } from "react";
 import HotAuctionCard from "./HotAuctionCard";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
-import { productsStore } from "../../../../shared";
+//TODO
+// import { productsStore } from "../../../../shared";
 const AuctionInfoList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { products, loadProductsData, loading } = productsStore((state) => ({
-    products: state.products,
-    loading: state.loading,
-    loadProductsData: state.loadProductsData,
-  }));
+  //TODO
+  // const { products, loadProductsData, loading } = productsStore((state) => ({
+  //   products: state.products,
+  //   loading: state.loading,
+  //   loadProductsData: state.loadProductsData,
+  // }));
 
   useEffect(() => {
     const loadData = async () => {
-      if (!loading) {
-        await loadProductsData();
-      }
+      //TODO
+      // if (!loading) {
+      //   await loadProductsData();
+      // }
     };
     loadData();
   }, []);
@@ -96,15 +99,17 @@ const AuctionInfoList: React.FC = () => {
         <div className=" w-auto h-auto">
           {isMdSize ? (
             <Slider {...settings} className="flex justify-center h-auto ">
-              {products.map((data) => (
+              {/* TODO */}
+              {/* {products.map((data) => (
                 <HotAuctionCard key={data.key} data={data} />
-              ))}
+              ))} */}
             </Slider>
           ) : (
             <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-              {products.map((data) => (
+              {/* TODO */}
+              {/* {products.map((data) => (
                 <HotAuctionCard key={data.key} data={data} />
-              ))}
+              ))} */}
             </div>
           )}
         </div>
