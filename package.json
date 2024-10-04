@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@stomp/stompjs": "^7.0.0",
         "@tailwindcss/line-clamp": "^0.4.4",
         "@tanstack/react-query": "^5.54.1",
         "@types/react-icons": "^3.0.0",
