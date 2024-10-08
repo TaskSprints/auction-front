@@ -1,23 +1,54 @@
 {
-    "extends": [
-        "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "plugin:storybook/recommended"
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "react"],
-    "rules": {
-        "react/react-in-jsx-scope": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "endOfLine": "auto"
-            }
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.tsx",
+          "**/*.test.ts",
+          "**/*.stories.tsx",
+          "**/*.stories.ts"
         ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+    "react/function-component-definition": ["off"],
+    "import/no-useless-path-segments": ["off"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
+  }
 }
