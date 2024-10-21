@@ -22,7 +22,7 @@ const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
     minutes: 0,
     seconds: 0,
   });
-  const { getLeftTime, currentTime } = TimerStore();
+  const { getLeftTime, currentTime, startTimer, stopTimer } = TimerStore();
 
   useEffect(() => {
     setLeftTime(getLeftTime(auction.endTime));

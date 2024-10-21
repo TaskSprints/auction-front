@@ -14,13 +14,13 @@ interface HotAuctionprops {
 
 const HotAuctionCard: React.FC<HotAuctionprops> = ({ product, auction }) => {
   const krw = formatKRW(auction.startingBid);
-  const { getLeftTime, currentTime } = TimerStore();
   const [leftTime, setLeftTime] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
+  const { getLeftTime, currentTime } = TimerStore();
 
   useEffect(() => {
     setLeftTime(getLeftTime(auction.endTime));

@@ -11,13 +11,13 @@ const HotAuctionList: React.FC = () => {
   const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
 
   const { startTimer, stopTimer } = TimerStore();
+
   useEffect(() => {
     startTimer();
     return () => stopTimer();
   }, []);
 
   useEffect(() => {
-    console.log(auctionIsLoading, productIsLoading);
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setisMdSize(true);

@@ -23,7 +23,7 @@ const CategoryAuction: React.FC = () => {
   const { startTimer, stopTimer } = TimerStore();
   useEffect(() => {
     startTimer();
-    loadBgImages();
+
     return () => stopTimer();
   }, []);
   const loadBgImages = async () => {
@@ -55,7 +55,7 @@ const CategoryAuction: React.FC = () => {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-
+    loadBgImages();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -149,13 +149,11 @@ const CategoryAuction: React.FC = () => {
                 ))}
               </Swiper>
             </div>
-          ) : null
-        ) : (
-          <div className="  w-[600px]">
-            <div className="  my-auto overflow-x-auto   h-[470px] flex flex-col flex-wrap ">
-              {formatCategory?.map((data, index) => (
-                <SwiperSlide className="" key={index}>
-                  <div className="mx-auto w-[800px] h-[450px] md:h-[600px] flex flex-wrap">
+          ) : (
+            <div className="  w-[600px]">
+              <div className="  my-auto overflow-x-auto   h-[470px] flex flex-col flex-wrap ">
+                {formatCategory?.map((data, index) => (
+                  <div key={index}>
                     {data.map((item) => {
                       if (item) {
                         const product = getProduct(item.id);
@@ -169,11 +167,11 @@ const CategoryAuction: React.FC = () => {
                       }
                     })}
                   </div>
-                </SwiperSlide>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        ) : null}
       </div>
     </div>
   );

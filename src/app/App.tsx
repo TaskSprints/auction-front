@@ -6,6 +6,7 @@ import DetailsPage from "../pages/DetailsPage";
 import React from "react";
 import "antd/dist/reset.css";
 import CategoryPage from "../pages/CategoryPage";
+import AuctionRegistration from "@/features/auction/ui/AuctionRegistration/AuctionRegistration";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/category",
     element: <CategoryPage />,
+  },
+  {
+    path: "/auctionRegister",
+    element: <AuctionRegistration />,
   },
 ]);
 
