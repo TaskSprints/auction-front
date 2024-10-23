@@ -1,30 +1,23 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import HotAuctionCard from "./HotAuctionCard";
 import Slider from "react-slick";
 import CustomArrow from "./CustomArrow";
-//TODO
-// import { productsStore } from "../../../../shared";
-const AuctionInfoList: React.FC = () => {
+import { useProductQuery } from "../../hooks/useProductQuery";
+import { useAuctionQuery } from "../../hooks/useAuctionQuery";
+import { TimerStore } from "../../../../shared";
+const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  //TODO
-  // const { products, loadProductsData, loading } = productsStore((state) => ({
-  //   products: state.products,
-  //   loading: state.loading,
-  //   loadProductsData: state.loadProductsData,
-  // }));
+  const { productIsLoading, productIsError, products } = useProductQuery();
+  const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
+
+  const { startTimer, stopTimer } = TimerStore();
 
   useEffect(() => {
-    const loadData = async () => {
-      //TODO
-      // if (!loading) {
-      //   await loadProductsData();
-      // }
-    };
-    loadData();
+    startTimer();
+    return () => stopTimer();
   }, []);
 
   useEffect(() => {
-    //브라우저 대응 하기 위한 useEffect
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setisMdSize(true);
@@ -34,10 +27,12 @@ const AuctionInfoList: React.FC = () => {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const getProductByAuctionId = (auctionId: number) => {
+    return products?.find((id) => auctionId === id.auctionId);
+  };
   const settings = {
     dots: false,
     infinite: false,
@@ -97,24 +92,38 @@ const AuctionInfoList: React.FC = () => {
       </div>
       <div className="card_section max-w-[85rem] h-auto m-auto border border-1 border-gray ">
         <div className=" w-auto h-auto">
-          {isMdSize ? (
-            <Slider {...settings} className="flex justify-center h-auto ">
-              {/* TODO */}
-              {/* {products.map((data) => (
-                <HotAuctionCard key={data.key} data={data} />
-              ))} */}
-            </Slider>
-          ) : (
-            <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-              {/* TODO */}
-              {/* {products.map((data) => (
-                <HotAuctionCard key={data.key} data={data} />
-              ))} */}
-            </div>
-          )}
+          {!productIsLoading && !auctionIsLoading ? (
+            isMdSize ? (
+              <Slider {...settings} className="flex justify-center h-auto ">
+                {auction?.map((data) => {
+                  const product = getProductByAuctionId(data.id);
+                  return product ? (
+                    <HotAuctionCard
+                      key={data.id}
+                      auction={data}
+                      product={product}
+                    />
+                  ) : null;
+                })}
+              </Slider>
+            ) : (
+              <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
+                {auction?.map((data) => {
+                  const product = getProductByAuctionId(data.id);
+                  return product ? (
+                    <HotAuctionCard
+                      key={data.id}
+                      auction={data}
+                      product={product}
+                    />
+                  ) : null;
+                })}
+              </div>
+            )
+          ) : null}
         </div>
       </div>
     </div>
   );
 };
-export default AuctionInfoList;
+export default HotAuctionList;

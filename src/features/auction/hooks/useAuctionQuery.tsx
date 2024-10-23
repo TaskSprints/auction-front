@@ -1,26 +1,26 @@
-import api from "@/shared/api";
+import { api, IAuction } from "@/shared";
 import { useEffect, useState } from "react";
-interface Auction {}
 export const useAuctionQuery = () => {
-    const [auction, setAuction] = useState<Auction | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isError, setIsError] = useState<boolean>(false);
+  const [auction, setAuction] = useState<IAuction[] | null>([]);
+  const [auctionIsLoading, auctionSetIsLoading] = useState<boolean>(false);
+  const [auctionIsError, auctionSetIsError] = useState<boolean>(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        setIsError(false);
-        api.get(`/api/v1/auction`)
-            .then((data) => {
-                setAuction(data.data);
-            })
-            .catch(() => {
-                setIsError(true);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
-    }, []);
+  useEffect(() => {
+    auctionSetIsLoading(true);
+    auctionSetIsError(false);
+    api
+      .get(`/api/v1/auction`)
+      .then((data) => {
+        setAuction(data.data);
+      })
+      .catch(() => {
+        auctionSetIsError(true);
+      })
+      .finally(() => {
+        auctionSetIsLoading(false);
+      });
+  }, []);
 
-    return { isLoading, isError, auction };
+  return { auctionIsLoading, auctionIsError, auction };
 };
 export default useAuctionQuery;
