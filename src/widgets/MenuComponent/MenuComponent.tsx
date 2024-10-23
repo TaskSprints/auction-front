@@ -73,7 +73,7 @@ const MenuComponent: React.FC = () => {
                     {menu.subMenu.map((subitem, idx) => (
                       <li key={idx} className="flex-shrink-0">
                         <a
-                          href="#"
+                          href="/#"
                           className="text-gray-700 hover:bg-red-100 block px-4 py-1 text-xs transition duration-200 rounded whitespace-nowrap"
                         >
                           {subitem}

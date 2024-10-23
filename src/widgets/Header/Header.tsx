@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Header: React.FC = () => {
   return (
     <div className="w-full bg-gray-50 h-[2.5rem] pt-3 flex justify-center items-center">
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
         </ul>
         <ul className="right-nav flex space-x-2 sm:space-x-4 items-center">
           <li className="cursor-pointer hover:underline">
-            <a href="/login">🔒 로그인</a>
+            <Link to="/login">🔒 로그인</Link>
           </li>
           <li className="cursor-pointer hover:underline relative">
             <a href="">🛒 장바구니</a>

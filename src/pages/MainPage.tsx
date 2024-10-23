@@ -4,8 +4,8 @@ import CardList from "../widgets/Card/CardList";
 import Header from "../widgets/Header/Header";
 import Footer from "../widgets/Footer/Footer";
 import MenuComponent from "../widgets/MenuComponent/MenuComponent";
-import AuctionInfo from "../features/products/ui/AuctionInfo";
-
+import HotAuctionList from "@/features/auction/ui/HotAuction/HotAuctionList";
+import CategoryAuction from "@/features/auction/ui/CategoryAuction/CategoryAuction";
 const MainPage: React.FC = () => {
   return (
     <div className="items-center justify-center bg-gray-100 min-h-screen">
@@ -15,7 +15,8 @@ const MainPage: React.FC = () => {
       </div>
       <MenuComponent />
       <CardList />
-      <AuctionInfo />
+      <CategoryAuction />
+      <HotAuctionList />
       <Footer />
     </div>
   );

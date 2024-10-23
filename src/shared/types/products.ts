@@ -21,3 +21,25 @@ export interface IMainCategoryProducts {
   key: string;
   leftTime: string;
 }
+
+export interface IProduct {
+  productId: number;
+  name: string;
+  description: string;
+  category: string;
+  ownerId: number;
+  ownerNickName: string;
+  auctionId: number;
+  productImageList: string[];
+}
+
+export interface IAuction {
+  id: number;
+  startTime: string;
+  endTime: string;
+  category: string;
+  status: string;
+  startingBid: number;
+  sellerId: number;
+  sellerNickName: string;
+}

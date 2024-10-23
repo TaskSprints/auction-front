@@ -1,5 +1,6 @@
 import React from "react";
 import { menus } from "./constants";
+import { Link } from "react-router-dom";
 
 const MenuToggleComponent: React.FC = () => {
   return (
@@ -15,12 +16,12 @@ const MenuToggleComponent: React.FC = () => {
                 <ul className="pl-0">
                   {menu.subMenu.map((subitem) => (
                     <li key={subitem} className="mb-1 md:mb-2">
-                      <a
-                        href="#"
+                      <Link
+                        to="/category"
                         className="text-gray-800 block px-4 md:px-8 py-1 md:py-2 text-xs md:text-sm rounded transition duration-200 hover:bg-red-100 hover:shadow-md w-full"
                       >
                         {subitem}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
