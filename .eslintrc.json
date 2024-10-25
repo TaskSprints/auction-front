@@ -2,6 +2,7 @@
   "extends": [
     "airbnb",
     "eslint:recommended",
+
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended"
@@ -41,6 +42,7 @@
     ],
     "react/function-component-definition": ["off"],
     "import/no-useless-path-segments": ["off"]
+
   },
   "settings": {
     "react": {
