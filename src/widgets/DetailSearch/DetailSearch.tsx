@@ -89,7 +89,7 @@ const DetailSearch: React.FC = () => {
                     onChange={() => setSalesType("auction")}
                     className="mr-1"
                   />
-                  <span className={"text-red-600 font-semibold"}>경매판매</span>
+                  <span className="text-red-600 font-semibold">경매판매</span>
                 </label>
                 <label className="flex items-center">
                   <input
@@ -100,9 +100,7 @@ const DetailSearch: React.FC = () => {
                     onChange={() => setSalesType("general")}
                     className="mr-1"
                   />
-                  <span className={"text-gray-700 font-semibold"}>
-                    일반판매
-                  </span>
+                  <span className="text-gray-700 font-semibold">일반판매</span>
                 </label>
               </div>
             </div>

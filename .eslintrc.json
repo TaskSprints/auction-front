@@ -1,5 +1,8 @@
 {
   "extends": [
+    "airbnb",
+    "eslint:recommended",
+
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended"
@@ -13,11 +16,42 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.tsx",
+          "**/*.test.ts",
+          "**/*.stories.tsx",
+          "**/*.stories.ts"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+    "react/function-component-definition": ["off"],
+    "import/no-useless-path-segments": ["off"]
+
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
