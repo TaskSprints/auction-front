@@ -42,7 +42,6 @@
     ],
     "react/function-component-definition": ["off"],
     "import/no-useless-path-segments": ["off"]
-
   },
   "settings": {
     "react": {
