@@ -1,9 +1,9 @@
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DetailsPage from "../pages/DetailsPage";
-import React from "react";
 import CategoryPage from "../pages/CategoryPage";
 import AuctionRegistration from "@/features/auction/ui/AuctionRegistration/AuctionRegistration";
 
