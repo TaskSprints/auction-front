@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SearchBar from "../widgets/Searchbar/SearchBar";
 import CardList from "../widgets/Card/CardList";
 import Header from "../widgets/Header/Header";
