@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import HotAuctionCard from "./HotAuctionCard";
 import Slider from "react-slick";
+import HotAuctionCard from "./HotAuctionCard";
 import CustomArrow from "./CustomArrow";
 import { useProductQuery } from "../../hooks/useProductQuery";
 import { useAuctionQuery } from "../../hooks/useAuctionQuery";
 import { TimerStore } from "../../../../shared";
+
 const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
   const { productIsLoading, productIsError, products } = useProductQuery();

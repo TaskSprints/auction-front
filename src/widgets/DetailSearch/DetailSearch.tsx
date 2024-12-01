@@ -12,7 +12,7 @@ const DetailSearch: React.FC = () => {
   const [priceRange, setPriceRange] = useState<[number, number]>([
     10000, 1000000,
   ]);
-  const [activeSlider, setActiveSlider] = useState<null | number>(null);
+  // const [activeSlider, setActiveSlider] = useState<null | number>(null);
   const [checkboxOptions, setCheckboxOptions] = useState({
     b2bMember: false,
     newProduct: false,
@@ -28,7 +28,7 @@ const DetailSearch: React.FC = () => {
     if (value.length === 2) {
       setPriceRange([value[0], value[1]]);
     } else {
-      console.error(
+      throw new Error(
         "Invalid slider value. Expected an array with exactly two numbers.",
       );
     }
@@ -44,16 +44,28 @@ const DetailSearch: React.FC = () => {
 
   const handleSearch = () => {
     // Handle the search logic here
-    console.log({
-      salesType,
-      bidMethod1,
-      bidMethod2,
-      brand,
-      region,
-      category,
-      priceRange,
-      checkboxOptions,
-    });
+    // Implement the search logic here
+    // For example, you can send the search parameters to an API endpoint
+    // fetch('/api/search', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     salesType,
+    //     bidMethod1,
+    //     bidMethod2,
+    //     brand,
+    //     region,
+    //     category,
+    //     priceRange,
+    //     checkboxOptions,
+    //   }),
+    // }).then(response => response.json())
+    //   .then(data => {
+    //     // Handle the search results
+    //     console.log(data);
+    //   });
   };
 
   return (
@@ -249,6 +261,7 @@ const DetailSearch: React.FC = () => {
             </div>
           </div>
           <button
+            type="button"
             onClick={handleSearch}
             className="bg-gray-800 text-white py-2 px-3 rounded hover:bg-gray-700 transition-colors text-sm font-semibold"
           >
