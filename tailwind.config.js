@@ -1,10 +1,42 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // 모든 .js, .jsx, .ts, .tsx 파일을 포함합니다.
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: [
+          "Roboto",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+        heading: [
+          "Montserrat",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+        ],
+      },
+    },
   },
   plugins: ["tailwindcss-textshadow", "tailwind-scrollbar-hide"],
 };
