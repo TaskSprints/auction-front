@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  ICategoryPageBoard,
-  formatKRW,
-  IProduct,
-  IAuction,
-  TimerStore,
-} from "../../../../shared";
+import { IProduct, IAuction } from "@/shared/types/products";
+import { TimerStore } from "@/shared/store/timer-store";
+import { formatKRW } from "@/shared/util/krw-format";
 
 interface propsData {
   auction: IAuction;
@@ -13,7 +9,7 @@ interface propsData {
   isMdSize: boolean;
 }
 
-const CategoryBoardCard: React.FC<propsData> = ({
+export const CategoryBoardCard: React.FC<propsData> = ({
   auction,
   product,
   isMdSize,
@@ -53,7 +49,7 @@ const CategoryBoardCard: React.FC<propsData> = ({
             <div className="seller cursor-pointer">
               <span>판매자 {auction.sellerNickName}</span>
             </div>
-            <div className="badge_section"></div>
+            <div className="badge_section" />
           </div>
           <div className="w-[13rem] h-full border-2 ml-auto mr-3 flex justify-center items-center">
             <div className=" mx-auto ">
@@ -91,7 +87,7 @@ const CategoryBoardCard: React.FC<propsData> = ({
               </span>
             </div>
 
-            <div className="badge_section"></div>
+            <div className="badge_section" />
 
             <div className=" mx-auto ">
               <div className="standard_price ">
@@ -116,5 +112,3 @@ const CategoryBoardCard: React.FC<propsData> = ({
     </>
   );
 };
-
-export default CategoryBoardCard;

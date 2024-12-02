@@ -24,6 +24,7 @@
         "tsx": "never"
       }
     ],
+    "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -31,7 +32,10 @@
           "**/*.test.tsx",
           "**/*.test.ts",
           "**/*.stories.tsx",
-          "**/*.stories.ts"
+          "**/*.stories.ts",
+          "vite.config.ts",
+          "vite.config.mts",
+          "setupTests.ts"
         ]
       }
     ],
@@ -39,8 +43,10 @@
       "warn",
       { "extensions": [".jsx", ".tsx"] }
     ],
-    "react/function-component-definition": ["off"],
-    "import/no-useless-path-segments": ["off"]
+    "react/function-component-definition": "off",
+    "import/no-useless-path-segments": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "react": {
@@ -49,7 +55,13 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+      },
+      "typescript": {}
     }
+  },
+  "env": {
+    "browser": true, // 브라우저 환경 추가
+    "node": true, // Node.js 환경도 함께 추가하면 좋음
+    "es6": true // ES6+ 문법 지원
   }
 }

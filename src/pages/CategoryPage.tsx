@@ -1,8 +1,9 @@
 import React from "react";
-import CategoryList from "@/features/auction/ui/category/CategoryList";
-import Header from "@/widgets/Header/Header";
-import SearchBar from "@/widgets/Searchbar/SearchBar";
-const CategoryPage: React.FC = () => {
+import { CategoryList } from "@/features/auction/ui/category/CategoryList";
+import { Header } from "@/widgets/Header/Header";
+import { SearchBar } from "@/widgets/Searchbar/SearchBar";
+
+export const CategoryPage: React.FC = () => {
   return (
     <>
       <Header />
@@ -11,5 +12,3 @@ const CategoryPage: React.FC = () => {
     </>
   );
 };
-
-export default CategoryPage;

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import HotAuctionCard from "./HotAuctionCard";
-import CustomArrow from "./CustomArrow";
+import { TimerStore } from "@/shared/store/timer-store";
+import { HotAuctionCard } from "./HotAuctionCard";
+import { CustomArrow } from "./CustomArrow";
 import { useProductQuery } from "../../hooks/useProductQuery";
 import { useAuctionQuery } from "../../hooks/useAuctionQuery";
-import { TimerStore } from "../../../../shared";
 
-const HotAuctionList: React.FC = () => {
+export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, productIsError, products } = useProductQuery();
-  const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
+  const { productIsLoading, products } = useProductQuery();
+  const { auctionIsLoading, auction } = useAuctionQuery();
 
   const { startTimer, stopTimer } = TimerStore();
 
@@ -40,8 +40,8 @@ const HotAuctionList: React.FC = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 3,
-    prevArrow: <CustomArrow direction="left" />,
-    nextArrow: <CustomArrow direction="right" />,
+    prevArrow: <CustomArrow direction="left" onClick={() => {}} />,
+    nextArrow: <CustomArrow direction="right" onClick={() => {}} />,
     responsive: [
       {
         breakpoint: 1024,
@@ -127,4 +127,3 @@ const HotAuctionList: React.FC = () => {
     </div>
   );
 };
-export default HotAuctionList;

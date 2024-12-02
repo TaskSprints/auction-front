@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card: React.FC = () => {
+export const Card: React.FC = () => {
   const auctionTime = "남은 시간: 02:30:00"; // 경매 시간 예시
 
   return (
@@ -41,5 +41,3 @@ const Card: React.FC = () => {
     </div>
   );
 };
-
-export default Card;

@@ -1,7 +1,8 @@
 import React from "react";
-import RegisterForm from "../features/register/RegisterForm";
-import SimpleHeader from "../widgets/Header/SimpleHeader";
-const RegisterPage: React.FC = () => {
+import { RegisterForm } from "../features/register/RegisterForm";
+import { SimpleHeader } from "../widgets/Header/SimpleHeader";
+
+export const RegisterPage: React.FC = () => {
   return (
     <div>
       <div className="mb-10 my-10">
@@ -11,5 +12,3 @@ const RegisterPage: React.FC = () => {
     </div>
   );
 };
-
-export default RegisterPage;

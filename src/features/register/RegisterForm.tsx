@@ -9,8 +9,9 @@ import {
   FaUser,
   FaPhone,
 } from "react-icons/fa";
-import TermsAgreementForm from "./TermsAgreementForm";
-const RegisterForm: React.FC = () => {
+import { TermsAgreementForm } from "./TermsAgreementForm";
+
+export const RegisterForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +42,7 @@ const RegisterForm: React.FC = () => {
             <label
               className="block text-gray-700 font-medium mb-2"
               htmlFor="email"
-            ></label>
+            />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaEnvelope />
             </span>
@@ -67,7 +68,7 @@ const RegisterForm: React.FC = () => {
             <label
               className="block text-gray-700 font-medium mb-2"
               htmlFor="password"
-            ></label>
+            />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaLock />
             </span>
@@ -91,7 +92,7 @@ const RegisterForm: React.FC = () => {
             <label
               className="block text-gray-700 font-medium mb-2"
               htmlFor="confirm-password"
-            ></label>
+            />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaLock />
             </span>
@@ -115,7 +116,7 @@ const RegisterForm: React.FC = () => {
             <label
               className="block text-gray-700 font-medium mb-2"
               htmlFor="name"
-            ></label>
+            />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaUser />
             </span>
@@ -133,7 +134,7 @@ const RegisterForm: React.FC = () => {
             <label
               className="block text-gray-700 font-medium mb-2"
               htmlFor="phone"
-            ></label>
+            />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaPhone />
             </span>
@@ -146,7 +147,7 @@ const RegisterForm: React.FC = () => {
               placeholder="휴대폰 번호"
             />
           </div>
-          <div className="border-t border-gray-300 mt-8"></div>
+          <div className="border-t border-gray-300 mt-8" />
           <TermsAgreementForm
             termRequiredCheck={termRequiredCheck}
             setTermRequiredCheck={setTermRequiredCheck}
@@ -164,5 +165,3 @@ const RegisterForm: React.FC = () => {
     </div>
   );
 };
-
-export default RegisterForm;

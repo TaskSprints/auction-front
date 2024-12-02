@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {
-  IMainCategoryProducts,
-  IProduct,
-  IAuction,
-  formatKRW,
-} from "../../../../shared";
-import { TimerStore } from "../../../../shared";
+import { IProduct, IAuction } from "@/shared/types/products";
+import { TimerStore } from "@/shared/store/timer-store";
+import { formatKRW } from "@/shared/util/krw-format";
+
 interface HotAuctionprops {
   product: IProduct;
   auction: IAuction;
   key: number;
 }
 
-const HotAuctionCard: React.FC<HotAuctionprops> = ({ product, auction }) => {
+export const HotAuctionCard: React.FC<HotAuctionprops> = ({
+  product,
+  auction,
+}) => {
   const krw = formatKRW(auction.startingBid);
   const [leftTime, setLeftTime] = useState({
     days: 0,
@@ -50,5 +50,3 @@ const HotAuctionCard: React.FC<HotAuctionprops> = ({ product, auction }) => {
     </div>
   );
 };
-
-export default HotAuctionCard;

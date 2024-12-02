@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaArrowUp } from "react-icons/fa";
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <div className="bg-zinc-800 text-gray-400 text-xs p-4 md:p-6">
       <div className="border-b border-gray-700 pb-4 md:pb-6">
@@ -119,5 +119,3 @@ const Footer: React.FC = () => {
     </div>
   );
 };
-
-export default Footer;

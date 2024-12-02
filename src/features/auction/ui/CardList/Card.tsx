@@ -1,5 +1,6 @@
 import React from "react";
-const Card: React.FC = () => {
+
+export const Card: React.FC = () => {
   return (
     <div className="container relative w-[17rem] h-auto bg-gray-400 mx-auto">
       <div className="img_container w-full aspect-square bg-black flex justify-center items-center">
@@ -24,4 +25,3 @@ const Card: React.FC = () => {
     </div>
   );
 };
-export default Card;

@@ -1,9 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
 import "./CardList.css";
-import Card from "./Card";
+import { Card } from "./Card";
 
-const CardList: React.FC = () => {
+export const CardList: React.FC = () => {
   interface NextArrowProps {
     className?: any;
     style?: any;
@@ -66,4 +66,3 @@ const CardList: React.FC = () => {
     </div>
   );
 };
-export default CardList;

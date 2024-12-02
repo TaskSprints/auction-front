@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
+
 interface TimerStore {
   currentTime: Date;
   startTimer: () => void;
@@ -25,7 +26,7 @@ export const TimerStore = create<TimerStore>()(
       set({ timerId: timerID });
     },
     stopTimer: () => {
-      const timerId = get().timerId;
+      const { timerId } = get();
       if (timerId) {
         clearInterval(timerId);
         set({ timerId: null });

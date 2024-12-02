@@ -1,8 +1,8 @@
 import React from "react";
-import LoginMethodMenu from "../features/login/LoginMethodMenu";
-import SimpleHeader from "../widgets/Header/SimpleHeader";
+import { LoginMethodMenu } from "../features/login/LoginMethodMenu";
+import { SimpleHeader } from "../widgets/Header/SimpleHeader";
 
-const LoginPage: React.FC = () => {
+export const LoginPage: React.FC = () => {
   return (
     <div>
       <div className="mb-10 my-10">
@@ -12,5 +12,3 @@ const LoginPage: React.FC = () => {
     </div>
   );
 };
-
-export default LoginPage;

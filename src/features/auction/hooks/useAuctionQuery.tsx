@@ -1,5 +1,7 @@
-import { api, IAuction } from "@/shared";
 import { useEffect, useState } from "react";
+import { IAuction } from "@/shared/types/products";
+import { api } from "@/shared/api";
+
 export const useAuctionQuery = () => {
   const [auction, setAuction] = useState<IAuction[] | null>([]);
   const [auctionIsLoading, auctionSetIsLoading] = useState<boolean>(false);
@@ -23,4 +25,3 @@ export const useAuctionQuery = () => {
 
   return { auctionIsLoading, auctionIsError, auction };
 };
-export default useAuctionQuery;

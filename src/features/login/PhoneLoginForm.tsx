@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhone, FaTimes } from "react-icons/fa";
 
-const PhoneLoginForm: React.FC = () => {
+export const PhoneLoginForm: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const clearPhoneNumber = () => {
@@ -21,7 +21,7 @@ const PhoneLoginForm: React.FC = () => {
           <label
             className="block text-gray-700 font-medium mb-2"
             htmlFor="phone"
-          ></label>
+          />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaPhone />
           </span>
@@ -52,7 +52,7 @@ const PhoneLoginForm: React.FC = () => {
           인증번호 발송
         </motion.button>
 
-        <div className="border-t border-gray-300 my-4"></div>
+        <div className="border-t border-gray-300 my-4" />
 
         <motion.button
           onClick={() => (window.location.href = "/register")}
@@ -67,5 +67,3 @@ const PhoneLoginForm: React.FC = () => {
     </motion.div>
   );
 };
-
-export default PhoneLoginForm;

@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import CategoryBoardCard from "./CategoryBoardCard";
+// import { Skeleton } from "antd";
+import { TimerStore } from "@/shared/store/timer-store";
+import { CategoryBoardCard } from "./CategoryBoardCard";
 import { useAuctionQuery } from "../../hooks/useAuctionQuery";
 import { useProductQuery } from "../../hooks/useProductQuery";
-import { Skeleton } from "antd";
-import { TimerStore } from "@/shared";
-const CategoryList = () => {
+
+export const CategoryList = () => {
   const [selected, setSelected] = useState(0);
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, productIsError, products } = useProductQuery();
-  const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
+  // const { productIsLoading, productIsError, products } = useProductQuery();
+  // const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
+  const { productIsLoading, products } = useProductQuery();
+  const { auctionIsLoading, auction } = useAuctionQuery();
   const { startTimer, stopTimer } = TimerStore();
 
   useEffect(() => {
@@ -73,7 +76,7 @@ const CategoryList = () => {
                   isMdSize={isMdSize}
                 />
               ) : (
-                <div className="w-[55rem] h-[8rem] bg-gray-300 rounded-lg animate-pulse mb-3"></div>
+                <div className="w-[55rem] h-[8rem] bg-gray-300 rounded-lg animate-pulse mb-3" />
               );
             })}
           </div>
@@ -82,5 +85,3 @@ const CategoryList = () => {
     </div>
   );
 };
-
-export default CategoryList;
