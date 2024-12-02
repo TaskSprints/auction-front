@@ -12,7 +12,6 @@
     format("woff2");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -21,7 +20,6 @@
     format("woff2");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @tailwind base;
@@ -52,4 +50,11 @@
   .custom-body {
     @apply font-sans;
   }
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
 }

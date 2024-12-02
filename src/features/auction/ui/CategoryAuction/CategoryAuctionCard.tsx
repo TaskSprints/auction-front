@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {
-  IMainCategoryProducts,
-  IAuction,
-  IProduct,
-  formatKRW,
-  TimerStore,
-} from "../../../../shared";
+import { IProduct, IAuction } from "@/shared/types/products";
+import { TimerStore } from "@/shared/store/timer-store";
+import { formatKRW } from "@/shared/util/krw-format";
 
 interface CategoryAuctionCardProps {
   auction: IAuction;
   product: IProduct;
   key: number;
 }
-const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
+
+export const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
   auction,
   product,
 }) => {
@@ -53,5 +50,3 @@ const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
     </div>
   );
 };
-
-export default CategoryAuctionCard;

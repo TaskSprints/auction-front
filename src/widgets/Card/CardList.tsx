@@ -1,18 +1,18 @@
 import React from "react";
 import Slider from "react-slick";
-import Card from "./Card"; // Card 컴포넌트 경로 확인
-import CustomArrow from "./CustomArrow"; // 사용자 정의 화살표 컴포넌트
+import { Card } from "./Card"; // Card 컴포넌트 경로 확인
+import { CustomArrow } from "./CustomArrow"; // 사용자 정의 화살표 컴포넌트
 // Props 로 Card 에 대한 list 정보 받아서
 
-const CardList: React.FC = () => {
+export const CardList: React.FC = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3, // 기본적으로 3개 표시
     slidesToScroll: 3, // 스크롤할 카드 수
-    nextArrow: <CustomArrow direction="right" />, // 사용자 정의 오른쪽 화살표
-    prevArrow: <CustomArrow direction="left" />, // 사용자 정의 왼쪽 화살표
+    nextArrow: <CustomArrow direction="right" onClick={() => {}} />, // 사용자 정의 오른쪽 화살표
+    prevArrow: <CustomArrow direction="left" onClick={() => {}} />, // 사용자 정의 왼쪽 화살표
     responsive: [
       {
         breakpoint: 1024, // 태블릿 이상에서 3개 표시
@@ -47,8 +47,8 @@ const CardList: React.FC = () => {
         className="bg-gray-100 container w-full flex justify-center pt-8 mx-auto"
       >
         {/* 카드를 반복 생성 */}
-        {[...Array(8)].map((_, index) => (
-          <div className="p-1" key={index}>
+        {[...Array(8)].map((_) => (
+          <div className="p-1" key={_}>
             <Card />
           </div>
         ))}
@@ -56,5 +56,3 @@ const CardList: React.FC = () => {
     </div>
   );
 };
-
-export default CardList;

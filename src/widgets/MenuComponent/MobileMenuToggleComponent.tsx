@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { menus } from "./constants";
 import { FaTimes } from "react-icons/fa";
+import { menus } from "./constants";
 
 interface MobileMenuToggleComponentProps {
   isOpen: boolean;
   toggleMenu: () => void;
 }
 
-const MobileMenuToggleComponent: React.FC<MobileMenuToggleComponentProps> = ({
-  isOpen,
-  toggleMenu,
-}) => {
+export const MobileMenuToggleComponent: React.FC<
+  MobileMenuToggleComponentProps
+> = ({ isOpen, toggleMenu }) => {
   const [openSubMenu, setOpenSubMenu] = useState<{ [key: string]: boolean }>(
     {},
   );
@@ -29,6 +28,7 @@ const MobileMenuToggleComponent: React.FC<MobileMenuToggleComponentProps> = ({
       }`}
     >
       <button
+        type="button"
         onClick={toggleMenu}
         className="flex items-center text-red-600 font-bold text-lg p-4 transition duration-200 w-full text-left bg-white border-b-2 border-red-600 shadow-md hover:bg-red-100"
       >
@@ -39,12 +39,18 @@ const MobileMenuToggleComponent: React.FC<MobileMenuToggleComponentProps> = ({
           (menu) =>
             menu.subMenu.length > 0 && (
               <li key={menu.title} className="relative">
-                <div
+                <button
+                  type="button"
                   className="my-4 text-red-600 font-semibold text-sm mb-1 cursor-pointer transition duration-200 hover:text-red-700"
                   onClick={() => toggleSubMenu(menu.title)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      toggleSubMenu(menu.title);
+                    }
+                  }}
                 >
                   {menu.title}
-                </div>
+                </button>
                 <ul
                   className={`pl-2 transition-max-height duration-300 ease-in-out ${
                     openSubMenu[menu.title] ? "max-h-40" : "max-h-0"
@@ -53,7 +59,7 @@ const MobileMenuToggleComponent: React.FC<MobileMenuToggleComponentProps> = ({
                   {menu.subMenu.map((subitem) => (
                     <li key={subitem} className="mb-1">
                       <a
-                        href="#"
+                        href="/"
                         className="text-gray-800 block px-3 py-2 text-sm rounded transition duration-200 hover:bg-red-100 hover:shadow-md"
                       >
                         {subitem}
@@ -68,5 +74,3 @@ const MobileMenuToggleComponent: React.FC<MobileMenuToggleComponentProps> = ({
     </div>
   );
 };
-
-export default MobileMenuToggleComponent;

@@ -1,8 +1,10 @@
 import React from "react";
+
 interface direction {
   direction: string;
 }
-const CustomArrow: React.FC<direction> = ({ direction }) => {
+
+export const CustomArrow: React.FC<direction> = ({ direction }) => {
   return (
     <div
       className={`${direction === "left" ? "left-4" : "right-4"} absolute top-1/2 transform -translate-y-1/2  opacity-60 bg-gray-200  p-2 shadow-lg cursor-pointer z-10`}
@@ -31,5 +33,3 @@ const CustomArrow: React.FC<direction> = ({ direction }) => {
     </div>
   );
 };
-
-export default CustomArrow;

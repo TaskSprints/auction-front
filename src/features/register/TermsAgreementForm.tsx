@@ -5,7 +5,7 @@ interface TermsAgreementFormProps {
   setTermRequiredCheck: (value: boolean) => void;
 }
 
-const TermsAgreementForm: React.FC<TermsAgreementFormProps> = ({
+export const TermsAgreementForm: React.FC<TermsAgreementFormProps> = ({
   termRequiredCheck,
   setTermRequiredCheck,
 }) => {
@@ -102,5 +102,3 @@ const Checkbox: React.FC<CheckboxProps> = ({
     </label>
   </div>
 );
-
-export default TermsAgreementForm;

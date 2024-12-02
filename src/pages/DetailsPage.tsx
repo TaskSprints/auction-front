@@ -1,14 +1,14 @@
 import React from "react";
-import SearchBar from "../widgets/Searchbar/SearchBar";
-import Header from "../widgets/Header/Header";
-import Footer from "../widgets/Footer/Footer";
-import CardList from "../widgets/Card/CardList";
-import MenuComponent from "../widgets/MenuComponent/MenuComponent";
-import DetailSearch from "../widgets/DetailSearch/DetailSearch";
-import HotAuctionList from "@/features/auction/ui/HotAuction/HotAuctionList";
-import CategoryAuction from "@/features/auction/ui/CategoryAuction/CategoryAuction";
+import { HotAuctionList } from "@/features/auction/ui/HotAuction/HotAuctionList";
+import { CategoryAuction } from "@/features/auction/ui/CategoryAuction/CategoryAuction";
+import { SearchBar } from "../widgets/Searchbar/SearchBar";
+import { Header } from "../widgets/Header/Header";
+import { Footer } from "../widgets/Footer/Footer";
+import { CardList } from "../widgets/Card/CardList";
+import { MenuComponent } from "../widgets/MenuComponent/MenuComponent";
+import { DetailSearch } from "../widgets/DetailSearch/DetailSearch";
 
-const DetailsPage: React.FC = () => {
+export const DetailsPage: React.FC = () => {
   return (
     <div className="items-center justify-center bg-gray-100 min-h-screen">
       <div className="hidden sm:block">
@@ -26,5 +26,3 @@ const DetailsPage: React.FC = () => {
     </div>
   );
 };
-
-export default DetailsPage;

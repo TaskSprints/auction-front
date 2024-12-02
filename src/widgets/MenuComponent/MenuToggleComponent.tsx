@@ -1,8 +1,8 @@
 import React from "react";
-import { menus } from "./constants";
 import { Link } from "react-router-dom";
+import { menus } from "./constants";
 
-const MenuToggleComponent: React.FC = () => {
+export const MenuToggleComponent: React.FC = () => {
   return (
     <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg z-10 w-full max-w-4xl transition-opacity duration-300">
       <ul className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 p-4 md:p-8 justify-items-center">
@@ -32,5 +32,3 @@ const MenuToggleComponent: React.FC = () => {
     </div>
   );
 };
-
-export default MenuToggleComponent;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { menus } from "./constants";
-import MenuToggleComponent from "./MenuToggleComponent"; // 데스크탑 메뉴
-import MobileMenuToggleComponent from "./MobileMenuToggleComponent"; // 모바일 메뉴
+import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
+import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
 
-const MenuComponent: React.FC = () => {
+export const MenuComponent: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -39,12 +39,11 @@ const MenuComponent: React.FC = () => {
 
   return (
     <div className="relative">
-      <div
-        className={`flex justify-between md:justify-center bg-gradient-to-r from-red-600 to-red-400 p-3 items-center shadow-lg md:rounded-lg`}
-      >
+      <div className="flex justify-between md:justify-center bg-gradient-to-r from-red-600 to-red-400 p-3 items-center shadow-lg md:rounded-lg">
         <div className="flex items-center">
           <button
-            className={`text-white text-2xl hover:bg-red-700 focus:outline-none p-2 rounded transition-transform transform hover:scale-110`}
+            type="button"
+            className="text-white text-2xl hover:bg-red-700 focus:outline-none p-2 rounded transition-transform transform hover:scale-110"
             onClick={() => toggleMenu()}
           >
             <FaBars />
@@ -58,20 +57,23 @@ const MenuComponent: React.FC = () => {
         {/* TODO */}
         {!isMobile && (
           <div className="hidden md:flex space-x-4">
-            {menus.map((menu, idx) => (
+            {menus.map((menu) => (
               <div
-                key={idx}
+                key={menu.title}
                 className={`relative group ${isHoverDisabled ? "pointer-events-none" : ""}`}
                 onMouseEnter={() => handleMouseEnter(menu.title)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="text-white text-sm px-3 py-2 rounded hover:bg-red-700 focus:outline-none transition duration-300">
+                <button
+                  type="button"
+                  className="text-white text-sm px-3 py-2 rounded hover:bg-red-700 focus:outline-none transition duration-300"
+                >
                   {menu.title}
                 </button>
                 {activeMenu === menu.title && !isHoverDisabled && (
                   <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg z-10 transition-opacity duration-200 opacity-100 flex flex-col">
-                    {menu.subMenu.map((subitem, idx) => (
-                      <li key={idx} className="flex-shrink-0">
+                    {menu.subMenu.map((subitem) => (
+                      <li key={subitem} className="flex-shrink-0">
                         <a
                           href="/#"
                           className="text-gray-700 hover:bg-red-100 block px-4 py-1 text-xs transition duration-200 rounded whitespace-nowrap"
@@ -98,5 +100,3 @@ const MenuComponent: React.FC = () => {
     </div>
   );
 };
-
-export default MenuComponent;

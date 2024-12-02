@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Slider } from "antd";
 
-const DetailSearch: React.FC = () => {
+export const DetailSearch: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [salesType, setSalesType] = useState("auction");
   const [bidMethod1, setBidMethod1] = useState("currentBidDisplay");
@@ -78,6 +78,7 @@ const DetailSearch: React.FC = () => {
           </span>
         </h2>
         <button
+          type="button"
           onClick={toggleExpanded}
           className="flex items-center px-3 py-1 border border-gray-400 text-gray-600 rounded hover:bg-gray-100 transition-colors"
         >
@@ -90,10 +91,14 @@ const DetailSearch: React.FC = () => {
         <div className="space-y-4">
           <div className="mb-4">
             <div className="flex items-center">
-              <label className="font-semibold mr-3 w-32">판매방식</label>
+              <span className="font-semibold mr-3 w-32">판매방식</span>
               <div className="flex space-x-4 flex-1">
-                <label className="flex items-center">
+                <label
+                  htmlFor="salesType-auction"
+                  className="flex items-center"
+                >
                   <input
+                    id="salesType-auction"
                     type="radio"
                     name="salesType"
                     value="auction"
@@ -103,7 +108,7 @@ const DetailSearch: React.FC = () => {
                   />
                   <span className="text-red-600 font-semibold">경매판매</span>
                 </label>
-                <label className="flex items-center">
+                <label htmlFor="salesType" className="flex items-center">
                   <input
                     type="radio"
                     name="salesType"
@@ -119,9 +124,9 @@ const DetailSearch: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-left">
-            <label className="font-semibold mr-3 w-32 whitespace-nowrap">
+            <span className="font-semibold mr-3 w-32 whitespace-nowrap">
               낙찰방식
-            </label>
+            </span>
             <div className="flex space-x-2 flex-1 max-w-[60%]">
               <select
                 className="flex-1 p-2 border border-gray-300 rounded"
@@ -148,9 +153,9 @@ const DetailSearch: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center justify-left">
-            <label className="font-semibold mr-3 w-32 whitespace-nowrap">
+            <span className="font-semibold mr-3 w-32 whitespace-nowrap">
               브랜드 & 지역
-            </label>
+            </span>
             <div className="flex space-x-2 flex-1 max-w-[60%]">
               <select
                 className="w-full p-2 border border-gray-300 rounded"
@@ -176,9 +181,9 @@ const DetailSearch: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-left">
-            <label className="font-semibold mr-3 w-32 whitespace-nowrap">
+            <span className="font-semibold mr-3 w-32 whitespace-nowrap">
               카테고리 검색
-            </label>
+            </span>
             <div className="flex space-x-2 flex-1 max-w-[30%]">
               <select
                 className="w-full p-2 border border-gray-300 rounded"
@@ -194,11 +199,11 @@ const DetailSearch: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-left">
-            <label className="font-semibold mr-3 w-32 whitespace-nowrap">
+            <span className="font-semibold mr-3 w-32 whitespace-nowrap">
               조건별
-            </label>
+            </span>
             <div className="flex flex-wrap space-x-4">
-              <label className="flex items-center">
+              <label htmlFor="b2bMember" className="flex items-center">
                 <input
                   type="checkbox"
                   name="b2bMember"
@@ -208,7 +213,7 @@ const DetailSearch: React.FC = () => {
                 />
                 B2B회원
               </label>
-              <label className="flex items-center">
+              <label htmlFor="newProduct" className="flex items-center">
                 <input
                   type="checkbox"
                   name="newProduct"
@@ -218,7 +223,7 @@ const DetailSearch: React.FC = () => {
                 />
                 새제품
               </label>
-              <label className="flex items-center">
+              <label htmlFor="usedProduct" className="flex items-center">
                 <input
                   type="checkbox"
                   name="usedProduct"
@@ -233,9 +238,9 @@ const DetailSearch: React.FC = () => {
 
           {/* 가격별 검색 */}
           <div className="flex items-center">
-            <label className="font-semibold mr-3 my-6 w-32 whitespace-nowrap">
+            <span className="font-semibold mr-3 my-6 w-32 whitespace-nowrap">
               가격별 검색
-            </label>
+            </span>
             <div className="flex-1 relative">
               <div className="flex justify-between items-center mb-2">
                 <div className="absolute -top-6 left-0">
@@ -272,5 +277,3 @@ const DetailSearch: React.FC = () => {
     </div>
   );
 };
-
-export default DetailSearch;

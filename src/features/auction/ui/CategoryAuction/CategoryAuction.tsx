@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, Scrollbar } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CategoryAuctionCard from "./CategoryAuctionCard";
-import CustomArrow from "./CustomArrow";
-import { IMainCategoryImage, IAuction } from "../../../../shared";
+import axios from "axios";
+import { TimerStore } from "@/shared/store/timer-store";
+import { IMainCategoryImage, IAuction } from "@/shared/types/products";
+import { CategoryAuctionCard } from "./CategoryAuctionCard";
+import { CustomArrow } from "./CustomArrow";
 import { useProductQuery } from "../../hooks/useProductQuery";
 import { useAuctionQuery } from "../../hooks/useAuctionQuery";
-import axios from "axios";
-import { TimerStore } from "../../../../shared";
-const CategoryAuction: React.FC = () => {
+
+export const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState<boolean>(false);
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
-  const { productIsError, productIsLoading, products } = useProductQuery();
-  const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
+  const { productIsLoading, products } = useProductQuery();
+  const { auctionIsLoading, auction } = useAuctionQuery();
   const [formatCategory, setFormatCategory] = useState<IAuction[][] | null>();
   const [cardNumber, setCardNumber] = useState<number>(8);
   const [isLoading, setIsLoading] = useState(true);
@@ -88,23 +89,21 @@ const CategoryAuction: React.FC = () => {
         </div>
         <div className="img_section w-[325px] h-[580px] hidden md:block">
           <div className="swiper_image max-w-lg mx-auto">
-            {
-              <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={30}
-                slidesPerView={1}
-                loop={true}
-                pagination={{ clickable: true }}
-                navigation={true}
-                autoplay={{ delay: 3000 }}
-              >
-                {bgImage.map((data) => (
-                  <SwiperSlide key={data.key}>
-                    <img src={data.image} alt={data.title} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            }
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              loop
+              pagination={{ clickable: true }}
+              navigation
+              autoplay={{ delay: 3000 }}
+            >
+              {bgImage.map((data) => (
+                <SwiperSlide key={data.key}>
+                  <img src={data.image} alt={data.title} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
         {!productIsLoading && !auctionIsLoading ? (
@@ -114,7 +113,7 @@ const CategoryAuction: React.FC = () => {
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={10}
                 slidesPerView={1}
-                loop={true}
+                loop
                 pagination={{ clickable: true }}
                 navigation={{
                   prevEl: ".swiper-button-prev-custom",
@@ -176,5 +175,3 @@ const CategoryAuction: React.FC = () => {
     </div>
   );
 };
-
-export default CategoryAuction;

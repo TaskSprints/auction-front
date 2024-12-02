@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import EmailLoginForm from "./EmailLoginForm";
-import PhoneLoginForm from "./PhoneLoginForm";
+import { EmailLoginForm } from "./EmailLoginForm";
+import { PhoneLoginForm } from "./PhoneLoginForm";
 
-const LoginMethodMenu: React.FC = () => {
+export const LoginMethodMenu: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState("email");
 
   const renderComponent = () => {
@@ -46,5 +46,3 @@ const LoginMethodMenu: React.FC = () => {
     </div>
   );
 };
-
-export default LoginMethodMenu;

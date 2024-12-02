@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 
-const EmailLoginForm: React.FC = () => {
+export const EmailLoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,7 @@ const EmailLoginForm: React.FC = () => {
           <label
             className="block text-gray-700 font-medium mb-2"
             htmlFor="username"
-          ></label>
+          />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaEnvelope />
           </span>
@@ -58,7 +58,7 @@ const EmailLoginForm: React.FC = () => {
           <label
             className="block text-gray-700 font-medium mb-2"
             htmlFor="password"
-          ></label>
+          />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaLock />
           </span>
@@ -105,7 +105,7 @@ const EmailLoginForm: React.FC = () => {
           로그인
         </motion.button>
 
-        <div className="border-t border-gray-300 my-4"></div>
+        <div className="border-t border-gray-300 my-4" />
 
         <motion.button
           type="button"
@@ -120,5 +120,3 @@ const EmailLoginForm: React.FC = () => {
     </motion.div>
   );
 };
-
-export default EmailLoginForm;

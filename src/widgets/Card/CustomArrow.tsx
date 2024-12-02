@@ -1,12 +1,17 @@
-const CustomArrow = ({
+import React from "react";
+
+interface CustomArrowProps {
+  direction: "left" | "right";
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export const CustomArrow = ({
   direction,
-  onClick,
-}: {
-  direction: string;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
-}) => {
+  onClick = () => {},
+}: CustomArrowProps) => {
   return (
-    <div
+    <button
+      type="button"
       className={`absolute top-1/2 transform -translate-y-1/2 ${
         direction === "left" ? "left-4" : "right-4"
       } w-10 h-10 flex justify-center items-center bg-white border rounded-full shadow-lg cursor-pointer z-10 hover:bg-gray-200 transition duration-300`}
@@ -43,8 +48,6 @@ const CustomArrow = ({
           />
         </svg>
       )}
-    </div>
+    </button>
   );
 };
-
-export default CustomArrow;

@@ -1,0 +1,1 @@
+export { DetailSearch } from "./DetailSearch";

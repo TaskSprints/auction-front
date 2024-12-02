@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import dayjs from "dayjs";
 import {
   Button,
   Select,
@@ -10,9 +11,9 @@ import {
   Form,
 } from "antd";
 import type { GetProp, UploadFile, UploadProps } from "antd";
-import { UploadOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
+
 import { menus } from "./constants";
-import dayjs from "dayjs";
 
 const { Option } = Select;
 
@@ -25,6 +26,7 @@ const getBase64 = (file: FileType): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = (error) => reject(error);
   });
+
 export const AuctionRegistration: React.FC = () => {
   const noMenu = ["일반상품", "커뮤니티", "마이페이지"];
   const [firstCategoryNumber, setFirstCategoryNumber] = useState<number>(0);
@@ -40,13 +42,14 @@ export const AuctionRegistration: React.FC = () => {
   const [onlyViewBid, setOnlyViewBid] = useState<string>();
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
-  const onRangeChange = () => {};
+  // const onRangeChange = () => {};
   const handleOk = () => {};
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
-    console.log("Form Values:", values);
+    message.info(values);
     // 여기서 제출한 데이터를 처리하는 로직을 추가합니다.
+    return true;
   };
 
   const handlePreview = async (file: UploadFile) => {
@@ -71,14 +74,15 @@ export const AuctionRegistration: React.FC = () => {
   const handleSubmit = () => {
     if (auctionName.length === 0) {
       message.error("이름을 입력해주세요");
-      return false;
-    } else if (startBid === 0) {
+    }
+    if (startBid === 0) {
       message.error("경매 시작가를 입력해주세요");
     }
+    return false;
   };
   useEffect(() => {
     const hoursArr: string[] = [];
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 24; i += 1) {
       hoursArr.push(`${i.toString().padStart(2, "0")} 시`);
     }
     setHours(hoursArr);
@@ -126,7 +130,7 @@ export const AuctionRegistration: React.FC = () => {
     }
   };
   const handleEndDateChange = (value: dayjs.Dayjs) => {
-    console.log(endTime);
+    message.info(endTime);
     const newDate = new Date(value.toDate());
     if (value) {
       if (endTime >= 0 && endTime < 24) {
@@ -172,7 +176,7 @@ export const AuctionRegistration: React.FC = () => {
         <div className="form mx-auto">
           <span className="text-xl font-bold ">경매 등록</span>
           <div className="description_section ml-0 ">
-            <div className="mt-4  "></div>
+            <div className="mt-4  " />
           </div>
           <div className="name-section">
             <label htmlFor="name" className=" text-black ">
@@ -210,10 +214,10 @@ export const AuctionRegistration: React.FC = () => {
               <Input
                 className="w-[15rem] ml-3"
                 id="startBid"
-                value={onlyViewBid} //, 찍기위한 상태
+                value={onlyViewBid} // , 찍기위한 상태
                 onChange={handleChangeBid}
                 placeholder="경매 시작가격을 입력하세요"
-              ></Input>
+              />
             </div>
           </div>
         </div>
@@ -299,7 +303,7 @@ export const AuctionRegistration: React.FC = () => {
             fileList={fileList}
             onPreview={handlePreview}
             onChange={handleChange}
-            multiple={true}
+            multiple
           >
             {fileList.length >= 8 ? null : uploadButton}
           </Upload>
@@ -331,5 +335,3 @@ export const AuctionRegistration: React.FC = () => {
     </div>
   );
 };
-
-export default AuctionRegistration;

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { IProduct, api } from "@/shared/index";
+import { IProduct } from "@/shared/types/products";
+import { api } from "@/shared/api";
+
 export const useProductQuery = () => {
   const [productIsLoading, productSetIsLoading] = useState<boolean>(false);
   const [productIsError, productSetIsError] = useState<boolean>(false);
@@ -26,5 +28,3 @@ export const useProductQuery = () => {
   }, []);
   return { productIsLoading, productIsError, products };
 };
-
-export default useProductQuery;
