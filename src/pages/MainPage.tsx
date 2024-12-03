@@ -13,11 +13,5 @@ export const MainPage: React.FC = () => {
       <CategoryAuction />
       <HotAuctionList />
     </Layout>
-    // <HeroSection />
-    // <div className="container mx-auto px-4 space-y-16 py-8">
-    //  <FeaturedDeals />
-    // <Categories />
-    // <TrendingDeals />
-    // </div>
   );
 };
