@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { menus } from "./constants";
 import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
 import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
@@ -44,7 +44,7 @@ export const MenuComponent: React.FC = () => {
           <div className="flex items-center">
             <button
               type="button"
-              className="text-white text-2xl hover:bg-green-700 focus:outline-none p-2 rounded transition-transform transform hover:scale-110"
+              className="text-white text-2xl hover:bg-green-700 focus:outline-none p-2 rounded transition-transform transform hover:scale-100"
               onClick={() => toggleMenu()}
             >
               <MenuOutlined />
@@ -63,7 +63,7 @@ export const MenuComponent: React.FC = () => {
                   >
                     <button
                       type="button"
-                      className="text-white text-sm px-3 py-2 rounded hover:bg-red-700 focus:outline-none transition duration-300"
+                      className="text-white text-sm px-3 py-2 rounded hover:bg-green-700 focus:outline-none transition duration-300"
                     >
                       {menu.title}
                     </button>
@@ -73,7 +73,7 @@ export const MenuComponent: React.FC = () => {
                           <li key={subitem} className="flex-shrink-0">
                             <a
                               href="/#"
-                              className="text-gray-700 hover:bg-red-100 block px-4 py-1 text-xs transition duration-200 rounded whitespace-nowrap"
+                              className="text-gray-700 hover:bg-green-100 block px-4 py-1 text-xs transition duration-200 rounded whitespace-nowrap"
                             >
                               {subitem}
                             </a>
@@ -90,14 +90,24 @@ export const MenuComponent: React.FC = () => {
       </div>
 
       {/* Black Info Bar */}
-      <div className="bg-gray-900 text-white py-2">
+      <div className="bg-gray-900 text-white py-3">
         <div className="container mx-auto px-6 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
-            <span>73건 경매진행중</span>
-            <span>12건 경매진행</span>
-            <span>24건 경매대기</span>
+            <span>
+              <span className="text-red-500">73</span> 건 경매진행중
+            </span>
+            <span>
+              <span className="text-yellow-500">12</span> 건 경매진행
+            </span>
+            <span>
+              <span className="text-green-500">24</span> 건 경매대기
+            </span>
           </div>
-          <div>2024년 12월 02일(월)</div>
+
+          <div className="flex items-center gap-2">
+            <CalendarOutlined />
+            <span>2024년 12월 02일(월)</span>
+          </div>
         </div>
       </div>
 
