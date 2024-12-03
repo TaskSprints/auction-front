@@ -1,39 +1,125 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Layout as AntLayout, Input, Button, Avatar, Dropdown } from "antd";
+import {
+  BellOutlined,
+  HeartOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
+
+const categoryFilters = [
+  { key: "series", label: <Link to="/">시리즈</Link> },
+  { key: "furniture", label: <Link to="/">가구</Link> },
+  { key: "swimwear", label: <Link to="/">수영복</Link> },
+  { key: "smartphone", label: <Link to="/">스마트폰</Link> },
+  { key: "computer", label: <Link to="/">컴퓨터</Link> },
+  { key: "appliances", label: <Link to="/">가전제품</Link> },
+];
+
+const { Header: AntHeader } = AntLayout;
 
 export const Header: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // setIsLoggedIn(true);
+    navigate("/login");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+  const userMenu = [
+    {
+      key: "profile",
+      label: "Profile",
+    },
+    {
+      key: "orders",
+      label: "My Orders",
+    },
+    {
+      key: "settings",
+      label: "Settings",
+    },
+    {
+      key: "logout",
+      label: "Logout",
+      icon: <LogoutOutlined />,
+      onClick: handleLogout,
+    },
+  ];
+
   return (
-    <div className="w-full bg-gray-50 h-[2.5rem] pt-3 flex justify-center items-center">
-      <div className="nav w-full max-w-[1200px] px-4 flex justify-between text-xs sm:text-sm">
-        <ul className="left-nav flex space-x-2 sm:space-x-4 items-center">
-          <li className="cursor-pointer hover:underline">
-            <a href="/">❤️ 즐겨찾기</a>
-          </li>
-          <li className="cursor-pointer hover:underline">
-            <a href="/">🏠 시작페이지로</a>
-          </li>
-        </ul>
-        <ul className="right-nav flex space-x-2 sm:space-x-4 items-center">
-          <li className="cursor-pointer hover:underline">
-            <Link to="/login">🔒 로그인</Link>
-          </li>
-          <li className="cursor-pointer hover:underline relative">
-            <a href="/">🛒 장바구니</a>
-            <span className="absolute top-[-0.5rem] right-[-0.75rem] bg-red-600 w-[1rem] h-[1rem] flex justify-center items-center rounded-full text-white text-[0.75rem]">
-              0
-            </span>
-          </li>
-          <li className="cursor-pointer hover:underline">
-            <a href="/">커뮤니티</a>
-          </li>
-          <li className="cursor-pointer hover:underline">
-            <a href="/">고객센터</a>
-          </li>
-          <li className="cursor-pointer hover:underline">
-            <a href="/">MOBILE</a>
-          </li>
-        </ul>
+    <AntHeader className="flex items-center justify-between bg-white px-24 shadow-sm h-32">
+      {/* Logo and Search Section */}
+      <div className="flex items-center gap-8">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="relative w-12 h-12">
+            <img
+              src="/SmartDeal.png"
+              alt="Smart Deal"
+              className="object-contain"
+            />
+          </div>
+          <span className="text-2xl font-bold text-green-600">SMART DEAL</span>
+        </Link>
+        <div className="flex-1 max-w-2xl">
+          {/* Category Filters */}
+          <div className="flex gap-4 mb-2">
+            {categoryFilters.map((filter) => (
+              <button
+                type="button"
+                key={filter.key}
+                className="text-sm text-gray-600 hover:text-green-600 bg-transparent border-none cursor-pointer"
+                onClick={() => navigate(`#${filter.key}`)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+          <Input.Search
+            placeholder="Search for smart deals..."
+            className="w-full"
+            size="large"
+            enterButton={
+              <Button
+                type="primary"
+                className="bg-green-500 hover:bg-green-600"
+              >
+                검색
+              </Button>
+            }
+          />
+        </div>
       </div>
-    </div>
+      <div className="flex items-center gap-4">
+        <Button type="text" icon={<HeartOutlined />} />
+        {isLoggedIn ? (
+          <>
+            {/* <Badge count={3}> */}
+            <Button type="text" icon={<BellOutlined />} />
+            {/* </Badge> */}
+            {/* <Badge count={2}> */}
+            <Button type="text" icon={<ShoppingCartOutlined />} />
+            {/* </Badge> */}
+            <Dropdown menu={{ items: userMenu }} placement="bottomRight">
+              <Avatar
+                icon={<UserOutlined />}
+                className="bg-green-600 cursor-pointer"
+              />
+            </Dropdown>
+          </>
+        ) : (
+          <Button type="primary" onClick={handleLogin}>
+            Login
+          </Button>
+        )}
+      </div>
+    </AntHeader>
   );
 };
