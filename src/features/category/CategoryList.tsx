@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 // import { Skeleton } from "antd";
 import { TimerStore } from "@/shared/store/timer-store";
 import { CategoryBoardCard } from "./CategoryBoardCard";
-import { useAuctionQuery } from "../../hooks/useAuctionQuery";
-import { useProductQuery } from "../../hooks/useProductQuery";
+import { useAuctionQuery } from "../auction/hooks/useAuctionQuery";
+import { useProductQuery } from "../auction/hooks/useProductQuery";
 
 export const CategoryList = () => {
   const [selected, setSelected] = useState(0);
@@ -53,13 +53,15 @@ export const CategoryList = () => {
           <div className="menu_select flex   items-center w-screen md:w-[1200px] h-[50px] scrollbar-hide">
             <div className="menu_list md:w-[800px] flex overflow-x-auto  whitespace-nowrap scrollbar-hide">
               <ul className=" my-auto flex   whitespace-nowrap scrollbar-hide md:justify-around">
-                {menus.map((menu, index) => (
-                  <li
-                    key={index}
-                    onClick={() => setSelected(index)}
-                    className={` mr-7 ml-3 cursor-pointer pb-1  ${selected === index ? "font-bold border-black border-b-2  " : ""}`}
-                  >
-                    {menu}
+                {menus.map((menu, subIndex) => (
+                  <li key={menu} className="mr-7 ml-3 pb-1 ">
+                    <button
+                      type="button"
+                      onClick={() => setSelected(subIndex)}
+                      className={`cursor-pointer ${selected === subIndex ? "font-bold border-black border-b-2  " : ""}`}
+                    >
+                      {menu}
+                    </button>
                   </li>
                 ))}
               </ul>

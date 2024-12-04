@@ -1,12 +1,25 @@
 import React from "react";
-import { CategoryList } from "@/features/auction/ui/category/CategoryList";
-import { Header } from "@/widgets/Header/Header";
+import { CategoryList } from "@/features/category/CategoryList";
+import { Layout } from "@/widgets/Layout";
+import { MenuComponent } from "@/widgets/MenuComponent";
+import { CustomBreadcrumb } from "@/widgets/Breadcrumb/CustomBreadcrumb";
+import { CategoryContainer } from "@/features/category/CategoryContainer";
+import { HotAuctionList } from "@/features/auction/ui/HotAuction/HotAuctionList";
+import { CategoryAuction } from "@/features/auction/ui/CategoryAuction/CategoryAuction";
+import { DetailSearch } from "../widgets/DetailSearch/DetailSearch";
 
 export const CategoryPage: React.FC = () => {
   return (
-    <>
-      <Header />
-      <CategoryList />
-    </>
+    <Layout>
+      <MenuComponent />
+      <div className="container mx-auto px-4 py-6">
+        <CustomBreadcrumb />
+        <CategoryAuction />
+        <CategoryContainer />
+        <DetailSearch />
+        <HotAuctionList />
+        <CategoryList />
+      </div>
+    </Layout>
   );
 };

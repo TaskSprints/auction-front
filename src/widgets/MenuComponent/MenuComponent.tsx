@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
 import { menus } from "./constants";
 import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
 import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
 
+const { SubMenu } = Menu;
+
+interface MenuClickEvent {
+  key: string;
+}
+
 export const MenuComponent: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [current, setCurrent] = useState<string>("");
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  // const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isHoverDisabled, setIsHoverDisabled] = useState(false);
 
   const toggleMenu = () => {
@@ -19,23 +27,27 @@ export const MenuComponent: React.FC = () => {
     setIsMobile(window.innerWidth <= 768); // 모바일 기준: 768px
   };
 
+  const handleClick = (e: MenuClickEvent) => {
+    setCurrent(e.key);
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize(); // 초기 화면 크기 체크
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleMouseEnter = (menu: string) => {
-    if (!isHoverDisabled) {
-      setActiveMenu(menu);
-    }
-  };
+  // const handleMouseEnter = (menu: string) => {
+  //   if (!isHoverDisabled) {
+  //     setActiveMenu(menu);
+  //   }
+  // };
 
-  const handleMouseLeave = () => {
-    if (!isHoverDisabled) {
-      setActiveMenu(null);
-    }
-  };
+  // const handleMouseLeave = () => {
+  //   if (!isHoverDisabled) {
+  //     setActiveMenu(null);
+  //   }
+  // };
 
   return (
     <>
@@ -53,37 +65,26 @@ export const MenuComponent: React.FC = () => {
             {/* 데스크탑 메뉴 버튼 */}
             {/* TODO */}
             {!isMobile && (
-              <div className="hidden md:flex space-x-4 ml-4">
+              <Menu
+                onClick={handleClick}
+                selectedKeys={[current]}
+                mode="horizontal"
+                className="hidden md:flex space-x-4 ml-4 bg-[#2E7D32]"
+              >
                 {menus.map((menu) => (
-                  <div
+                  <SubMenu
                     key={menu.title}
-                    className={`relative group ${isHoverDisabled ? "pointer-events-none" : ""}`}
-                    onMouseEnter={() => handleMouseEnter(menu.title)}
-                    onMouseLeave={handleMouseLeave}
+                    title={menu.title}
+                    className={isHoverDisabled ? "pointer-events-none" : ""}
                   >
-                    <button
-                      type="button"
-                      className="text-white text-sm px-3 py-2 rounded hover:bg-green-700 focus:outline-none transition duration-300"
-                    >
-                      {menu.title}
-                    </button>
-                    {activeMenu === menu.title && !isHoverDisabled && (
-                      <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg z-10 transition-opacity duration-200 opacity-100 flex flex-col">
-                        {menu.subMenu.map((subitem) => (
-                          <li key={subitem} className="flex-shrink-0">
-                            <a
-                              href="/#"
-                              className="text-gray-700 hover:bg-green-100 block px-4 py-1 text-xs transition duration-200 rounded whitespace-nowrap"
-                            >
-                              {subitem}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+                    {menu.subMenu.map((subitem) => (
+                      <Menu.Item key={subitem}>
+                        <a href="/category">{subitem}</a>
+                      </Menu.Item>
+                    ))}
+                  </SubMenu>
                 ))}
-              </div>
+              </Menu>
             )}
           </div>
         </div>
