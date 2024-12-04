@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 
-interface TimerStore {
+interface TimerStoreProps {
   currentTime: Date;
   startTimer: () => void;
   stopTimer: () => void;
@@ -14,7 +14,7 @@ interface TimerStore {
   timerId: NodeJS.Timeout | null;
 }
 
-export const TimerStore = create<TimerStore>()(
+export const TimerStore = create<TimerStoreProps>()(
   subscribeWithSelector((set, get) => ({
     currentTime: new Date(),
     timerId: null,
