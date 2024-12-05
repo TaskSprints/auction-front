@@ -13,7 +13,7 @@ export const useAuctionQuery = () => {
     api
       .get(`/api/v1/auction`)
       .then((data) => {
-        setAuction(data.data);
+        setAuction(data.data.data.content);
       })
       .catch(() => {
         auctionSetIsError(true);

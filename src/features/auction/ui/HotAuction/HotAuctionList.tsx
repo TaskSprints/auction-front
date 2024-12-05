@@ -3,12 +3,12 @@ import Slider from "react-slick";
 import { TimerStore } from "@/shared/store/timer-store";
 import { HotAuctionCard } from "./HotAuctionCard";
 import { CustomArrow } from "./CustomArrow";
-import { useProductQuery } from "../../hooks/useProductQuery";
-import { useAuctionQuery } from "../../hooks/useAuctionQuery";
+import { useProductQuery } from "../../../category/hooks/useProductQuery";
+import { useAuctionQuery } from "../../../category/hooks/useAuctionQuery";
 
 export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, products } = useProductQuery();
+  const { productIsLoading, products } = useProductQuery(0);
   const { auctionIsLoading, auction } = useAuctionQuery();
 
   const { startTimer, stopTimer } = TimerStore();
@@ -92,37 +92,36 @@ export const HotAuctionList: React.FC = () => {
         </h1>
       </div>
       <div className="card_section max-w-[85rem] h-auto m-auto border border-1 border-gray ">
-        <div className=" w-auto h-auto">
-          {!productIsLoading && !auctionIsLoading ? (
-            isMdSize ? (
-              <Slider {...settings} className="flex justify-center h-auto ">
-                {auction?.map((data) => {
-                  const product = getProductByAuctionId(data.id);
-                  return product ? (
-                    <HotAuctionCard
-                      key={data.id}
-                      auction={data}
-                      product={product}
-                    />
-                  ) : null;
-                })}
-              </Slider>
-            ) : (
-              <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-                {auction?.map((data) => {
-                  const product = getProductByAuctionId(data.id);
-                  return product ? (
-                    <HotAuctionCard
-                      key={data.id}
-                      auction={data}
-                      product={product}
-                    />
-                  ) : null;
-                })}
-              </div>
-            )
-          ) : null}
-        </div>
+        <div className=" w-auto h-auto" />
+        {!productIsLoading &&
+          !auctionIsLoading &&
+          (isMdSize ? (
+            <Slider {...settings} className="flex justify-center h-auto ">
+              {auction?.map((data) => {
+                const product = getProductByAuctionId(data.id);
+                return product ? (
+                  <HotAuctionCard
+                    key={data.id}
+                    auction={data}
+                    product={product}
+                  />
+                ) : null;
+              })}
+            </Slider>
+          ) : (
+            <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
+              {auction?.map((data) => {
+                const product = getProductByAuctionId(data.id);
+                return product ? (
+                  <HotAuctionCard
+                    key={data.id}
+                    auction={data}
+                    product={product}
+                  />
+                ) : null;
+              })}
+            </div>
+          ))}
       </div>
     </div>
   );

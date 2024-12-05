@@ -5,13 +5,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import axios from "axios";
+import { api } from "@/shared/api";
 import { TimerStore } from "@/shared/store/timer-store";
 import { IMainCategoryImage, IAuction } from "@/shared/types/products";
 import { CategoryAuctionCard } from "./CategoryAuctionCard";
 import { CustomArrow } from "./CustomArrow";
-import { useProductQuery } from "../../hooks/useProductQuery";
-import { useAuctionQuery } from "../../hooks/useAuctionQuery";
+import { useProductQuery } from "../hooks/useProductQuery";
+import { useAuctionQuery } from "../hooks/useAuctionQuery";
 
 export const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState<boolean>(false);
@@ -29,10 +29,11 @@ export const CategoryAuction: React.FC = () => {
   }, []);
   const loadBgImages = async () => {
     try {
-      const data = await axios.get("http://localhost:8080/api1");
+      const data = await api.get("/api1");
       setBgImage(data.data);
     } catch (error) {
-      console.log(error);
+      // // eslint-disable-next-line no-alert
+      // alert("Failed to load background images.");
     } finally {
       setIsLoading(false);
     }

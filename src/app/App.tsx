@@ -4,7 +4,6 @@ import {
   MainPage,
   LoginPage,
   RegisterPage,
-  DetailsPage,
   CategoryPage,
   BiddingPage,
 } from "@/pages/index";
@@ -22,10 +21,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
-  },
-  {
-    path: "/details",
-    element: <DetailsPage />,
   },
   {
     path: "/category",

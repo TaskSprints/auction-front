@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 // import { Skeleton } from "antd";
 import { TimerStore } from "@/shared/store/timer-store";
 import { CategoryBoardCard } from "./CategoryBoardCard";
-import { useAuctionQuery } from "../auction/hooks/useAuctionQuery";
-import { useProductQuery } from "../auction/hooks/useProductQuery";
+import { useAuctionQuery } from "../hooks/useAuctionQuery";
+import { useProductQuery } from "../hooks/useProductQuery";
 
 export const CategoryList = () => {
   const [selected, setSelected] = useState(0);
