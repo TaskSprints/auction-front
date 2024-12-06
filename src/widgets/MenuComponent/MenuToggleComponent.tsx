@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { menus } from "./constants";
+import { menus } from "../../shared/config/menu.constants";
 
 export const MenuToggleComponent: React.FC = () => {
   return (

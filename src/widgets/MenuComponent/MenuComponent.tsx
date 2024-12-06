@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
-import { menus } from "./constants";
+import { menus } from "../../shared/config/menu.constants";
 import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
 import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
 

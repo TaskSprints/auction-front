@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { menus } from "./constants";
+import { menus } from "../../shared/config/menu.constants";
 
 interface MobileMenuToggleComponentProps {
   isOpen: boolean;

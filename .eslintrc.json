@@ -33,9 +33,9 @@
           "**/*.test.ts",
           "**/*.stories.tsx",
           "**/*.stories.ts",
+          "**/setupTests.ts",
           "vite.config.ts",
-          "vite.config.mts",
-          "setupTests.ts"
+          "vite.config.mts"
         ]
       }
     ],
@@ -46,7 +46,9 @@
     "react/function-component-definition": "off",
     "import/no-useless-path-segments": "off",
     "import/prefer-default-export": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   },
   "settings": {
     "react": {
@@ -63,5 +65,8 @@
     "browser": true, // 브라우저 환경 추가
     "node": true, // Node.js 환경도 함께 추가하면 좋음
     "es6": true // ES6+ 문법 지원
+  },
+  "globals": {
+    "NodeJS": "readonly"
   }
 }

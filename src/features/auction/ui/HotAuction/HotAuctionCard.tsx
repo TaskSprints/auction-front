@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { IProduct, IAuction } from "@/shared/types/products";
-import { TimerStore } from "@/shared/store/timer-store";
-import { formatKRW } from "@/shared/util/krw-format";
+import { IProduct, IAuction } from "@/shared/types/product.types";
+import { TimerStore } from "@/entities/timer/model/timerStore";
+import { formatKRW } from "shared/lib/format";
 
 interface HotAuctionprops {
   product: IProduct;

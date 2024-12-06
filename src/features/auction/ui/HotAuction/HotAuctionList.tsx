@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { TimerStore } from "@/shared/store/timer-store";
+import { TimerStore } from "@/entities/timer/model/timerStore";
+import { useProductByAuctionQuery } from "@/features/category/model/useProductByAuctionQuery";
 import { HotAuctionCard } from "./HotAuctionCard";
-import { CustomArrow } from "./CustomArrow";
-import { useProductQuery } from "../../../category/hooks/useProductQuery";
-import { useAuctionQuery } from "../../../category/hooks/useAuctionQuery";
+import { HotAuctionArrow } from "./HotAuctionArrow";
+import { useAuctionQuery } from "../../../category/model/useAuctionQuery";
 
 export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, products } = useProductQuery(0);
+  const { productIsLoading, product } = useProductByAuctionQuery("1");
   const { auctionIsLoading, auction } = useAuctionQuery();
 
   const { startTimer, stopTimer } = TimerStore();
@@ -32,7 +32,7 @@ export const HotAuctionList: React.FC = () => {
   }, []);
 
   const getProductByAuctionId = (auctionId: number) => {
-    return products?.find((id) => auctionId === id.auctionId);
+    return product?.find((id) => auctionId === id.auctionId);
   };
   const settings = {
     dots: false,
@@ -40,8 +40,8 @@ export const HotAuctionList: React.FC = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 3,
-    prevArrow: <CustomArrow direction="left" onClick={() => {}} />,
-    nextArrow: <CustomArrow direction="right" onClick={() => {}} />,
+    prevArrow: <HotAuctionArrow direction="left" onClick={() => {}} />,
+    nextArrow: <HotAuctionArrow direction="right" onClick={() => {}} />,
     responsive: [
       {
         breakpoint: 1024,
