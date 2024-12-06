@@ -9,7 +9,7 @@ import { httpClient } from "@/shared/api/httpClient";
 import { TimerStore } from "@/entities/timer/model/timerStore";
 import { IMainCategoryImage, IAuction } from "@/shared/types/product.types";
 import { CategoryAuctionCard } from "./CategoryAuctionCard";
-import { CustomArrow } from "./CategoryArrow";
+import { CategoryArrow } from "./CategoryArrow";
 import { useProductByAuctionQuery } from "../model/useProductByAuctionQuery";
 import { useAuctionQuery } from "../model/useAuctionQuery";
 
@@ -71,7 +71,7 @@ export const CategoryAuction: React.FC = () => {
 
   const getProduct = (auctionId: number) => {
     const product =
-      products?.find((product) => auctionId === product.auctionId) || null;
+      product?.find((product) => auctionId === product.auctionId) || null;
     return product;
   };
 

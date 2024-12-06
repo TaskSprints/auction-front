@@ -1,9 +1,13 @@
 import React from "react";
-import { ProductGallery } from "@/features/bidding/ProductGallery";
+import {
+  ProductGallery,
+  SellerItems,
+  BiddingInfo,
+  BiddingTitle,
+} from "features/bidding/ui";
 import { Layout } from "@/widgets/Layout";
 import { MenuComponent } from "@/widgets/MenuComponent";
 import { CustomBreadcrumb } from "@/widgets/Breadcrumb/CustomBreadcrumb";
-import { SellerItems, BiddingInfo, BiddingTitle } from "@/features/bidding";
 
 export const BiddingPage: React.FC = () => {
   return (

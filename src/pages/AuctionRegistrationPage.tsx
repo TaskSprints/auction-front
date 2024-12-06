@@ -13,7 +13,7 @@ import {
 import type { GetProp, UploadFile, UploadProps } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-import { menus } from "features/auction/ui/constants";
+import { MENU_CATEGORIES } from "shared/config/menu.constants";
 
 const { Option } = Select;
 
@@ -234,13 +234,13 @@ export const AuctionRegistrationPage: React.FC = () => {
             value={firstCategoryNumber}
             onChange={handlefirstCategoryNumber}
           >
-            {menus
-              .filter((item) => !noMenu.includes(item.title))
-              .map((item, index) => (
+            {MENU_CATEGORIES.filter((item) => !noMenu.includes(item.title)).map(
+              (item, index) => (
                 <Option key={item.title} value={index}>
                   {item.title}
                 </Option>
-              ))}
+              ),
+            )}
           </Select>
 
           <Select
@@ -250,7 +250,7 @@ export const AuctionRegistrationPage: React.FC = () => {
             value={secondCategoryNumber}
             onChange={handlesecondCategoryNumber}
           >
-            {menus[firstCategoryNumber].subMenu.map((item, index) => (
+            {MENU_CATEGORIES[firstCategoryNumber].subMenu.map((item, index) => (
               <Option key={item} value={index}>
                 {item}
               </Option>
