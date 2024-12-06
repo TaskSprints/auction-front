@@ -48,7 +48,13 @@
     "import/prefer-default-export": "off",
     "react/jsx-props-no-spreading": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error"
+    "@typescript-eslint/no-unused-vars": "error",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "some": ["id"]
+      }
+    ]
   },
   "settings": {
     "react": {

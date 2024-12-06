@@ -7,17 +7,28 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { httpClient } from "@/shared/api/httpClient";
 import { TimerStore } from "@/entities/timer/model/timerStore";
-import { IMainCategoryImage, IAuction } from "@/shared/types/product.types";
+import {
+  IMainCategoryImage,
+  IAuction,
+  IProduct,
+} from "@/shared/types/product.types";
+import { useGetAllAuction, useGetAllProduct } from "features/category/model";
 import { CategoryAuctionCard } from "./CategoryAuctionCard";
 import { CategoryArrow } from "./CategoryArrow";
-import { useProductByAuctionQuery } from "../model/useProductByAuctionQuery";
-import { useAuctionQuery } from "../model/useAuctionQuery";
+
+const categoryArray = <T,>(array: T[], size: number): T[][] => {
+  const arr: T[][] = [];
+  for (let i = 0; i < array.length; i += size) {
+    arr.push(array.slice(i, i + size));
+  }
+  return arr;
+};
 
 export const CategoryAuction: React.FC = () => {
   const [isMdSize, setisMdSize] = useState<boolean>(false);
   const [bgImage, setBgImage] = useState<IMainCategoryImage[]>([]);
-  const { productIsLoading, product } = useProductByAuctionQuery("1");
-  const { auctionIsLoading, auction } = useAuctionQuery();
+  const { productsIsLoading, products } = useGetAllProduct();
+  const { auctionIsLoading, auctions } = useGetAllAuction();
   const [formatCategory, setFormatCategory] = useState<IAuction[][] | null>();
   const [cardNumber, setCardNumber] = useState<number>(8);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,10 +51,10 @@ export const CategoryAuction: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!productIsLoading && !auctionIsLoading && !isLoading) {
-      setFormatCategory(auction ? categoryArray(auction, cardNumber) : []);
+    if (!productsIsLoading && !auctionIsLoading && !isLoading) {
+      setFormatCategory(auctions ? categoryArray(auctions, cardNumber) : []);
     }
-  }, [productIsLoading, auctionIsLoading, cardNumber]);
+  }, [productsIsLoading, auctionIsLoading, cardNumber]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,18 +72,86 @@ export const CategoryAuction: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const categoryArray = <T,>(array: T[], size: number): T[][] => {
-    const arr: T[][] = [];
-    for (let i = 0; i < array.length; i += size) {
-      arr.push(array.slice(i, i + size));
-    }
-    return arr;
+  const getProduct = (auctionId: number) => {
+    return (
+      products?.find(
+        (productItem: IProduct) => auctionId === productItem.auctionId,
+      ) || null
+    );
   };
 
-  const getProduct = (auctionId: number) => {
-    const product =
-      product?.find((product) => auctionId === product.auctionId) || null;
-    return product;
+  const renderContent = () => {
+    if (productsIsLoading || auctionIsLoading) {
+      return null;
+    }
+
+    if (isMdSize) {
+      return (
+        <div className="w-[700px] md:w-[800px]">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop
+            pagination={{ clickable: true }}
+            navigation={{
+              prevEl: ".swiper-button-prev-custom",
+              nextEl: ".swiper-button-next-custom",
+            }}
+            autoplay={false}
+            className="m-auto group"
+          >
+            <div className="swiper-button-prev-custom opacity-0 group-hover:opacity-100">
+              <CategoryArrow direction="left" />
+            </div>
+            <div className="swiper-button-next-custom opacity-0 group-hover:opacity-100">
+              <CategoryArrow direction="right" />
+            </div>
+            {formatCategory?.map((data) => (
+              <SwiperSlide className="" key={`category-${data[0].id}`}>
+                <div className="mx-auto w-[800px] h-[450px] md:h-[600px] flex flex-wrap">
+                  {data.map((item) => {
+                    if (!item) return null;
+                    const product = getProduct(item.id);
+                    if (!product) return null;
+                    return (
+                      <CategoryAuctionCard
+                        auction={item}
+                        product={product}
+                        key={item.id}
+                      />
+                    );
+                  })}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-[600px]">
+        <div className="my-auto overflow-x-auto h-[470px] flex flex-col flex-wrap">
+          {formatCategory?.map((data) => (
+            <div key={`category-${data[0]?.id}`}>
+              {data.map((item) => {
+                if (!item) return null;
+                const product = getProduct(item.id);
+                if (!product) return null;
+                return (
+                  <CategoryAuctionCard
+                    auction={item}
+                    product={product}
+                    key={item.id}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -107,71 +186,7 @@ export const CategoryAuction: React.FC = () => {
             </Swiper>
           </div>
         </div>
-        {!productIsLoading && !auctionIsLoading ? (
-          isMdSize ? (
-            <div className="w-[700px] md:w-[800px]">
-              <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={10}
-                slidesPerView={1}
-                loop
-                pagination={{ clickable: true }}
-                navigation={{
-                  prevEl: ".swiper-button-prev-custom",
-                  nextEl: ".swiper-button-next-custom",
-                }}
-                autoplay={false}
-                className="m-auto group"
-              >
-                <div className="swiper-button-prev-custom opacity-0 group-hover:opacity-100">
-                  <CustomArrow direction="left" />
-                </div>
-                <div className="swiper-button-next-custom opacity-0 group-hover:opacity-100">
-                  <CustomArrow direction="right" />
-                </div>
-                {formatCategory?.map((data, index) => (
-                  <SwiperSlide className="" key={index}>
-                    <div className="mx-auto w-[800px] h-[450px] md:h-[600px] flex flex-wrap">
-                      {data.map((item) => {
-                        if (item) {
-                          const product = getProduct(item.id);
-                          return product ? (
-                            <CategoryAuctionCard
-                              auction={item}
-                              product={product}
-                              key={item.id}
-                            />
-                          ) : null;
-                        }
-                      })}
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          ) : (
-            <div className="  w-[600px]">
-              <div className="  my-auto overflow-x-auto   h-[470px] flex flex-col flex-wrap ">
-                {formatCategory?.map((data, index) => (
-                  <div key={index}>
-                    {data.map((item) => {
-                      if (item) {
-                        const product = getProduct(item.id);
-                        return product ? (
-                          <CategoryAuctionCard
-                            auction={item}
-                            product={product}
-                            key={item.id}
-                          />
-                        ) : null;
-                      }
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )
-        ) : null}
+        {renderContent()}
       </div>
     </div>
   );

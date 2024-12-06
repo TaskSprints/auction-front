@@ -21,6 +21,7 @@ export const LoginMethodMenu: React.FC = () => {
       <div className="w-full border-b border-gray-300 mb-4">
         <div className="text-lg flex justify-center space-x-8 -mb-px">
           <button
+            type="button"
             className={`${
               selectedMenu === "email"
                 ? "text-red-600 border-b-2 border-red-600"
@@ -31,6 +32,7 @@ export const LoginMethodMenu: React.FC = () => {
             이메일 로그인
           </button>
           <button
+            type="button"
             className={`${
               selectedMenu === "phone"
                 ? "text-red-600 border-b-2 border-red-600"

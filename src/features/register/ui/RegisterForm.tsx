@@ -39,12 +39,7 @@ export const RegisterForm: React.FC = () => {
           <b className="text-sm text-extrabold">회원정보를 입력해주세요</b>
           {/* Email Input */}
           <div className="mt-4 mb-4 relative">
-            <label
-              className="block text-gray-700 font-medium mb-2"
-              htmlFor="email"
-            >
-              이메일
-            </label>
+            <span className="block text-gray-700 font-medium mb-2" />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaEnvelope />
             </span>
@@ -57,20 +52,18 @@ export const RegisterForm: React.FC = () => {
               placeholder="아이디(이메일)"
             />
             {email && (
-              <span
+              <button
+                type="button"
                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
                 onClick={clearEmail}
               >
                 <FaTimes />
-              </span>
+              </button>
             )}
           </div>
           {/* Password Input */}
           <div className="mb-6 relative">
-            <label
-              className="block text-gray-700 font-medium mb-2"
-              htmlFor="password"
-            />
+            <span className="block text-gray-700 font-medium mb-2" />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaLock />
             </span>
@@ -82,19 +75,17 @@ export const RegisterForm: React.FC = () => {
               className="w-full pl-10 pr-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
               placeholder="비밀번호"
             />
-            <span
+            <button
+              type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
               onClick={togglePasswordVisibility}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+            </button>
           </div>
           {/* Confirm Password Input */}
           <div className="mb-6 relative">
-            <label
-              className="block text-gray-700 font-medium mb-2"
-              htmlFor="confirm-password"
-            />
+            <span className="block text-gray-700 font-medium mb-2" />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaLock />
             </span>
@@ -106,19 +97,17 @@ export const RegisterForm: React.FC = () => {
               className="w-full pl-10 pr-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
               placeholder="비밀번호 확인"
             />
-            <span
+            <button
+              type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
               onClick={togglePasswordVisibility}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+            </button>
           </div>
           {/* Name Input */}
           <div className="mb-4 relative">
-            <label
-              className="block text-gray-700 font-medium mb-2"
-              htmlFor="name"
-            />
+            <span className="block text-gray-700 font-medium mb-2" />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaUser />
             </span>
@@ -133,10 +122,7 @@ export const RegisterForm: React.FC = () => {
           </div>
           {/* Phone Input */}
           <div className="mb-4 relative">
-            <label
-              className="block text-gray-700 font-medium mb-2"
-              htmlFor="phone"
-            />
+            <span className="block text-gray-700 font-medium mb-2" />
             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
               <FaPhone />
             </span>
@@ -151,8 +137,8 @@ export const RegisterForm: React.FC = () => {
           </div>
           <div className="border-t border-gray-300 mt-8" />
           <TermsAgreementForm
-            termRequiredCheck={termRequiredCheck}
-            setTermRequiredCheck={setTermRequiredCheck}
+            isRequiredTermsAgreed={termRequiredCheck}
+            setIsRequiredTermsAgreed={setTermRequiredCheck}
           />
           <motion.button
             type="submit"

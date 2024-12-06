@@ -63,7 +63,6 @@ export const MenuComponent: React.FC = () => {
             </button>
 
             {/* 데스크탑 메뉴 버튼 */}
-            {/* TODO */}
             {!isMobile && (
               <Menu
                 onClick={handleClick}

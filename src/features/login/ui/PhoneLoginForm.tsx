@@ -9,6 +9,10 @@ export const PhoneLoginForm: React.FC = () => {
     setPhoneNumber("");
   };
 
+  const handleRegisterClick = () => {
+    window.location.href = "/register";
+  };
+
   return (
     <motion.div
       className="bg-white p-8 w-full max-w-lg"
@@ -18,10 +22,7 @@ export const PhoneLoginForm: React.FC = () => {
     >
       <div>
         <div className="mb-4 relative">
-          <label
-            className="block text-gray-700 font-medium mb-2"
-            htmlFor="phone"
-          />
+          <span className="block text-gray-700 font-medium mb-2" />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaPhone />
           </span>
@@ -34,12 +35,13 @@ export const PhoneLoginForm: React.FC = () => {
             placeholder="휴대폰 번호"
           />
           {phoneNumber && (
-            <span
+            <button
+              type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
               onClick={clearPhoneNumber}
             >
               <FaTimes />
-            </span>
+            </button>
           )}
         </div>
 
@@ -55,7 +57,7 @@ export const PhoneLoginForm: React.FC = () => {
         <div className="border-t border-gray-300 my-4" />
 
         <motion.button
-          onClick={() => (window.location.href = "/register")}
+          onClick={() => handleRegisterClick()}
           type="button"
           className="w-full bg-white text-red-600 border border-red-600 py-2 rounded-md hover:bg-red-600 hover:text-white transition"
           whileHover={{ scale: 1.05 }}

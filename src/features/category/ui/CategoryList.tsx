@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 // import { Skeleton } from "antd";
-import { TimerStore } from "@/entities/timer/model/timerStore";
-import { useAuctionQuery } from "@/features/category/model/useAuctionQuery";
-import { useProductByAuctionQuery } from "@/features/category/model/useProductByAuctionQuery";
+import { TimerStore } from "entities/timer/model";
+import { useGetAllAuction, useGetAllProduct } from "features/category/model";
+
 import { CategoryBoardCard } from "./CategoryBoardCard";
 
 export const CategoryList = () => {
   const [selected, setSelected] = useState(0);
   const [isMdSize, setisMdSize] = useState(false);
-  // const { productIsLoading, productIsError, products } = useProductQuery();
-  // const { auctionIsLoading, auctionIsError, auction } = useAuctionQuery();
-  const { productIsLoading, product } = useProductByAuctionQuery("1");
-  const { auctionIsLoading, auction } = useAuctionQuery();
+  const { productsIsLoading, products } = useGetAllProduct();
+  const { auctionIsLoading, auction } = useGetAllAuction();
   const { startTimer, stopTimer } = TimerStore();
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export const CategoryList = () => {
 
   return (
     <div className="container mx-auto">
-      {!productIsLoading && !auctionIsLoading ? (
+      {!productsIsLoading && !auctionIsLoading ? (
         <div className="inner">
           <div className="menu_select flex   items-center w-screen md:w-[1200px] h-[50px] scrollbar-hide">
             <div className="menu_list md:w-[800px] flex overflow-x-auto  whitespace-nowrap scrollbar-hide">

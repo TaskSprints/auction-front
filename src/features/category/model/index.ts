@@ -1,2 +1,3 @@
-export { useAuctionQuery } from "./useAuctionQuery";
-export { useProductByAuctionQuery } from "./useProductByAuctionQuery";
+export { useGetAllAuction } from "./useGetAllAuction";
+export { useGetAllProduct } from "./useGetAllProduct";
+export { useGetProductByAuction } from "./useGetProductByAuction";

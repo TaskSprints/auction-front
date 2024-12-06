@@ -4,9 +4,8 @@ import { TimerStore } from "@/entities/timer/model/timerStore";
 import { formatKRW } from "shared/lib/format";
 
 interface HotAuctionprops {
-  product: IProduct;
+  product: IProduct | undefined;
   auction: IAuction;
-  key: number;
 }
 
 export const HotAuctionCard: React.FC<HotAuctionprops> = ({

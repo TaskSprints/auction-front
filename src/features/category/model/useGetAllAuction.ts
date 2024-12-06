@@ -7,9 +7,9 @@ const fetchAuctions = async (): Promise<IAuction[]> => {
   return data.data.content;
 };
 
-export const useAuctionQuery = () => {
+export const useGetAllAuction = () => {
   const {
-    data: auction,
+    data: auctions,
     isLoading: auctionIsLoading,
     isError: auctionIsError,
   } = useQuery({
@@ -17,5 +17,5 @@ export const useAuctionQuery = () => {
     queryFn: fetchAuctions,
   });
 
-  return { auctionIsLoading, auctionIsError, auction };
+  return { auctionIsLoading, auctionIsError, auctions };
 };

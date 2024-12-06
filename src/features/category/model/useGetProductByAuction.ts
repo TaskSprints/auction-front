@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { IProduct } from "@/shared/types/product.types";
 import { httpClient } from "@/shared/api/httpClient";
 
-export const useProductByAuctionQuery = (auctionId: string) => {
+export const useGetProductByAuction = (auctionId: Number) => {
   const {
     data: product, // 성공적으로 가져온 데이터
     isLoading: productIsLoading, // 로딩 상태

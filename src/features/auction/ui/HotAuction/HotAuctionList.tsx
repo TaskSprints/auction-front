@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { TimerStore } from "@/entities/timer/model/timerStore";
-import { useProductByAuctionQuery } from "@/features/category/model/useProductByAuctionQuery";
+import { useGetAllAuction, useGetAllProduct } from "features/category/model";
 import { HotAuctionCard } from "./HotAuctionCard";
 import { HotAuctionArrow } from "./HotAuctionArrow";
-import { useAuctionQuery } from "../../../category/model/useAuctionQuery";
 
 export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, product } = useProductByAuctionQuery("1");
-  const { auctionIsLoading, auction } = useAuctionQuery();
+  const { auctionIsLoading, auction } = useGetAllAuction();
+  const { productsIsLoading, products } = useGetAllProduct();
 
   const { startTimer, stopTimer } = TimerStore();
 
@@ -31,9 +30,6 @@ export const HotAuctionList: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getProductByAuctionId = (auctionId: number) => {
-    return product?.find((id) => auctionId === id.auctionId);
-  };
   const settings = {
     dots: false,
     infinite: false,
@@ -93,35 +89,35 @@ export const HotAuctionList: React.FC = () => {
       </div>
       <div className="card_section max-w-[85rem] h-auto m-auto border border-1 border-gray ">
         <div className=" w-auto h-auto" />
-        {!productIsLoading &&
-          !auctionIsLoading &&
-          (isMdSize ? (
-            <Slider {...settings} className="flex justify-center h-auto ">
-              {auction?.map((data) => {
-                const product = getProductByAuctionId(data.id);
-                return product ? (
+        {!auctionIsLoading && !productsIsLoading && isMdSize ? (
+          <Slider {...settings} className="flex justify-center h-auto ">
+            {products.map(
+              (product, index) =>
+                auction &&
+                auction[index] && (
                   <HotAuctionCard
-                    key={data.id}
-                    auction={data}
+                    key={auction[index].id}
+                    auction={auction[index]}
                     product={product}
                   />
-                ) : null;
-              })}
-            </Slider>
-          ) : (
-            <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-              {auction?.map((data) => {
-                const product = getProductByAuctionId(data.id);
-                return product ? (
+                ),
+            )}
+          </Slider>
+        ) : (
+          <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
+            {products.map(
+              (product, index) =>
+                auction &&
+                auction[index] && (
                   <HotAuctionCard
-                    key={data.id}
-                    auction={data}
+                    key={auction[index].id}
+                    auction={auction[index]}
                     product={product}
                   />
-                ) : null;
-              })}
-            </div>
-          ))}
+                ),
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

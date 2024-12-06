@@ -20,6 +20,10 @@ export const EmailLoginForm: React.FC = () => {
     setRememberMe(!rememberMe);
   };
 
+  const handleRegisterClick = () => {
+    window.location.href = "/register";
+  };
+
   return (
     <motion.div
       className="bg-white p-8 w-full max-w-lg"
@@ -29,15 +33,12 @@ export const EmailLoginForm: React.FC = () => {
     >
       <div>
         <div className="mb-4 relative">
-          <label
-            className="block text-gray-700 font-medium mb-2"
-            htmlFor="username"
-          />
+          <span className="block text-gray-700 font-medium mb-2" />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaEnvelope />
           </span>
           <input
-            id="username"
+            id="email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -45,20 +46,19 @@ export const EmailLoginForm: React.FC = () => {
             placeholder="아이디(이메일)"
           />
           {email && (
-            <span
+            <button
+              type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
               onClick={clearEmail}
+              aria-label="Clear email"
             >
               <FaTimes />
-            </span>
+            </button>
           )}
         </div>
 
         <div className="mb-6 relative">
-          <label
-            className="block text-gray-700 font-medium mb-2"
-            htmlFor="password"
-          />
+          <span className="block text-gray-700 font-medium mb-2" />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaLock />
           </span>
@@ -70,12 +70,13 @@ export const EmailLoginForm: React.FC = () => {
             className="w-full pl-10 pr-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="비밀번호"
           />
-          <span
+          <button
+            type="button"
             className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
             onClick={togglePasswordVisibility}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
+          </button>
         </div>
 
         <div className="flex justify-between text-sm text-gray-500">
@@ -91,7 +92,7 @@ export const EmailLoginForm: React.FC = () => {
             </label>
           </div>
 
-          <a href="#" className="text-red-600 hover:text-red-600">
+          <a href="/findUser" className="text-red-600 hover:text-red-600">
             아이디ㆍ비밀번호 찾기 {">"}
           </a>
         </div>
@@ -108,11 +109,10 @@ export const EmailLoginForm: React.FC = () => {
         <div className="border-t border-gray-300 my-4" />
 
         <motion.button
-          type="button"
+          onClick={() => handleRegisterClick()}
           className="w-full bg-white text-red-600 border border-red-600 py-2 rounded-md hover:bg-red-600 hover:text-white transition"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => (window.location.href = "/register")}
         >
           회원가입
         </motion.button>

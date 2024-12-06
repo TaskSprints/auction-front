@@ -6,7 +6,6 @@ import { formatKRW } from "shared/lib/format";
 interface CategoryAuctionCardProps {
   auction: IAuction;
   product: IProduct;
-  key: number;
 }
 
 export const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
@@ -19,7 +18,7 @@ export const CategoryAuctionCard: React.FC<CategoryAuctionCardProps> = ({
     minutes: 0,
     seconds: 0,
   });
-  const { getLeftTime, currentTime, startTimer, stopTimer } = TimerStore();
+  const { getLeftTime, currentTime } = TimerStore();
 
   useEffect(() => {
     setLeftTime(getLeftTime(auction.endTime));

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-interface TermsAgreementFormProps {
-  // termRequiredCheck: boolean;
-  setTermRequiredCheck: (value: boolean) => void;
-}
+import { TermsCheckboxGroupProps } from "../model/terms.types";
 
 interface CheckboxProps {
   id: string;
@@ -34,9 +30,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
   </div>
 );
 
-export const TermsAgreementForm: React.FC<TermsAgreementFormProps> = ({
-  // termRequiredCheck,
-  setTermRequiredCheck,
+export const TermsAgreementForm: React.FC<TermsCheckboxGroupProps> = ({
+  setIsRequiredTermsAgreed,
 }) => {
   const [allCheck, setAllCheck] = useState(false);
   const [ageCheck, setAgeCheck] = useState(false);
@@ -49,8 +44,7 @@ export const TermsAgreementForm: React.FC<TermsAgreementFormProps> = ({
     setAgeCheck(newState);
     setUseCheck(newState);
     setMarketingCheck(newState);
-    setTermRequiredCheck(!newState);
-    // console.log(termRequiredCheck);
+    setIsRequiredTermsAgreed(!newState);
   };
 
   useEffect(() => {
