@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { menus } from "./constants";
+import { MENU_CATEGORIES } from "shared/config/menu.constants";
 
 interface MobileMenuToggleComponentProps {
   isOpen: boolean;
@@ -35,7 +35,7 @@ export const MobileMenuToggleComponent: React.FC<
         <FaTimes className="mr-2 text-xl" />
       </button>
       <ul className="mt-2 space-y-2 p-4">
-        {menus.map(
+        {MENU_CATEGORIES.map(
           (menu) =>
             menu.subMenu.length > 0 && (
               <li key={menu.title} className="relative">

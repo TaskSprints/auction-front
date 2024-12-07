@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { menus } from "./constants";
+import { MENU_CATEGORIES } from "shared/config/menu.constants";
 
 export const MenuToggleComponent: React.FC = () => {
   return (
     <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 bg-white shadow-lg rounded-lg z-10 w-full max-w-4xl transition-opacity duration-300">
       <ul className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 p-4 md:p-8 justify-items-center">
-        {menus.map(
+        {MENU_CATEGORIES.map(
           (menu) =>
             menu.subMenu.length > 0 && ( // 서브메뉴가 있는 경우만 렌더링
               <li key={menu.title} className="relative text-center">

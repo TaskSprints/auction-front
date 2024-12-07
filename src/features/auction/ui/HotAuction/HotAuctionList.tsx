@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { TimerStore } from "@/shared/store/timer-store";
+import { TimerStore } from "@/entities/timer/model/timerStore";
+import { useGetAllAuction, useGetAllProduct } from "features/category/model";
 import { HotAuctionCard } from "./HotAuctionCard";
-import { CustomArrow } from "./CustomArrow";
-import { useProductQuery } from "../../hooks/useProductQuery";
-import { useAuctionQuery } from "../../hooks/useAuctionQuery";
+import { HotAuctionArrow } from "./HotAuctionArrow";
 
 export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { productIsLoading, products } = useProductQuery();
-  const { auctionIsLoading, auction } = useAuctionQuery();
+  const { auctionIsLoading, auction } = useGetAllAuction();
+  const { productsIsLoading, products } = useGetAllProduct();
 
   const { startTimer, stopTimer } = TimerStore();
 
@@ -31,17 +30,14 @@ export const HotAuctionList: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getProductByAuctionId = (auctionId: number) => {
-    return products?.find((id) => auctionId === id.auctionId);
-  };
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 3,
-    prevArrow: <CustomArrow direction="left" onClick={() => {}} />,
-    nextArrow: <CustomArrow direction="right" onClick={() => {}} />,
+    prevArrow: <HotAuctionArrow direction="left" onClick={() => {}} />,
+    nextArrow: <HotAuctionArrow direction="right" onClick={() => {}} />,
     responsive: [
       {
         breakpoint: 1024,
@@ -92,37 +88,36 @@ export const HotAuctionList: React.FC = () => {
         </h1>
       </div>
       <div className="card_section max-w-[85rem] h-auto m-auto border border-1 border-gray ">
-        <div className=" w-auto h-auto">
-          {!productIsLoading && !auctionIsLoading ? (
-            isMdSize ? (
-              <Slider {...settings} className="flex justify-center h-auto ">
-                {auction?.map((data) => {
-                  const product = getProductByAuctionId(data.id);
-                  return product ? (
-                    <HotAuctionCard
-                      key={data.id}
-                      auction={data}
-                      product={product}
-                    />
-                  ) : null;
-                })}
-              </Slider>
-            ) : (
-              <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
-                {auction?.map((data) => {
-                  const product = getProductByAuctionId(data.id);
-                  return product ? (
-                    <HotAuctionCard
-                      key={data.id}
-                      auction={data}
-                      product={product}
-                    />
-                  ) : null;
-                })}
-              </div>
-            )
-          ) : null}
-        </div>
+        <div className=" w-auto h-auto" />
+        {!auctionIsLoading && !productsIsLoading && isMdSize ? (
+          <Slider {...settings} className="flex justify-center h-auto ">
+            {products.map(
+              (product, index) =>
+                auction &&
+                auction[index] && (
+                  <HotAuctionCard
+                    key={auction[index].id}
+                    auction={auction[index]}
+                    product={product}
+                  />
+                ),
+            )}
+          </Slider>
+        ) : (
+          <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
+            {products.map(
+              (product, index) =>
+                auction &&
+                auction[index] && (
+                  <HotAuctionCard
+                    key={auction[index].id}
+                    auction={auction[index]}
+                    product={product}
+                  />
+                ),
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
