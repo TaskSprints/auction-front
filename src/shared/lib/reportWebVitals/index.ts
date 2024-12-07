@@ -1,0 +1,1 @@
+export { reportWebVitals } from "./reportWebVitals";

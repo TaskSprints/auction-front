@@ -1,4 +1,3 @@
-// "use client";
 import React from "react";
 import { ConfigProvider, Layout as AntLayout } from "antd";
 import { Header } from "@/widgets/Header/index";

@@ -1,11 +1,11 @@
 import React from "react";
-import { CategoryList } from "@/features/category/CategoryList";
+import { CategoryList } from "@/features/category/ui/CategoryList";
 import { Layout } from "@/widgets/Layout";
 import { MenuComponent } from "@/widgets/MenuComponent";
 import { CustomBreadcrumb } from "@/widgets/Breadcrumb/CustomBreadcrumb";
-import { CategoryContainer } from "@/features/category/CategoryContainer";
+import { CategoryContainer } from "@/features/category/ui/CategoryContainer";
 import { HotAuctionList } from "@/features/auction/ui/HotAuction/HotAuctionList";
-import { CategoryAuction } from "@/features/auction/ui/CategoryAuction/CategoryAuction";
+import { CategoryAuction } from "@/features/category/ui/CategoryAuction";
 import { DetailSearch } from "../widgets/DetailSearch/DetailSearch";
 
 export const CategoryPage: React.FC = () => {

@@ -11,6 +11,8 @@
       "shared/*": ["src/shared/*"]
     },
     "target": "es5",
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,

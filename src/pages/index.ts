@@ -1,14 +1,14 @@
+import { AuctionRegistrationPage } from "./AuctionRegistrationPage";
 import { BiddingPage } from "./BiddingPage";
 import { CategoryPage } from "./CategoryPage";
-import { DetailsPage } from "./DetailsPage";
 import { LoginPage } from "./LoginPage";
 import { MainPage } from "./MainPage";
 import { RegisterPage } from "./RegisterPage";
 
 export {
+  AuctionRegistrationPage,
   BiddingPage,
   CategoryPage,
-  DetailsPage,
   LoginPage,
   MainPage,
   RegisterPage,

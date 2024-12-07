@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
-import { menus } from "./constants";
+import { MENU_CATEGORIES } from "shared/config/menu.constants";
 import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
 import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
 
@@ -63,7 +63,6 @@ export const MenuComponent: React.FC = () => {
             </button>
 
             {/* 데스크탑 메뉴 버튼 */}
-            {/* TODO */}
             {!isMobile && (
               <Menu
                 onClick={handleClick}
@@ -71,7 +70,7 @@ export const MenuComponent: React.FC = () => {
                 mode="horizontal"
                 className="hidden md:flex space-x-4 ml-4 bg-[#2E7D32]"
               >
-                {menus.map((menu) => (
+                {MENU_CATEGORIES.map((menu) => (
                   <SubMenu
                     key={menu.title}
                     title={menu.title}

@@ -1,6 +1,6 @@
 import React from "react";
-import { RegisterForm } from "../features/register/RegisterForm";
-import { SimpleHeader } from "../widgets/Header/SimpleHeader";
+import { SimpleHeader } from "widgets/Header/SimpleHeader";
+import { RegisterForm } from "features/register/ui/RegisterForm";
 
 export const RegisterPage: React.FC = () => {
   return (

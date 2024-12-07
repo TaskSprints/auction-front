@@ -1,6 +1,6 @@
 import React from "react";
-import { LoginMethodMenu } from "../features/login/LoginMethodMenu";
-import { SimpleHeader } from "../widgets/Header/SimpleHeader";
+import { SimpleHeader } from "widgets/Header/SimpleHeader";
+import { LoginMethodMenu } from "features/login/ui/LoginMethodMenu";
 
 export const LoginPage: React.FC = () => {
   return (
