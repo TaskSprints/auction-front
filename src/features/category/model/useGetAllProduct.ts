@@ -4,13 +4,9 @@ import { httpClient } from "shared/api/httpClient";
 import { useGetAllAuction } from "features/category/model";
 
 const fetchProductById = async (id: number): Promise<IProduct> => {
-<<<<<<< HEAD
   const { data } = await httpClient.get<IProduct>(
     `/api/v1/product?auctionId=${id}`,
   );
-=======
-  const { data } = await httpClient.get<IProduct>(`/products/${id}`);
->>>>>>> fd1367a3363c5f5e06e86893f28dc289cf53337b
   return data;
 };
 
