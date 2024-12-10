@@ -7,7 +7,7 @@ import { HotAuctionArrow } from "./HotAuctionArrow";
 
 export const HotAuctionList: React.FC = () => {
   const [isMdSize, setisMdSize] = useState(false);
-  const { auctionIsLoading, auction } = useGetAllAuction();
+  const { auctionIsLoading, auctions } = useGetAllAuction();
   const { productsIsLoading, products } = useGetAllProduct();
 
   const { startTimer, stopTimer } = TimerStore();
@@ -93,11 +93,11 @@ export const HotAuctionList: React.FC = () => {
           <Slider {...settings} className="flex justify-center h-auto ">
             {products.map(
               (product, index) =>
-                auction &&
-                auction[index] && (
+                auctions &&
+                auctions[index] && (
                   <HotAuctionCard
-                    key={auction[index].id}
-                    auction={auction[index]}
+                    key={auctions[index].id}
+                    auction={auctions[index]}
                     product={product}
                   />
                 ),
@@ -107,11 +107,11 @@ export const HotAuctionList: React.FC = () => {
           <div className="flex mx-[0.25rem] overflow-x-auto whitespace-nowrap">
             {products.map(
               (product, index) =>
-                auction &&
-                auction[index] && (
+                auctions &&
+                auctions[index] && (
                   <HotAuctionCard
-                    key={auction[index].id}
-                    auction={auction[index]}
+                    key={auctions[index].id}
+                    auction={auctions[index]}
                     product={product}
                   />
                 ),

@@ -1,12 +1,42 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhone, FaTimes } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { useAuth } from "@/features/login/model";
+
+interface PhoneLoginFormData {
+  phoneNumber: string;
+  verificationCode?: string;
+}
 
 export const PhoneLoginForm: React.FC = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const { sendVerification, verifyPhone } = useAuth();
+  const [showVerification, setShowVerification] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<PhoneLoginFormData>({
+    defaultValues: {
+      phoneNumber: "",
+    },
+  });
+
+  const phoneNumber = watch("phoneNumber");
+
+  const onSubmit = (data: PhoneLoginFormData) => {
+    if (!showVerification) {
+      sendVerification({ phoneNumber: data.phoneNumber });
+      setShowVerification(true);
+    } else {
+      verifyPhone(data);
+    }
+  };
 
   const clearPhoneNumber = () => {
-    setPhoneNumber("");
+    setValue("phoneNumber", "");
   };
 
   const handleRegisterClick = () => {
@@ -20,17 +50,19 @@ export const PhoneLoginForm: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4 relative">
-          <span className="block text-gray-700 font-medium mb-2" />
           <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
             <FaPhone />
           </span>
           <input
-            id="phone"
-            type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            {...register("phoneNumber", {
+              required: "휴대폰 번호를 입력해주세요",
+              pattern: {
+                value: /^01[0-9]-?[0-9]{4}-?[0-9]{4}$/,
+                message: "올바른 휴대폰 번호 형식이 아닙니다",
+              },
+            })}
             className="w-full pl-10 pr-10 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="휴대폰 번호"
           />
@@ -43,7 +75,24 @@ export const PhoneLoginForm: React.FC = () => {
               <FaTimes />
             </button>
           )}
+          {errors.phoneNumber && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.phoneNumber.message}
+            </p>
+          )}
         </div>
+
+        {showVerification && (
+          <div className="mb-4 relative">
+            <input
+              {...register("verificationCode", {
+                required: "인증번호를 입력해주세요",
+              })}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+              placeholder="인증번호 입력"
+            />
+          </div>
+        )}
 
         <motion.button
           type="submit"
@@ -51,7 +100,7 @@ export const PhoneLoginForm: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          인증번호 발송
+          {showVerification ? "인증하기" : "인증번호 발송"}
         </motion.button>
 
         <div className="border-t border-gray-300 my-4" />
@@ -65,7 +114,7 @@ export const PhoneLoginForm: React.FC = () => {
         >
           회원가입
         </motion.button>
-      </div>
+      </form>
     </motion.div>
   );
 };

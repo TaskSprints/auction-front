@@ -55,8 +55,14 @@ export const TermsAgreementForm: React.FC<TermsCheckboxGroupProps> = ({
     }
   }, [ageCheck, useCheck, marketingCheck]);
 
+  useEffect(() => {
+    // 필수 약관만 체크 (마케팅 제외)
+    const requiredTermsAgreed = ageCheck && useCheck;
+    setIsRequiredTermsAgreed(requiredTermsAgreed);
+  }, [ageCheck, useCheck, setIsRequiredTermsAgreed]);
+
   return (
-    <form className="max-w-lg mx-auto pt-6">
+    <div className="max-w-lg mx-auto pt-6">
       <Checkbox
         id="all-check"
         label="모두 확인하였으며 동의합니다."
@@ -93,6 +99,6 @@ export const TermsAgreementForm: React.FC<TermsCheckboxGroupProps> = ({
           labelClass="text-sm" // 필수 약관 텍스트 크기 조정
         />
       </div>
-    </form>
+    </div>
   );
 };
