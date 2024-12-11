@@ -33,6 +33,10 @@ export interface IProduct {
   productImageList: string[];
 }
 
+export interface IProductResponse {
+  data: IProduct;
+}
+
 export interface IAuction {
   id: number;
   startTime: string;

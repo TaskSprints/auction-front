@@ -1,10 +1,10 @@
 import { useQueries } from "@tanstack/react-query";
-import { IProduct } from "shared/types/product.types";
+import { IProductResponse } from "shared/types/product.types";
 import { httpClient } from "shared/api/httpClient";
 import { useGetAllAuction } from "features/category/model";
 
-const fetchProductById = async (id: number): Promise<IProduct> => {
-  const { data } = await httpClient.get<IProduct>(
+const fetchProductById = async (id: number): Promise<IProductResponse> => {
+  const { data } = await httpClient.get<IProductResponse>(
     `/api/v1/product?auctionId=${id}`,
   );
   return data;
@@ -28,7 +28,6 @@ export const useGetAllProduct = () => {
   const productsIsError = auctionProductsQueries.some((query) => query.isError);
   const products = auctionProductsQueries
     .map((query) => query.data)
-    .filter((product): product is IProduct => product !== undefined);
-
+    .filter((product): product is IProductResponse => product !== undefined);
   return { productsIsLoading, productsIsError, products };
 };

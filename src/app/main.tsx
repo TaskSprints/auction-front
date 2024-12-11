@@ -9,7 +9,7 @@ import {
   BiddingPage,
   AuctionRegistrationPage,
 } from "@/pages";
-import { reportWebVitals } from "shared/lib/reportWebVitals";
+import { reportWebVitals } from "@/shared/lib/util/reportWebVitals";
 import { App } from "app/App";
 
 const router = createBrowserRouter([

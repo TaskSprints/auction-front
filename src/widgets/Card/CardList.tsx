@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { v4 as uuidv4 } from "uuid";
 import { Card } from "./Card"; // Card 컴포넌트 경로 확인
 import { CustomArrow } from "./CustomArrow"; // 사용자 정의 화살표 컴포넌트
 // Props 로 Card 에 대한 list 정보 받아서
@@ -47,8 +48,8 @@ export const CardList: React.FC = () => {
         className="bg-gray-100 container w-full flex justify-center pt-8 mx-auto"
       >
         {/* 카드를 반복 생성 */}
-        {[...Array(8)].map((_) => (
-          <div className="p-1" key={_}>
+        {[...Array(8)].map(() => (
+          <div className="p-1" key={uuidv4()}>
             <Card />
           </div>
         ))}

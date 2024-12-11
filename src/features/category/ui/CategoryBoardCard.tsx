@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IProduct, IAuction } from "@/shared/types/product.types";
 import { TimerStore } from "@/entities/timer/model/timerStore";
-import { formatKRW } from "@/shared/lib/format";
+import { formatKRW } from "@/shared/lib/util/format";
 
 interface PropsData {
   auction: IAuction;
@@ -27,7 +27,7 @@ export const CategoryBoardCard: React.FC<PropsData> = ({
     setLeftTime(getLeftTime(auction.endTime));
   }, [currentTime]);
   return isMdSize ? (
-    <div className="w-[55rem] h-[8rem] rounded-lg shadow-inner mt-1 flex">
+    <div className="w-full h-[8rem] rounded-lg shadow-inner mt-1 flex">
       <div className="img_section w-[9rem] h-[7.5rem] ">
         <img
           src={product.productImageList[0]}

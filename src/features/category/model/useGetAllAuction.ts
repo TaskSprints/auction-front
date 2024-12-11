@@ -16,6 +16,5 @@ export const useGetAllAuction = () => {
     queryKey: ["auctions"],
     queryFn: fetchAuctions,
   });
-
   return { auctionIsLoading, auctionIsError, auctions };
 };

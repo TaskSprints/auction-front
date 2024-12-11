@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
+import type { MenuProps } from "antd";
 import { MENU_CATEGORIES } from "shared/config/menu.constants";
 import { MenuToggleComponent } from "./MenuToggleComponent"; // 데스크탑 메뉴
 import { MobileMenuToggleComponent } from "./MobileMenuToggleComponent"; // 모바일 메뉴
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 interface MenuClickEvent {
   key: string;
@@ -37,21 +38,20 @@ export const MenuComponent: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // const handleMouseEnter = (menu: string) => {
-  //   if (!isHoverDisabled) {
-  //     setActiveMenu(menu);
-  //   }
-  // };
-
-  // const handleMouseLeave = () => {
-  //   if (!isHoverDisabled) {
-  //     setActiveMenu(null);
-  //   }
-  // };
+  // Convert menu categories to Antd menu items format
+  const menuItems: MenuProps["items"] = MENU_CATEGORIES.map((menu) => ({
+    key: menu.title,
+    label: menu.title,
+    children: menu.subMenu.map((subitem) => ({
+      key: subitem,
+      label: <a href="/category">{subitem}</a>,
+    })),
+    className: isHoverDisabled ? "pointer-events-none" : "",
+  }));
 
   return (
     <>
-      <div className="bg-[#2E7D32]">
+      <div className="bg-[#2E7D32] relative">
         <div className="container mx-auto px-6">
           <div className="flex items-center">
             <button
@@ -69,24 +69,14 @@ export const MenuComponent: React.FC = () => {
                 selectedKeys={[current]}
                 mode="horizontal"
                 className="hidden md:flex space-x-4 ml-4 bg-[#2E7D32]"
-              >
-                {MENU_CATEGORIES.map((menu) => (
-                  <SubMenu
-                    key={menu.title}
-                    title={menu.title}
-                    className={isHoverDisabled ? "pointer-events-none" : ""}
-                  >
-                    {menu.subMenu.map((subitem) => (
-                      <Menu.Item key={subitem}>
-                        <a href="/category">{subitem}</a>
-                      </Menu.Item>
-                    ))}
-                  </SubMenu>
-                ))}
-              </Menu>
+                items={menuItems}
+              />
             )}
           </div>
         </div>
+
+        {/* 데스크탑 메뉴 토글: 모바일이 아닐 때 */}
+        {!isMobile && isOpen && <MenuToggleComponent />}
       </div>
 
       {/* Black Info Bar */}
@@ -115,9 +105,6 @@ export const MenuComponent: React.FC = () => {
       {isMobile && isOpen && (
         <MobileMenuToggleComponent isOpen={isOpen} toggleMenu={toggleMenu} />
       )}
-
-      {/* 데스크탑 메뉴 토글: 모바일이 아닐 때 */}
-      {!isMobile && isOpen && <MenuToggleComponent />}
     </>
   );
 };

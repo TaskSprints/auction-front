@@ -7,12 +7,12 @@ export function BrandGrid() {
   return (
     <div className="border rounded-lg overflow-hidden">
       {brands.map((row) => (
-        <div key={`row-${row}`} className="flex divide-x">
+        <div key={`row-${row}`} className="flex divide-x border-b">
           {row.map((brand) => (
             <button
               type="button"
               key={`${row}-${brand}`}
-              className="flex-1 p-4 text-center hover:bg-gray-50 transition-colors text-sm"
+              className="flex-1 p-4 text-center hover:bg-gray-50 transition-colors text-lg"
             >
               {brand}
             </button>

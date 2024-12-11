@@ -3,6 +3,7 @@ export type {
   ICategoryPageBoard,
   IMainCategoryProducts,
   IProduct,
+  IProductResponse,
   IAuction,
 } from "./product.types";
 export type { IMenuCategory } from "./menu.types";

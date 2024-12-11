@@ -10,7 +10,7 @@ import { TimerStore } from "@/entities/timer/model/timerStore";
 import {
   IMainCategoryImage,
   IAuction,
-  IProduct,
+  IProductResponse,
 } from "@/shared/types/product.types";
 import { useGetAllAuction, useGetAllProduct } from "features/category/model";
 import { CategoryAuctionCard } from "./CategoryAuctionCard";
@@ -75,7 +75,8 @@ export const CategoryAuction: React.FC = () => {
   const getProduct = (auctionId: number) => {
     return (
       products?.find(
-        (productItem: IProduct) => auctionId === productItem.auctionId,
+        (productItem: IProductResponse) =>
+          auctionId === productItem.data.auctionId,
       ) || null
     );
   };
@@ -117,7 +118,7 @@ export const CategoryAuction: React.FC = () => {
                     return (
                       <CategoryAuctionCard
                         auction={item}
-                        product={product}
+                        product={product.data}
                         key={item.id}
                       />
                     );
@@ -142,7 +143,7 @@ export const CategoryAuction: React.FC = () => {
                 return (
                   <CategoryAuctionCard
                     auction={item}
-                    product={product}
+                    product={product.data}
                     key={item.id}
                   />
                 );
