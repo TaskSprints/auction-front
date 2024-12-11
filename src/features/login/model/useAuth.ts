@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import type {
   LoginRequest,
   PhoneAuthRequest,
@@ -10,6 +10,8 @@ import { authApi } from "../api/authApi";
 
 export const useAuth = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const loginMutation = useMutation({
     mutationFn: async (data: LoginRequest) => {
@@ -29,9 +31,13 @@ export const useAuth = () => {
       return { data: { accessToken: "dummy-token", user } };
     },
     onSuccess: (response: { data: { accessToken: string; user: any } }) => {
-      toast.success("✅ 로그인되었습니다!");
       localStorage.setItem("accessToken", response.data.accessToken);
-      navigate("/");
+      toast.success("✅ 로그인되었습니다!", {
+        duration: 1000,
+      });
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1000);
     },
     onError: (error: Error) => {
       toast.error(error.message);

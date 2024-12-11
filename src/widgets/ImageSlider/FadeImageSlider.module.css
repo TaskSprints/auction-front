@@ -1,0 +1,68 @@
+.fadeSliderInit {
+  width: 100%;
+}
+
+.fadeSliderTrack {
+  height: 350px;
+  overflow: visible !important;
+}
+
+.fadeSliderSlide {
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 500ms linear;
+  overflow: visible !important;
+}
+
+.fadeSliderSlide.active {
+  opacity: 1;
+  overflow: visible !important;
+  z-index: 3;
+}
+
+.fadeSliderContainer {
+  height: 100%;
+  margin-top: 10px;
+  overflow: visible !important;
+}
+
+.fadeSliderList {
+  overflow: visible !important;
+}
+
+.fadeSliderSlideDiv {
+  z-index: 2 !important;
+  overflow: visible !important;
+  width: 100%;
+}
+
+.fadeSliderDots {
+  position: absolute !important;
+  top: 0 !important;
+  width: 100%;
+}
+
+.fadeSliderDotsList {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.fadeSliderDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: gray;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0;
+  display: block;
+}
+
+.fadeSliderDotActive {
+  background: black;
+}

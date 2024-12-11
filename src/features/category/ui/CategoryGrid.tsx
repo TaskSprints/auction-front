@@ -7,12 +7,12 @@ export function CategoryGrid() {
   return (
     <div className="border rounded-lg overflow-hidden">
       {categories.map((row) => (
-        <div key={`row-${row}`} className="flex divide-x">
+        <div key={`row-${row}`} className="flex divide-x border-b">
           {row.map((category) => (
             <button
               type="button"
               key={`${row}-${category}`}
-              className="flex-1 p-4 text-center hover:bg-gray-50 transition-colors text-sm"
+              className="flex-1 p-4 text-center hover:bg-gray-50 transition-colors text-lg"
             >
               {category}
             </button>

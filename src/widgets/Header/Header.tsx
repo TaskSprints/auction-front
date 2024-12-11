@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout as AntLayout, Input, Button, Avatar, Dropdown } from "antd";
 import {
@@ -21,16 +21,16 @@ const categoryFilters = [
 const { Header: AntHeader } = AntLayout;
 
 export const Header: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("accessToken");
 
   const handleLogin = () => {
-    // setIsLoggedIn(true);
     navigate("/login");
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    localStorage.removeItem("accessToken");
+    window.location.reload();
   };
 
   const userMenu = [
