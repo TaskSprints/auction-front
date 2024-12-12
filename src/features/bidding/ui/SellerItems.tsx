@@ -1,30 +1,31 @@
+import React from "react";
 import { Card } from "antd";
 
 const items = [
   {
     id: 1,
     title: "겨울기모팬츠 26-36",
-    image: "/placeholder.svg?height=200&width=200",
+    image: "/SampleBidding/sample1.png",
     originalPrice: 340000,
     currentPrice: 50000,
   },
   {
     id: 2,
     title: "폰케이스/핸드폰케이스",
-    image: "/placeholder.svg?height=200&width=200",
+    image: "/SampleBidding/sample2.png",
     originalPrice: 123500,
     currentPrice: 113000,
   },
   {
     id: 3,
     title: "만지장소 광명 대박",
-    image: "/placeholder.svg?height=200&width=200",
+    image: "/SampleBidding/sample3.png",
     originalPrice: 142500,
     currentPrice: 140000,
   },
 ];
 
-export function SellerItems() {
+export const SellerItems: React.FC = () => {
   return (
     <div className="mb-8">
       <h2 className="text-lg font-bold mb-4">판매자의 다른 상품</h2>
@@ -37,7 +38,7 @@ export function SellerItems() {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             }
@@ -48,7 +49,7 @@ export function SellerItems() {
               <div className="text-gray-500 line-through text-sm">
                 ₩{item.originalPrice.toLocaleString()}
               </div>
-              <div className="text-red-600 font-bold">
+              <div className="text-red-600 font-bold text-lg">
                 ₩{item.currentPrice.toLocaleString()}
               </div>
             </div>
@@ -57,4 +58,4 @@ export function SellerItems() {
       </div>
     </div>
   );
-}
+};

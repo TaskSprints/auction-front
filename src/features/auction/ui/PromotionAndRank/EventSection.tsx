@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "antd";
 
 const leatherJacket = {
@@ -23,13 +24,15 @@ export const EventSection = () => {
             {leatherJacket.discount}
             <div className="text-2xl mt-1 text-center">SALE</div>
           </div>
-          <Button
-            href="/category"
-            className="bg-white text-black hover:bg-gray-100 border-none"
-            size="large"
-          >
-            VIEW
-          </Button>
+
+          <Link to="/category" state="남성의류">
+            <Button
+              className="bg-white text-black hover:bg-gray-100 border-none"
+              size="large"
+            >
+              VIEW
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

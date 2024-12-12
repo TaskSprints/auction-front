@@ -4,20 +4,20 @@ import { useCountdown } from "shared/lib/hooks";
 import { rankingList } from "entities/auction/model";
 
 export const RankingItem = ({
-  item,
+  product,
   rank,
 }: {
-  item: (typeof rankingList)[0];
+  product: (typeof rankingList)[0];
   rank: number;
 }) => {
-  const timeLeft = useCountdown(item.timeLeft);
+  const timeLeft = useCountdown(product.timeLeft);
 
   return (
     <div className={`relative ${rank !== 1 && "flex gap-3"}`}>
-      <Link to="/bidding" className="block relative">
+      <Link to="/bidding" state={{ product }} className="block relative">
         <img
-          src={item.image}
-          alt={item.title}
+          src={product.image}
+          alt={product.title}
           className={`${rank === 1 ? "w-[400px] h-[380px]" : "w-[150px] h-[150px]"} object-cover rounded-lg`}
         />
 
@@ -46,17 +46,17 @@ export const RankingItem = ({
         className={`${rank === 1 ? "mt-3" : ""} ${rank === 1 ? "w-[350px]" : "flex-1"} min-w-0`}
       >
         <h3 className={`${rank === 1 ? "text-lg" : "text-sm"} font-bold`}>
-          {item.title}
+          {product.title}
         </h3>
         <div className="text-xs text-gray-500 mt-1">
           <span className="line-through">
-            {item.originalPrice.toLocaleString()}원
+            {product.originalPrice.toLocaleString()}원
           </span>
           {" → "}
           <span className="text-red-500 text-xl font-semibold">
-            {item.currentPrice.toLocaleString()}원
+            {product.currentPrice.toLocaleString()}원
           </span>
-          <span className="text-xl">({item.bidCount}명)</span>
+          <span className="text-xl">({product.bidCount}명)</span>
         </div>
         <div className="text-lg mt-1">
           {timeLeft.days > 0 && `${timeLeft.days}일 `}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, Badge } from "antd";
 import { FadeImageSlider } from "widgets/ImageSlider";
 import {
@@ -15,12 +16,13 @@ export const ClosingAndRanking = () => {
             title="마감임박"
             extra={
               <Badge color="green">
-                <a
-                  href="/category"
+                <Link
+                  to="/category"
+                  state="남성의류"
                   className="text-green-600 hover:text-green-800"
                 >
                   더보기
-                </a>
+                </Link>
               </Badge>
             }
             className="h-[630px]"
@@ -33,8 +35,15 @@ export const ClosingAndRanking = () => {
           >
             <div className="h-full">
               <FadeImageSlider>
-                {closingSoonList.map((item) => (
-                  <ClosingSoonItem key={item.id} item={item} />
+                {closingSoonList.map((product) => (
+                  <Link
+                    to="/bidding"
+                    key={product.id}
+                    className="pointer-events-auto"
+                    state={{ product }}
+                  >
+                    <ClosingSoonItem product={product} />
+                  </Link>
                 ))}
               </FadeImageSlider>
             </div>
@@ -45,12 +54,13 @@ export const ClosingAndRanking = () => {
             title="랭킹 옥션"
             extra={
               <Badge color="green">
-                <a
-                  href="/category"
+                <Link
+                  to="/category"
+                  state="화장품"
                   className="text-green-600 hover:text-green-800"
                 >
                   더보기
-                </a>
+                </Link>
               </Badge>
             }
             className="h-[630px]"
@@ -59,9 +69,9 @@ export const ClosingAndRanking = () => {
               {/* Rank 1 아이템 */}
               {rankingList
                 .filter((_, index) => index === 0)
-                .map((item) => (
-                  <div className="col-span-1" key={item.id}>
-                    <RankingItem item={item} rank={1} />
+                .map((product) => (
+                  <div className="col-span-1" key={product.id}>
+                    <RankingItem product={product} rank={1} />
                   </div>
                 ))}
 
@@ -70,7 +80,11 @@ export const ClosingAndRanking = () => {
                 {rankingList
                   .filter((_, index) => index > 0)
                   .map((item, index) => (
-                    <RankingItem key={item.id} item={item} rank={index + 2} />
+                    <RankingItem
+                      key={item.id}
+                      product={item}
+                      rank={index + 2}
+                    />
                   ))}
               </div>
             </div>

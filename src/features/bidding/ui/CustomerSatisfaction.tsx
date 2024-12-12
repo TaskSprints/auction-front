@@ -1,4 +1,6 @@
-export function CustomerSatisfaction() {
+import React from "react";
+
+export const CustomerSatisfaction: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-5 gap-4 text-center">
@@ -32,4 +34,4 @@ export function CustomerSatisfaction() {
       </div>
     </div>
   );
-}
+};

@@ -39,7 +39,7 @@ export const SearchRankSection = () => {
                 >
                   {index + 1}
                 </span>
-                <Link to="/category">
+                <Link to="/category" state="생활용품">
                   <span>{item.term}</span>
                 </Link>
               </div>

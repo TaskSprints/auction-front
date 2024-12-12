@@ -18,6 +18,7 @@ export const MenuToggleComponent: React.FC = () => {
                     <li key={subitem} className="mb-1 md:mb-2">
                       <Link
                         to="/category"
+                        state={subitem}
                         className="text-gray-800 block px-4 md:px-8 py-1 md:py-2 text-xs md:text-sm rounded transition duration-200 hover:bg-red-100 hover:shadow-md w-full"
                       >
                         {subitem}

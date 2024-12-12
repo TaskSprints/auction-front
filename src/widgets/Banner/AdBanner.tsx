@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const AdBanner = () => {
   return (
-    <Link to="/category">
+    <Link to="/category" state="인테리어">
       <div className="relative h-[120px] w-full bg-[#FDF8F3] overflow-hidden group">
         <div className="container mx-auto px-4 h-full relative z-10">
           <div className="flex flex-col justify-center h-full max-w-xl">
@@ -28,12 +28,14 @@ export const AdBanner = () => {
         </div>
 
         {/* Background Image */}
+
         <div className="absolute right-0 top-0 h-full w-1/2">
           <img
             src="/SampleBanner/sample3.png"
             alt="Modern Interior"
             className="object-cover"
           />
+
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#FDF8F3] via-[#FDF8F3]/80 to-transparent" />
         </div>

@@ -26,10 +26,12 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
+    // TODO: 백엔드 API 연동 후, Id를 통해 데이터를 가져오도록 수정해야 한다.
     path: "/category",
     element: <CategoryPage />,
   },
   {
+    // TODO: 백엔드 API 연동 후, Id를 통해 데이터를 가져오도록 수정해야 한다.
     path: "/bidding",
     element: <BiddingPage />,
   },

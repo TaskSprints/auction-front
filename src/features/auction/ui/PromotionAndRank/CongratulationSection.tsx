@@ -9,7 +9,7 @@ const congratulation = {
 export const CongratulationSection = () => {
   return (
     <div className="w-1/3 relative overflow-hidden">
-      <Link to="/category">
+      <Link to="/category" state="남성의류">
         <div className="relative h-full">
           <img
             src={congratulation.image}

@@ -1,9 +1,7 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, InputNumber, Progress } from "antd";
 
-export function BiddingInfo() {
+export const BiddingInfo: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 4,
     hours: 19,
@@ -42,7 +40,7 @@ export function BiddingInfo() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <span className="text-lg">현재가</span>
+        <span className="text-lg font-bold">현재가</span>
         <span className="text-2xl font-bold text-red-600">106,000 원</span>
       </div>
 
@@ -106,4 +104,4 @@ export function BiddingInfo() {
       </div>
     </div>
   );
-}
+};

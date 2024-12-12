@@ -47,7 +47,9 @@ export const FadeImageSlider = ({ children }: ImageSliderProps) => {
 
   return (
     <div className={`relative ${styles.fadeSliderContainer}`}>
-      <Slider {...settings}>{children}</Slider>
+      <Slider {...settings} className="pointer-events-none">
+        {children}
+      </Slider>
     </div>
   );
 };
