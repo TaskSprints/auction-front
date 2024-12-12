@@ -10,7 +10,7 @@ export const MenuToggleComponent: React.FC = () => {
           (menu) =>
             menu.subMenu.length > 0 && ( // 서브메뉴가 있는 경우만 렌더링
               <li key={menu.title} className="relative text-center">
-                <div className="text-red-600 font-bold text-xs md:text-sm mb-1 md:mb-2 border-b-2 border-red-600 pb-1 transition duration-300 hover:scale-105">
+                <div className="text-red-600 font-bold text-xs md:text-sm mb-1 md:mb-2 border-b-2 border-red-600 pb-1 transition duration-300 hover:scale-105 custom-heading">
                   {menu.title}
                 </div>
                 <ul className="pl-0">
@@ -19,7 +19,7 @@ export const MenuToggleComponent: React.FC = () => {
                       <Link
                         to="/category"
                         state={subitem}
-                        className="text-gray-800 block px-4 md:px-8 py-1 md:py-2 text-xs md:text-sm rounded transition duration-200 hover:bg-red-100 hover:shadow-md w-full"
+                        className="text-gray-800 block px-4 md:px-8 py-1 md:py-2 text-xs md:text-sm rounded transition duration-200 hover:text-green-500 w-full custom-heading"
                       >
                         {subitem}
                       </Link>

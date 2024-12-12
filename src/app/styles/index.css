@@ -15,10 +15,26 @@
 }
 
 @font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Roboto";
   src: url("https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxK.woff2")
     format("woff2");
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -43,6 +59,10 @@
 
 /* 필요한 경우 추가 커스텀 스타일 */
 @layer components {
+  .custom-logo {
+    @apply font-logo;
+  }
+
   .custom-heading {
     @apply font-heading;
   }

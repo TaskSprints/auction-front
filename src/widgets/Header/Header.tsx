@@ -21,7 +21,7 @@ const categoryFilters = [
   {
     key: "furniture",
     label: (
-      <Link to="/category" state="시리즈">
+      <Link to="/category" state="가구">
         가구
       </Link>
     ),
@@ -108,7 +108,9 @@ export const Header: React.FC = () => {
               className="object-contain"
             />
           </div>
-          <span className="text-2xl font-bold text-green-600">SMART DEAL</span>
+          <span className="text-2xl font-bold font-logo text-green-600">
+            SMART DEAL
+          </span>
         </Link>
         <div className="flex-1 max-w-2xl">
           {/* Category Filters */}

@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        logo: ["GmarketSans"],
         sans: [
-          "Roboto",
+          "Pretendard-Regular",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -23,7 +24,7 @@ module.exports = {
           "Noto Color Emoji",
         ],
         heading: [
-          "Montserrat",
+          "Pretendard-Regular",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
