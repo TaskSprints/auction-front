@@ -1,8 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Tabs } from "antd";
-import { CustomerSatisfaction, ProductDetails, ShippingInfo } from "./index";
+import {
+  CustomerSatisfaction,
+  ProductDetails,
+  ShippingInfo,
+} from "features/bidding/ui";
 
-export function BiddingTab() {
+export const BiddingTab: React.FC = () => {
   const [activeTab, setActiveTab] = useState("details");
   return (
     <Tabs
@@ -33,4 +37,4 @@ export function BiddingTab() {
       className="mb-8"
     />
   );
-}
+};

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { MenuOutlined, CalendarOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import type { MenuProps } from "antd";
@@ -44,7 +45,11 @@ export const MenuComponent: React.FC = () => {
     label: menu.title,
     children: menu.subMenu.map((subitem) => ({
       key: subitem,
-      label: <a href="/category">{subitem}</a>,
+      label: (
+        <Link to="/category" state={subitem}>
+          {subitem}
+        </Link>
+      ),
     })),
     className: isHoverDisabled ? "pointer-events-none" : "",
   }));

@@ -110,7 +110,7 @@ export const ProductCarousel = () => {
                   <div className="absolute top-0 left-0 right-0 bg-black/50 text-white text-center py-0.5 text-xl">
                     {formatTime(product.timeLeft)}
                   </div>
-                  <Link to="/bidding/{id}">
+                  <Link to="/bidding" state={{ product }}>
                     <img
                       src={product.image}
                       alt={product.title}
@@ -132,16 +132,15 @@ export const ProductCarousel = () => {
                   {product.currentPrice.toLocaleString()}원
                 </div>
                 <div className="grid grid-cols-2 gap-1">
-                  <Button size="small" href="/bidding/{id}">
-                    정보 보기
+                  <Button size="small">
+                    <Link to="/bidding" state={{ product }}>
+                      정보 보기
+                    </Link>
                   </Button>
-                  <Button
-                    size="small"
-                    type="primary"
-                    className="bg-red-500"
-                    href="/bidding/{id}"
-                  >
-                    입찰하기
+                  <Button size="small" type="primary" className="bg-red-500">
+                    <Link to="/bidding" state={{ product }}>
+                      입찰하기
+                    </Link>
                   </Button>
                 </div>
               </div>

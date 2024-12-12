@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { MENU_CATEGORIES } from "shared/config/menu.constants";
 
@@ -58,12 +59,13 @@ export const MobileMenuToggleComponent: React.FC<
                 >
                   {menu.subMenu.map((subitem) => (
                     <li key={subitem} className="mb-1">
-                      <a
-                        href="/"
+                      <Link
+                        to="/category"
+                        state={subitem}
                         className="text-gray-800 block px-3 py-2 text-sm rounded transition duration-200 hover:bg-red-100 hover:shadow-md"
                       >
                         {subitem}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

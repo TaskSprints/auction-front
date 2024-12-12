@@ -1,13 +1,17 @@
+import React from "react";
 import { Button } from "antd";
 
-export function BiddingTitle() {
+// TODO: 백엔드 API 연동 후, Id를 통해 데이터를 가져오도록 수정해야 한다.
+interface BiddingTitleProps {
+  title: string;
+}
+
+export const BiddingTitle: React.FC<BiddingTitleProps> = ({ title }) => {
   return (
     <div className="bg-gray-100 p-4 rounded-lg mb-6">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-xl font-bold mb-2">
-            [푸시캣돌스] [작수원] 과자류의 명품! 해피 덕셔리 쿠키세트!
-          </h1>
+          <h1 className="text-xl font-bold mb-2">{title}</h1>
           <p className="text-gray-600">
             과자의 명품을 맛보세요. 후회하시지 않으실 맛을 느끼실 수 있습니다.
           </p>
@@ -26,4 +30,4 @@ export function BiddingTitle() {
       </div>
     </div>
   );
-}
+};

@@ -1,4 +1,6 @@
-export function ShippingInfo() {
+import React from "react";
+
+export const ShippingInfo: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
@@ -54,4 +56,4 @@ export function ShippingInfo() {
       </div>
     </div>
   );
-}
+};

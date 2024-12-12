@@ -1,4 +1,6 @@
-export function ProductDetails() {
+import React from "react";
+
+export const ProductDetails: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="border-b pb-4">
@@ -36,4 +38,4 @@ export function ProductDetails() {
       </div>
     </div>
   );
-}
+};

@@ -3,6 +3,7 @@ import { Carousel } from "antd";
 import type { CarouselRef } from "antd/es/carousel";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const promos = [
   {
@@ -38,28 +39,30 @@ export function PromotionBanner() {
       >
         {promos.map((promo) => (
           <div key={promo.id}>
-            <div
-              className="relative h-[200px] overflow-hidden"
-              style={{
-                backgroundImage: `url(${promo.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              <div className="absolute inset-0 bg-black/30" />{" "}
-              {/* 텍스트 가독성을 위한 어두운 오버레이 */}
-              <div className="container mx-auto px-4 h-full relative">
-                <div className="flex items-center h-full">
-                  <div className="space-y-4 max-w-lg z-10">
-                    <div className="text-white">{promo.date}</div>
-                    <h2 className="text-4xl font-bold text-white">
-                      {promo.title}
-                    </h2>
-                    <p className="text-white text-lg">{promo.subtitle}</p>
+            <Link to="/category" state="남성의류">
+              <div
+                className="relative h-[200px] overflow-hidden"
+                style={{
+                  backgroundImage: `url(${promo.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="absolute inset-0 bg-black/30" />
+                {/* 텍스트 가독성을 위한 어두운 오버레이 */}
+                <div className="container mx-auto px-4 h-full relative">
+                  <div className="flex items-center h-full">
+                    <div className="space-y-4 max-w-lg z-10">
+                      <div className="text-white">{promo.date}</div>
+                      <h2 className="text-4xl font-bold text-white">
+                        {promo.title}
+                      </h2>
+                      <p className="text-white text-lg">{promo.subtitle}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </Carousel>
