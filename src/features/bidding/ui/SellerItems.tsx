@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card } from "antd";
 
 const items = [
@@ -30,27 +31,28 @@ export const SellerItems: React.FC = () => {
     <div className="mb-8">
       <h2 className="text-lg font-bold mb-4">판매자의 다른 상품</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {items.map((item) => (
+        {items.map((product) => (
           <Card
-            key={item.id}
+            key={product.id}
             cover={
-              <div className="relative aspect-square">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Link to="/bidding" state={{ product }}>
+                <div className="relative aspect-square">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </Link>
             }
-            bodyStyle={{ padding: "12px" }}
           >
-            <h4 className="text-sm font-medium mb-2">{item.title}</h4>
+            <h4 className="text-sm font-medium mb-2">{product.title}</h4>
             <div className="space-y-1">
               <div className="text-gray-500 line-through text-sm">
-                ₩{item.originalPrice.toLocaleString()}
+                ₩{product.originalPrice.toLocaleString()}
               </div>
               <div className="text-red-600 font-bold text-lg">
-                ₩{item.currentPrice.toLocaleString()}
+                ₩{product.currentPrice.toLocaleString()}
               </div>
             </div>
           </Card>

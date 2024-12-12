@@ -86,7 +86,7 @@ export const CategoryBoardCard: React.FC<PropsData> = ({
       }}
       className="w-screen h-[9rem] rounded-lg shadow-inner mt-1 flex items-center"
     >
-      <div className="img_section w-1/3 h-[7.5rem] ">
+      <div className="img_section w-1/3 h-[7.5rem]">
         <img
           src={product.productImageList[0]}
           alt=""

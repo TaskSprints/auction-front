@@ -10,12 +10,54 @@ import {
 } from "@ant-design/icons";
 
 const categoryFilters = [
-  { key: "series", label: <Link to="/">시리즈</Link> },
-  { key: "furniture", label: <Link to="/">가구</Link> },
-  { key: "swimwear", label: <Link to="/">수영복</Link> },
-  { key: "smartphone", label: <Link to="/">스마트폰</Link> },
-  { key: "computer", label: <Link to="/">컴퓨터</Link> },
-  { key: "appliances", label: <Link to="/">가전제품</Link> },
+  {
+    key: "series",
+    label: (
+      <Link to="/category" state="시리즈">
+        시리즈
+      </Link>
+    ),
+  },
+  {
+    key: "furniture",
+    label: (
+      <Link to="/category" state="시리즈">
+        가구
+      </Link>
+    ),
+  },
+  {
+    key: "swimwear",
+    label: (
+      <Link to="/category" state="수영복">
+        수영복
+      </Link>
+    ),
+  },
+  {
+    key: "smartphone",
+    label: (
+      <Link to="/category" state="스마트폰">
+        스마트폰
+      </Link>
+    ),
+  },
+  {
+    key: "computer",
+    label: (
+      <Link to="/category" state="컴퓨터">
+        컴퓨터
+      </Link>
+    ),
+  },
+  {
+    key: "appliances",
+    label: (
+      <Link to="/category" state="가전제품">
+        가전제품
+      </Link>
+    ),
+  },
 ];
 
 const { Header: AntHeader } = AntLayout;
@@ -76,7 +118,6 @@ export const Header: React.FC = () => {
                 type="button"
                 key={filter.key}
                 className="text-sm text-gray-600 hover:text-green-600 bg-transparent border-none cursor-pointer"
-                onClick={() => navigate(`#${filter.key}`)}
               >
                 {filter.label}
               </button>
