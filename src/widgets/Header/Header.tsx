@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 key={filter.key}
-                className="text-sm text-gray-600 hover:text-green-600 bg-transparent border-none cursor-pointer"
+                className="text-base text-gray-600 hover:text-green-600 bg-transparent border-none cursor-pointer font-heading"
               >
                 {filter.label}
               </button>
