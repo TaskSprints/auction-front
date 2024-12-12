@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   BiddingInfo,
@@ -17,6 +17,10 @@ export const BiddingPage: React.FC = () => {
   const product = state?.product;
   const imgSrc = product?.image;
   const title = product?.title;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [state]);
 
   return (
     <Layout>

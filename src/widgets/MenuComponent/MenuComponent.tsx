@@ -73,7 +73,7 @@ export const MenuComponent: React.FC = () => {
                 onClick={handleClick}
                 selectedKeys={[current]}
                 mode="horizontal"
-                className="hidden md:flex space-x-4 ml-4 bg-[#2E7D32]"
+                className="hidden md:flex space-x-4 ml-4 bg-[#2E7D32] [&_.ant-menu-submenu-title]:text-white text-sm font-semibold"
                 items={menuItems}
               />
             )}
