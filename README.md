@@ -14,20 +14,32 @@
 
 [-> Go to **Smart Deal** Site](https://clever-swan-acedb5.netlify.app/)
 
+<img src="https://github.com/user-attachments/assets/7c53180c-c1eb-400f-9f76-04b73242db33" width="300" />
+
 ## WHAT FOR?
 
-## YOU CAN DO.
+- 합리적인 가격으로 상품을 구매하고자 하는 소비자들을 위한 플랫폼입니다.
+- 실시간 경매 시스템을 통한 공정한 거래 환경을 조성합니다.
+- 판매자와 구매자 간의 효율적인 거래를 중개합니다.
 
-## WHAT WE DO
+## YOU CAN DO
+
+![image](https://github.com/user-attachments/assets/e6b59ccb-66a1-415e-bc39-e0eb0632ad83)
 
 ## WE USED
 
-## HOW TO USE
-
-### Development
-
-### Contributions
-
-## OUR CHALLENGE
+피그마
 
 ## WHO WE ARE
+
+<div>
+  <a href="https://github.com/CreatorDodo">
+    <img src="https://avatars.githubusercontent.com/u/112838087?v=4" width="90" style="max-width: 100%;">
+  </a>
+  <a href="https://github.com/KNU-K">
+    <img src="https://avatars.githubusercontent.com/u/126179088?v=4" width="90" style="max-width: 100%;">
+  </a>
+  <a href="https://github.com/JIHUN-HA">
+    <img src="https://avatars.githubusercontent.com/u/53825246?v=4" width="90" style="max-width: 100%;">
+  </a>
+</div>
