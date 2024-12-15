@@ -39,13 +39,13 @@
 
 git clone https://github.com/your-repository/smart-deal.git
 
-  
+
 
 # 의존성 설치
 
 npm install
 
-  
+
 
 # 개발 서버 실행
 
