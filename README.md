@@ -28,7 +28,29 @@
 
 ## WE USED
 
-피그마
+![image](https://github.com/user-attachments/assets/ea522055-8aee-4180-92af-a008b6f062ce)
+
+## HOW TO USE
+
+### Development
+
+```
+# 저장소 클론
+
+git clone https://github.com/your-repository/smart-deal.git
+
+  
+
+# 의존성 설치
+
+npm install
+
+  
+
+# 개발 서버 실행
+
+npm start
+```
 
 ## WHO WE ARE
 
